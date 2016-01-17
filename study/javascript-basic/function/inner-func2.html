@@ -34,7 +34,10 @@
 	}
 
 	function clockEnd() {
-
+		function timeout() {
+			clearTimeout(timeId);
+		}
+		timeout();
 	}
 </script>
 <title>Inner Function2</title>
