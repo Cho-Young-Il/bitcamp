@@ -1,0 +1,67 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#login {
+	width: 950px;
+	margin: 145px auto;
+}
+
+#login>form {
+	margin-top: 10px;
+}
+
+#login a {
+	font: normal 18px/30px 'Jeju Gothic', serif;
+	color: black;
+	display: inline;
+	padding: 10px 15px;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#login a:hover {
+	color: #003399;
+	text-decoration: underline;
+}
+
+#login input {
+	width: 210px;
+	font-size: 20px;
+	font: normal 15px/30px;
+	color: black;
+	height: 40px;
+	font-size: 1.1em;
+	padding-left: 5px;
+}
+
+#login img {
+	width: 500px;
+	height: 200px;
+}
+
+#login button {
+	float: left;
+	position: relative;
+	top: 0;
+	cursor: pointer;
+	width: 100px;
+	height: 45px;
+	background: white;
+	border-radius: 3px;
+	box-shadow: 0px 4px rgba(0, 0, 0, 0.2);
+	margin: 0 7px 11px 0;
+	color: #888;
+	line-height: 36px;
+	text-align: center;
+	user-select: none;
+	font: normal 15px/30px 'Jeju Gothic', serif;
+	color: black;
+	transition: all 0.2s ease;
+}
+
+#login button:hover {
+	box-shadow: 0px 4px #003399;
+	color: black;
+}

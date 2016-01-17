@@ -1,0 +1,84 @@
+﻿* {
+	margin: 0;
+	padding: 0;
+}
+
+#main {
+	margin: 0 auto;
+}
+
+.submenunav {
+	table-layout: fixed;
+	display: inline-block;
+}
+
+.submenunav span {
+	font: normal 16px/20px 'Jeju Gothic', serif;
+	color: black;
+	display: inline-block;
+	padding: 10px 15px;
+	text-decoration: none;
+	display: table-cell;
+	text-align: center;
+	cursor: pointer;
+	user-select: none;
+}
+
+.submenunav span:hover {
+	color: hsl(180, 40%, 40%);
+}
+
+#buttons_1 {
+	float: right;
+	margin-top: 20px;
+	padding-right: 100px;
+	display: inline-block;
+	background: white;
+	font: normal 16px/20px 'Jeju Gothic', serif;
+	color: black;
+}
+
+#buttons_1>button {
+	width: 50px;
+	font: normal 12px/20px 'Jeju Gothic', serif;
+	color: black;
+}
+
+#buttons_1 input {
+	width: 250px;
+	text-align: center;
+	font: normal 12px/20px 'Jeju Gothic', serif;
+	color: black;
+}
+
+#buttons_2 {
+	margin-top: 20px;
+	float: right;
+	padding-right: 150px;
+	display: block;
+	background: white;
+	font: normal 16px/20px 'Jeju Gothic', serif;
+	color: black;
+}
+
+#buttons_2>button {
+	width: 50px;
+	font: normal 12px/20px 'Jeju Gothic', serif;
+	color: black;
+}
+
+#buttons_3 {
+	margin-top: 10px;
+	float: right;
+	padding-right: 350px;
+	display: inline-block;
+	background: white;
+	font: normal 16px/20px 'Jeju Gothic', serif;
+	color: black;
+}
+
+#buttons_3>button {
+	width: 100px;
+	font: normal 12px/20px 'Jeju Gothic', serif;
+	color: black;
+}

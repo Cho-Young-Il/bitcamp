@@ -1,0 +1,76 @@
+#msform {
+	width: 750px;
+	margin: 36.5px auto;
+	text-align: center;
+	position: relative;
+}
+
+#msform h1 {
+	font-family: 'Jeju Gothic', serif;
+	font-size: 15px;
+	color: white;
+	background: hsl(180, 40%, 60%);
+	text-align: center;
+	padding: 20px 0;
+	margin-bottom: 10px;
+}
+
+#msform fieldset {
+	background: white;
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	padding: 50px 80px;
+	box-sizing: border-box;
+	width: 80%;
+	margin: 0 10%;
+	position: relative;
+}
+
+#msform>fieldset>input, textarea {
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	
+	color: #2C3E50;
+	font-size: 13px;
+	margin-top: 3px;
+}
+
+#gender {
+	margin-top: 3px;
+	margin-bottom: 5px;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: 'Jeju Gothic', serif;
+	color: #2C3E50;
+	font-size: 15px;
+}
+
+#gender>font {
+	margin-top: 3px;
+	margin-bottom: 5px;
+	width: 100%;
+	font-family: 'Jeju Gothic', serif;
+	color: gray;
+	font-size: 15px;
+}
+
+#msform .action-button {
+	width: 100px;
+	background: hsl(180, 40%, 60%);
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+
+#msform .action-button:hover, #msform .action-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}

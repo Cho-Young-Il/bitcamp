@@ -1,0 +1,109 @@
+#main {
+	width: 700px;
+	margin: 30px auto;
+}
+
+blockquote, .bluejeans {
+	display: block;
+	background: #fff;
+	padding: 15px 50px 15px 45px;
+	margin: 0px 0 20px 0;
+	position: relative;
+	font-family: 'Jeju Gothic', serif;
+	font-size: 14px;
+	line-height: 1.2;
+	color: #666;
+	-moz-box-shadow: 2px 2px 15px #ccc;
+	-webkit-box-shadow: 2px 2px 15px #ccc;
+	box-shadow: 2px 2px 15px #ccc;
+	border-left-style: solid;
+	border-left-width: 15px;
+	border-right-style: solid;
+	border-right-width: 2px;
+}
+
+blockquote::before {
+	content: "\201C";
+	font-family: 'Jeju Gothic', serif;
+	font-size: 60px;
+	font-weight: bold;
+	color: #999;
+	position: absolute;
+	left: 10px;
+	top: 5px;
+}
+
+blockquote::after {
+	content: "";
+}
+
+#n_r, #content, #cfoot {
+	margin: 10px 10px 10px 20px;
+}
+
+#reg-date {
+	float: right;
+}
+
+blockquote.default {
+	border-left-color: hsl(180, 40%, 60%);
+	border-right-color: hsl(180, 40%, 60%);
+}
+
+.default a {
+	text-decoration: none;
+	padding-right: 3px;
+	float: right;
+}
+
+.default h1 {
+	padding: 10px;
+	word-wrap: break-word;
+}
+
+.bluejeans {
+	overflow: hidden;
+	text-decoration: none;
+	white-space: nowrap;
+	padding-left: 20px;
+	text-overflow: ellipsis;
+}
+
+.bluejeans {
+	padding-left: 50px;
+	border-left-color: #5e9de6;
+	border-right-color: #4b8ad6;
+}
+
+.default a:hover, .bluejeans a:hover {
+	text-decoration: underline;
+}
+
+#co-form input, textarea {
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	width: 75%;
+	box-sizing: border-box;
+	font-family: 'Jeju Gothic', serif;
+	color: #2C3E50;
+	font-size: 13px;
+	margin-top: 3px;
+}
+
+#co-form textarea {
+	width: 100%;
+}
+
+#co-form .action-button {
+	width: 22%;
+	background: hsl(180, 40%, 60%);
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}

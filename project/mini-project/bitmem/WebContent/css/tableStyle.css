@@ -1,0 +1,170 @@
+.table, .table1, .table2 {
+	margin: 0 auto;
+	width: 90%;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+	display: table;
+	margin-top: 10px;
+	margin-bottom: 30px;
+	text-align: center;
+	table-layout: fixed;
+	padding: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-family: 'Jeju Gothic', serif;
+}
+
+.table3 {
+	margin: 0 auto;
+	width: 700px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+	display: table;
+	margin-top: 10px;
+	margin-bottom: 30px;
+	text-align: center;
+	table-layout: fixed;
+	padding: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-family: 'Jeju Gothic', serif;
+}
+
+.table4 {
+	margin: 0 auto;
+	width: 700px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+	display: table;
+	margin-top: 10px;
+	margin-bottom: 30px;
+	text-align: center;
+	table-layout: fixed;
+	padding: 10px;
+	font-family: 'Jeju Gothic', serif;
+}
+
+.table, .table3, .table4 {
+	font-size: 12px;
+}
+
+.table1, .table2 {
+	font-size: 11px;
+}
+
+.cell {
+	width: 50px;
+	table-layout: fixed;
+	padding: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.celltitle {
+	width: 400px;
+	table-layout: fixed;
+	padding: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.cellcontent {
+	width:400px; margin:15px 0; padding:5px; 
+	word-wrap:break-word;
+	text-align: left;
+}
+
+.table3 > .cell {
+	width: 50px;
+	table-layout: fixed;
+	padding: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.table3 .celltitle {
+	width: 600px;
+	table-layout: fixed;
+	padding: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: left;
+}
+
+.row {
+	display: table-row;
+	background: #f6f6f6;
+}
+
+.row:nth-of-type(odd) {
+	background: #e9e9e9;
+}
+
+.row.header {
+	font-family: 'Jeju Gothic', serif;
+	font-weight: 100;
+	color: #ffffff;
+	background: hsl(180, 40%, 60%);
+}
+
+.table1 > .row.header {
+	background: #5e9de6;
+}
+
+.table2 > .row.header {
+	background: #ed5565;
+}
+
+.cell {
+	padding: 6px 12px;
+	display: table-cell;
+}
+
+a {
+	font-family: 'Jeju Gothic', serif;
+	color: black;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+table {
+	margin: 0px auto;
+	margin-bottom: 20px;
+	text-align: center;
+	width: auto;
+}
+
+td {
+	font-family: 'Jeju Gothic', serif;
+	width: 20px;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+#msform .action-button {
+	width: 100px;
+	background: hsl(180, 40%, 60%);
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+
+#msform .action-button:hover, #msform .action-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+
+#anchor1, #anchor2 {
+	margin-top:20px;
+	margin-bottom:8px;
+	float: right;
+	padding-right: 80px;
+}

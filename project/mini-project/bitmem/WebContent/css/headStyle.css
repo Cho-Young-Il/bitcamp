@@ -1,0 +1,88 @@
+/*nav styles*/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#top {
+	width: 950px;
+	margin: 0 auto;
+	border-bottom: 3px solid hsl(180, 40%, 60%);
+}
+
+#top>span {
+	margin: 0 auto;
+	background: white;
+	font: normal 18px/30px 'Jeju Gothic', serif;
+	color: hsl(180, 40%, 40%);
+	list-style-type: none;
+}
+
+#top>span>a {
+	margin: 0 auto;
+	float: right;
+	font: normal 18px/30px 'Jeju Gothic', serif;
+	color: black;
+	display: inline;
+	padding: 10px 15px;
+	text-decoration: none;
+	cursor: pointer;
+	user-select: none;
+	transition-duration: 0.65s;
+}
+
+#top>span>a:hover {
+	background: #EAEAEA;
+}
+
+#nav {
+	width: 950px;
+	margin: 0 auto;
+}
+
+#nav a {
+	background: white;
+}
+
+#nav ul {
+	width: 950px;
+	margin: 0 auto;
+	display: table;
+	table-layout: fixed;
+	list-style-type: none;
+}
+
+#nav>ul>li {
+	position: relative;
+	overflow: auto;
+	display: table-cell;
+	text-align: center;
+}
+
+#nav>ul>li>a {
+	font: normal 18px/30px 'Jeju Gothic', serif;
+	color: hsl(180, 40%, 40%);
+	display: block;
+	padding: 10px 15px;
+	text-decoration: none;
+	cursor: pointer;
+	user-select: none;
+	position: relative;
+	transition-duration: 0.65s;
+}
+
+#nav>ul>li>a:hover {
+	color: #999;
+	background-color: hsl(180, 40%, 90%);
+	border-radius: 3px;
+}
+
+/*time style*/
+#hex {
+	color: #6799FF;
+	font: normal 18px/30px 'Jeju Gothic', serif;
+	display: inline-block;
+	padding: 10px 40px;
+	text-decoration: none;
+	background: white;
+}
