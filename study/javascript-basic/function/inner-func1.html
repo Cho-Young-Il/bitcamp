@@ -1,0 +1,47 @@
+<!-- 
+	자바스크립트 내장함수
+	- setInterval : 특정 시간이 지난후 호출(반복적)
+	- clearInterval : setInterval 지정된 내용을 지우는 것
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+	#timeDiv {
+		background-color: black;
+		color: white;
+		font-size: 20px;
+		font-weight: bold;
+		margin-top: 10px;
+		text-align: center;
+	}
+</style>
+<script>
+	//setTimeout 실행시의 아이디 저장
+	var timeId;
+
+	function clockStart() {
+		var timeDiv = document.getElementById('timeDiv');
+
+		var date = new Date();
+		timeDiv.innerHTML = date.toLocaleTimeString();
+		if(!timeId) {
+			timeId = setInterval(clockStart, 1000);
+		}
+	}
+
+	function clockEnd() {
+		clearInterval(timeId);
+		timeId = null;
+	}
+</script>
+<title>Inner Function1</title>
+</head>
+<body>
+	<input type="button" value="시작" onclick="clockStart()"/>
+	<input type="button" value="종료" onclick="clockEnd()"/>
+	<div id="timeDiv">시간 정보출력</div>
+</body>
+</html>
