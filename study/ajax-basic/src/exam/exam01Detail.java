@@ -36,6 +36,6 @@ public class Exam01Detail extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println(result);
-		out.close();
+		out.close();   
 	}
 }
