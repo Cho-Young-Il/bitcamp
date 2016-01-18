@@ -148,3 +148,54 @@ function mlec(val) {
 }
 
 var $ = mlec;
+
+var httpRequest;
+$.ajax = function(options) {
+	//객체생성
+	httpRequest = new XMLHttpRequest();
+
+	//콜백함수 등록
+	httpRequest.onreadystatechange = options.callback;
+
+	//메서드 방식 설정
+	//사용자가 메서드 방식을 설정하지 않으면 디폴트로 GET설정
+	var hMethod = options.method ? options.method : "GET";
+
+	if(hMethod != "GET" && hMethod != "POST") {
+		hMethod = "GET";
+	}
+
+	//사용자 입력 파라미터가 있을 경우에 파라미터 호출 형식에
+	//맞추어 변경함
+	var hData = "";
+	//입력 파라미터가 있을 경우에만..
+	if(options.data) {
+		for(var key in options.data) {
+			//처음인지 판단
+			if(hData == "") {
+				hData = key + "=" + options.data[key];
+			} else {
+				hData += "&" + key + "=" + options.data[key];
+			}
+		}
+	}
+
+	var hUrl = options.url;
+	//GET 메서드이면서 파라미터가 있는 경우
+	if(hMethod == "GET" && hData != "") {
+		hUrl += "?" + hData;
+	}
+
+	//서버로 호출
+	httpRequest.open(hMethod, hUrl, true);
+
+	//POST 방식일 경우 헤더값 변경
+	if(hMethod == "POST") {
+		httpRequest.setRequestHeader(
+			"Content-Type",
+			"application/x-www-form-urlencoded");
+	}
+
+	//POST방식을 경우 파라미터 설정
+	httpRequest.send(hMethod == "POST" ? hData : null);
+};
