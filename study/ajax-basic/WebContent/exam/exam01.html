@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="/ajax-basic/framework.js"></script>
+<script type="text/javascript">
+	window.onload = function() {
+		//id가 search인 버튼에 이벤트 설정
+		$("#search").click(function() {
+			//Ajax를 이용해서 서버의 회원 목록을 가져와
+			//leftInfo 영역에 출력함
+			$.ajax({
+				url: "/ajax-basic/exam/member-list",
+				callback: function() {
+					if(httpRequest.readyState == 4) {
+						if(httpRequest.status == 200) {
+							var arr = eval(httpRequest.responseText);
+							var html = "<ul>";
+							for(var i = 0; i < arr.length; i++) {
+								//id:name 형태에서 id, name분리시키기
+								var mArr = arr[i].split(":");
+								html += "<li><a href='#1' onclick='memberDetailInfo(\"" + mArr[0] + "\")'>" + mArr[1] + "</a></li>";
+							}
+							html += "</ul>";
+							$("#mList").html(html);
+						}
+					}
+				}
+			});
+		});
+	}
+
+	//회원 목록에서 회원이름을 클릭할 때 호출됨
+	//호출된 회원의 상세 정보를 AJAX를 이용해서 조회함
+	//조회된 상세 정보를 회원상세 DIV에 출력함
+	function memberDetailInfo(id) {
+		//ajax를 이용해서 회원정보 조회
+		//url: /ajax-basic/exam/member-detail
+		//data: {id: id}
+		//method: get
+		//callback: function() {
+			//서버에서 조회된 회원의 정보를 아이디가 mInfo인
+			//DIV에 출력한다.
+			//서버에서 조회되는 회원정보는 최소 3개이상..
+		//}
+		$.ajax({
+			url: "ajax-basic/exam/member-detail",
+			callback: function() {
+				if(httpRequest.readyState == 4) {
+					if(httpRequest.status == 200) {
+						var arr = eval(httpRequest.responseText);
+						var html = "";
+						for(var i = 0; i < arr.length; i++) {
+							html += arr[i];
+						}
+						$("#mInfo").html(html);
+					}
+				}
+			},
+
+		});
+	}
+</script>
+<style type="text/css">
+	a {
+		color: #345;
+		font-size: 15px;
+	}
+	#leftInfo {
+		float: left;
+		border: 5px solid black;
+		width: 20%;
+		min-height: 500px;
+	}
+	#centerInfo {
+		border: 5px solid black;
+		width: 76%;
+		margin-left: 23%;
+		min-height: 500px;
+	}
+</style>
+<title>Insert title here</title>
+</head>
+<body>
+	<p>
+		<button id="search">회원정보 조회</button>
+	</p>
+	<div id="leftInfo">
+		<h3>회원목록</h3>
+		<div id="mList"></div>
+	</div>
+	<div id="centerInfo">
+		<h3>회원상세</h3>
+		<div id="mInfo"></div>
+	</div>
+</body>
+</html>
