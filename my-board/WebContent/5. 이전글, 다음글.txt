@@ -1,0 +1,39 @@
+-----------------
+  이전글, 다음글
+-----------------
+
+- VO 클래스에 이전글, 다음글을 표현할 변수 선언
+  private MiniBoardVO prev;
+  private MiniBoardVO next;
+
+
+- DAO 클래스에 이전글 조회 메서드, 다음글 조회 메서드 추가
+  selectPrevBoard 
+  selectNextBoard
+  
+  
+- SearchOneController 에서 DAO 클래스의 메서드 호출하고 공유영역 설정
+  // 이전글, 다음글 정보 추가
+  vo.setPrev(dao.selectPrevBoard(no));
+  vo.setNext(dao.selectNextBoard(no));
+  
+   
+- detail.jsp 페이지에서 댓글 수 적용
+  공유영역 데이터를 화면에 출력
+
+	<table>
+		<tr>
+			<td>이전글</td>
+			<td><a href="detail?no=${content.prev.no}">
+					<c:out value="${content.prev.title}" />	
+				</a>
+			</td>
+		</tr>
+		<tr>
+			<td>다음글</td>
+			<td><a href="detail?no=${content.next.no}">
+					<c:out value="${content.next.title}" />	
+				</a>
+			</td>
+		</tr>
+	</table>

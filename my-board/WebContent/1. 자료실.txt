@@ -1,0 +1,74 @@
+게시판 -> 파일 업로드 기능 추가
+
+1. registForm.jsp 페이지에 아래의 내용 추가
+   - 게시물 등록페이지에 첨부파일 부분을 추가(2개)
+     <input type=.. name=""
+     name에 이름은 attachFile1, attachFile2 로 설정
+   
+   - form 태그에 enctype 속성 적용
+   
+2. 파일의 정보를 저장하기 위해 서버에 저장 폴더를 
+   만들기
+   위치 : WebContent>upload 폴더 생성
+
+3. RegistUI 클래스에 다음 내용을 처리하는 코드 추가
+   - 서버에 파일을 저장할 때 날짜별로 디렉토리 생성해서 저장함
+   - 저장된 파일내용을 테이블에 입력한다.
+     ㄱ. 테이블 생성
+         테이블명 : t77_mini_board_file
+         컬럼명   : file_no(파일 자체 번호)
+                   no     (게시물번호)
+                   ori_file_name(사용자 선택 파일명)
+                   real_file_name(서버 저장 파일명)
+                   file_size(파일크기(byte))
+                   file_path(저장된 경로)
+		 시퀀스   : seq_mini_board_file_no
+
+
+4. SearchOneUI 클래스에 아래의 내용을 추가
+   - 게시물의 정보에 추가적으로 게시물과 연관된
+     파일의 정보를 화면에서 사용할 수 있도록
+     조회한 다음 공유영역에 설정
+     	
+5. detail.jsp 파일에서 등록된 파일 정보를 화면에
+   보여준다.
+   - tr 을 추가하고 
+   - 첨부파일 : a.txt(100byte)
+                b.txt (30byte)
+   - 만약, 첨부된 파일이 없는 경우
+     첨부파일 : 첨부된 파일이 없습니다.
+     
+6. 파일과 연관된 SQL 작업은 기존 BoardDAO 클래스에 추가
+   파일과 연관된 t77_mini_board_file 테이블에 대한
+   VO 클래스는 새롭게 생성
+   (MiniBoardFileVO) 
+   
+   추가할 메서드명
+   - 파일등록
+     insertFile
+   - 상세페이지에서 사용할 파일 조회  
+     selectFile
+   
+               
+   
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+       

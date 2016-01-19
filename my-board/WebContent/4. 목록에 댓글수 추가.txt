@@ -1,0 +1,25 @@
+목록에 댓글 수 추가
+
+- BoardVO 클래스에 댓글수 변수 추가 및 set,get 추가
+  private int commentCnt;
+  
+- DAO 클래스에 목록조회 쿼리 수정 및 VO 클래스에 댓글수 설정
+  selectBoard 메서드의 쿼리 수정
+  String sql = "select no, writer, title, view_cnt,"
+	  	     + "       (select count(*)                   "
+		     + "          from t77_mini_board_comment     "
+		     + "         where no = a.no ) as comment_cnt "
+		     + "  from t77_mini_board a "
+		     + " order by no desc       ";
+    
+  댓글수 설정  
+  vo.setCommentCnt(rs.getInt("comment_cnt"));
+  
+- list.jsp 페이지에서 댓글 수 적용
+  <a href='detail?no=${vo.no}&call=list'>
+	${vo.title}
+	<c:if test="${vo.commentCnt ne 0}">
+		[${vo.commentCnt}]
+	</c:if>
+  </a>
+

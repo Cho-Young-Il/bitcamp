@@ -1,0 +1,20 @@
+조회수 
+
+- SearchOneController 클래스에 들어온 경우 조회수 증가 기능 작성
+  DAO 클래스의 조회수를 증가시키는 메서드 호출
+  단, 목록에서 들어온 경우만 조회수를 1 증가시킨다.   
+  
+- DAO 클래스에 조회수를 증가시키는 기능 작성
+  메서드명 : updateViewCnt
+    
+- list.jsp 페이지에서 상세페이지 부를때 call 파라미터 추가
+  detail?no=${vo.no}&call=list   
+  
+- DAO 클래스의 상세페이지 정보 호출 메서드 수정
+  조회하는 쿼리에 view_cnt 추가하고 반환되는 VO 클래스에
+  view_cnt 값을 설정한다.
+  
+  vo.setViewCnt(rs.getInt("view_cnt"));
+  String sql = "select no, writer, title, content, "
+				   + "       view_cnt, reg_date "  
+				        
