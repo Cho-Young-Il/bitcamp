@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>css selectors</title>
+<script type="text/javascript" src="../jquery-2.2.0.js"></script>
+<script>
+$(function() {
+	$("button:eq(0)").click(function() {
+		$("input[id=msg]").val("123");
+	});	
+	$("button:eq(1)").click(function() {
+		alert($("input").val());
+	})
+})
+</script>
+</head>
+<body>
+	<p>
+		<input type="text" name="msg" />
+	</p>
+	<div>
+		<button>VAL 설정</button>
+		<button>VAL 추출</button>
+	</div>
+</body>
+</html>

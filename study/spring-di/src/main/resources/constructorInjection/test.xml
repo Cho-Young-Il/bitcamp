@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+                           
+      <!--
+       
+      	HamSand ham = new HamSand();
+      	
+      	HamSand temp = new HamSand();
+      	HashMap<String, ISand> map = new HashMap<>();
+      	map.put("ham2",temp);
+      	map.put("ham3",temp);
+      	map.put("ham4",temp);
+      	map.put("#ham5",temp);
+      		
+       -->
+     <bean id="ham" class="constructorInjection.HamSand">
+         <constructor-arg>
+             <value>햄 샌드위치</value>
+         </constructor-arg>
+     </bean>
+     
+     <!-- 
+     	아래 bean 태그가 동작되도록 클래스를 생성
+      -->
+     <bean id="cola" class="constructorInjection.ColaDrink">
+         <constructor-arg>
+             <value>콜라</value>
+         </constructor-arg>
+     </bean>
+	 
+	 <!-- 
+	 	Menu 클래스의 기본 생성자 이용
+	 	id : menu1
+	  -->
+	 <bean id="menu1" class="constructorInjection.Menu" />
+	 
+	 <!-- 
+	 	String을 받는 생성자 이용
+	  -->
+	 <bean id="menu2" class="constructorInjection.Menu">
+	     <constructor-arg>
+	         <value>세트 메뉴</value>
+	     </constructor-arg>
+	 </bean>
+	 <bean id="menu3" class="constructorInjection.Menu">
+	     <constructor-arg ref="ham" />
+	     <!-- <constructor-arg>
+	         <ref bean="ham"/>
+	     </constructor-arg> -->
+	 </bean>
+	 <bean id="menu4" class="constructorInjection.Menu">
+	     <constructor-arg value="햄 샌드위치" />
+	     <constructor-arg value="1000" />
+	     <!-- <constructor-arg>
+	         <value>햄 샌드위치</value>
+	     </constructor-arg>
+	     <constructor-arg>
+	         <value>1000</value>
+	     </constructor-arg> -->
+	 </bean>
+	 
+	 <!-- 
+	 	주의 : 
+	 	value 속성 또는 value 태그를 이용시 별도의 타입 표시가
+	 	없다면 기본 String 으로 적용됨
+	  -->
+	 <bean id="menu5" class="constructorInjection.Menu">
+	     <constructor-arg type="int" value="1000" />
+	 </bean>
+</beans>

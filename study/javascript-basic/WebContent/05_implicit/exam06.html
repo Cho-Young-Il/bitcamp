@@ -1,0 +1,80 @@
+<!-- 
+	Array
+	Array()
+	Array(num)
+	Array(num1, num2)
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	var arr1 = new Array(); //크기가 0인 배열 생성
+	var arr2 = new Array(3); //크기가 3인 배열 생성
+	var arr3 = new Array(3, 2, 1); //지정된 숫자를 넣어서 생성
+	
+	console.log("1 : " + arr1);
+	console.log("2 : " + arr2);
+	console.log("3 : " + arr3);
+	
+	var arr4 = ["봄", "여름", "가을", "겨울"];
+	var arr5 = ["도시락", "음료", "과자"];
+	
+	console.log(arr4.concat(arr5));
+	console.log(arr4.join("|"));
+	console.log(arr4.slice(1)); // "여름", "가을", "겨울"
+	console.log(arr4.slice(1, 2)); // "여름" 지정된 위치를 잘라낸다.
+	
+	//배열의 마지막 요소를 제거하고 제거된 요소를 반환
+	console.log(arr4.pop());
+	console.log(arr4);
+	
+	console.log(arr4.push("겨울"));
+	console.log(arr4);
+	
+	//맨 앞의 요소를 제거
+	console.log(arr4.shift());
+	console.log(arr4);
+	
+	//배열의 맨 앞에 요소를 추가
+	console.log(arr4.unshift("봄"));
+	console.log(arr4);
+	
+	//거꾸로 뒤집기
+	console.log(arr4.reverse());
+	
+	// 문자열 정렬 사용, 숫자 정렬 기준 아님
+	console.log(arr4.sort());
+	
+	var arr6 = [33, 210, 9, 40];
+	console.log(arr6.sort());
+	
+	//정렬의 기준 함수를 콜백으로 설정한다.
+	//오름차순 정렬
+	arr6.sort(function (left, right) {
+		return left - right;
+	});
+	
+	console.log(arr6);
+	
+	//내림차순 정렬
+	arr6.sort(function (left, right) {
+		return right - left;
+	});
+	
+	console.log(arr6);
+	
+	
+	//배열의 중간 요소를 제거
+	var arr7 = ["봄", "여름", "가을", "겨울"];
+	//2번째 인덱스부터 1개의 요소를 삭제하시오
+	console.log(arr4.splice(2, 1));
+	//문자의 마지막에 ";"을 빼면 자동으로 삽입됨
+	console.log(arr4);
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

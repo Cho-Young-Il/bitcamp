@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	 function add() {
+		 //select box의 참조 얻기
+		 var selObj = document.mForm.areaBox;
+		 
+		 var optArr = selObj.options;
+		 optArr[optArr.length] = 
+			 new Option("텍스트" + optArr.length, optArr.length);
+		 
+		 
+		 //dom Api 활용
+		/*  var optEle = document.createElement("option");
+		 optEle.setAttribute("value", 1);
+		 
+		 var tNode = document.createTextNode(
+				 "텍스트" + selObj.options.length);
+		 
+		 //option 자식으로 텍스트 노드 추가
+		 optEle.appendChild(tNode);
+		 //select 박스의 자식으로 option 추가
+		 selObj.appendChild(optEle); */
+		 
+		 
+		 //3번 :innerHTML 방식 적용
+		 /* selObj.innerHTML += "<option value='1'>택스트1</option>"; */
+	 }
+	 function del() {
+		  //select box의 참조 얻기
+		 var selObj = document.mForm.areaBox;
+		/*
+		  var optArr = selObj.options;
+		 
+		 //마지막 위치의 option 삭제
+		 optArr[optArr.length - 1] = null;
+		 
+		 //option 항목중에서 1개만 놔두고 다 삭제하자
+		 for(var i = optArr.length - 1; i > 0; i--) {
+			 optArr[i] = null;
+		 } */
+		 
+		 //option 항목 중에서 1개만 놔두고 다 삭제하자
+		 selObj.length = 1;
+	 }
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<p>
+		<button onclick="add()">추가</button>
+		<button onclick="del()">삭제</button>
+	</p>
+	<form name="mForm">
+		<select name="areaBox">
+			<option value="">선택하세요</option>
+		</select>
+	</form>
+</body>
+</html>

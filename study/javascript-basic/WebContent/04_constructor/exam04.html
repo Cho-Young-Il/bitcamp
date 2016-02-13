@@ -1,0 +1,44 @@
+<!-- 
+	프로토타입에 여러개의 함수를 추가할 경우에는
+	독립적으로 추가하지 않고 한꺼번에 추가하는걸 권장함
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+function Member(id, name, age) {
+	this.id = id;
+	this.name = name;
+	this.age = age;
+}
+Member.prototype = {
+	info : function() {
+		console.log(this.id, this.name, this.age);
+	},
+	setId : function(id) {
+		this.id = id;
+	},
+	getId : function() {
+		return this.id;
+	}		
+}
+
+console.log(Member.prototype.constructor);
+
+var mem = new Member("hong", "홍", 22);
+var mem2 = new Member("park", "박", 33);
+
+
+
+
+mem.info();
+mem2.info();
+
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>css selectors</title>
+<style type="text/css">
+	.choice {
+		margin : 5px;
+		padding: 5px;
+		border : solid #000000 thick;
+		background: orange;
+	}
+</style>
+<script type="text/javascript" src="../jquery-2.2.0.js"></script>
+<script>
+	
+	$(function() {
+		//$("div:has(a)").addClass("choice");
+		//$(".divClass").addClass("choice");
+		//$("div[id]").addClass("choice");
+		//$("div[id=b]").addClass("choice");
+		//$("div[id^=a]").addClass("choice");
+		//$("div[id$=1]").addClass("choice");
+		//$("div[id*=1]").addClass("choice");
+	});
+
+</script>
+</head>
+<body>
+	<div id="p">id가 p인 DIV
+		<div id="a">id가 a인 DIV 
+			<div id="a1">id가 a인 div의 자식 DIV</div>
+		</div>
+		<div id="b" class="divClass">id가 b인 DIV<span id="b1">아이디가 b1인 span</span></div>
+		<div id="c">id가 c 인 DIV
+			<a href="http://www.naver.com">id가 c인 DIV의 자식 a 태그</a>
+		</div>
+	</div>
+</body>
+</html>

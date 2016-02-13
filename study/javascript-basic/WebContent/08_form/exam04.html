@@ -1,0 +1,78 @@
+<!-- 
+	체크박스 처리
+	체크박스의 체크된 상태 확인
+	checkbox.checked : true(체크), false(해제)
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	/* 
+	 * name이 hobby인 모든 체크박스를 체크 상태로 변경시킨다.
+	 */
+	function ckAll() {
+		//name이 hobby인 객체들의 정보를 얻는다.
+		//만약, 객체가 2개 이상일 경우는 배열로 반환되고
+		//객체가 하나일 경우에는 배열로 반환되지 않는다.
+		var ckArr = document.inputForm.hobby;
+		for(var i = 0; i < ckArr.length; i++) {
+			ckArr[i].checked = true;
+		}
+	}
+	
+	function unckAll() {
+		var ckArr = document.inputForm.hobby;
+		for(var i = 0; i < ckArr.length; i++) {
+			ckArr[i].checked = false;
+		}
+	}
+	
+	function allCheck() {
+		//name 이 all 인 체크박스의 상태를 먼저 조회한다.
+		var al = document.inputForm.all;
+		if(al.checked) {
+			var ckArr = document.inputForm.hobby;
+			for(var i = 0; i < ckArr.length; i++) {
+				ckArr[i].checked = true;
+			}	
+		} else {
+			var ckArr = document.inputForm.hobby;
+			for(var i = 0; i < ckArr.length; i++) {
+				ckArr[i].checked = false;
+			}	
+		}
+		//조회된 상태값이 true일 경우에는 name이 hobby인 모든 체크박스를
+		//체크상태로 변경한다.
+		
+		//조회된 상태값이 false일 경우에는 name이 hobby인 모든 체크박스를
+		//체크해제 상태로 변경한다.
+	}
+	
+	function show() {
+		var ch = document.inputForm.hobby;
+		var cnt = 0;
+		for(var i = 0; i < ch.lenght; i++) {
+			if(!ch[i].checked) cnt++;
+		}
+		alert(cnt + "개의 체크박스가 선택되었습니다.");
+	}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<form name="inputForm">
+		당신의 취미는?<br />
+		<input type="checkbox" name="all" onclick="allCheck()"/>전체
+		<br />
+		<input type="checkbox" name="hobby" value="movie"/>영화감상
+		<input type="checkbox" name="hobby" value="music"/>음악듣기
+		<input type="checkbox" name="hobby" value="game"/>게임하기
+		<input type="checkbox" name="hobby" value="reading"/>독서
+		<br />
+		<button onclick="ckAll(); return false;">전체선택</button>
+		<button onclick="unckAll(); return false;">전체해제</button>
+		<button onclick="show(); return false;">선택정보확인</button>
+	</form>
+</body>
+</html>

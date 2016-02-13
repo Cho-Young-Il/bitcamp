@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	var obj;
+	var cnt = 0;
+	function cCount() {
+		obj = document.querySelector("span");
+		console.log(obj);
+		console.log(cnt);
+		obj.innerHTML = cnt;
+		cnt++;
+	}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<span>0</span>번클릭
+	<button onclick="cCount();">클릭</button>
+</body>
+</html>

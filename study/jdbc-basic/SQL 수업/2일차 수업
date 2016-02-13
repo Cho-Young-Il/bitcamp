@@ -1,0 +1,399 @@
+-- DUAL : 더미(dummy) 테이블, 컬럼과 테이터가 하나
+
+--출력결과는 EMPLOYEES 테이블의 행의 개수만큼 나온다.
+SELECT 'test', sysdate
+  FROM EMPLOYEES;
+  
+--출력결과는 단 하나
+SELECT 'TEST', STSDATE, 375 * 255
+  FROM DUAL
+  
+
+
+  
+단일행 함수
+
+- 문자 함수 : upper, lower, substr, replace(단어), translate(문자)
+			rpad or lpad(채울때), trim(제거), length
+
+--upper
+SELECT LAST_NAME, UPPER(LAST_NAME)
+  FROM EMPLOYEES;
+
+--lower
+SELECT 'Son', LOWER('Son')
+  FROM DUAL;
+
+-substr
+SELECT SUBSTR('SONCHAN', 1, 2)
+  FROM DUAL;
+
+--lpad
+SELECT LPAD('SONCHAN', 10, '*')
+  FROM DUAL;
+(10개의 공간을 확보하고 남는 공간을 왼쪽으로*로 채우겠다.)
+
+--rpad
+SELECT RPAD('SONCHAN', 10, '*')
+  FROM DUAL;
+(10개의 공간을 확보하고 남는 공간을 오른쪽으로*로 채우겠다.)
+
+--length
+SELECT LENGTH('SONCHAN')
+  FROM DUAL;
+SELECT LENGTH(LAST_NAME)
+  FROM EMPLOYEES;
+  (문자열의 길이)
+  
+--trim
+SELECT TRIM('S' FROM 'SONCHAN')				
+  FROM DUAL
+  (특정 문자를 삭제)
+  ONCHAN
+
+--replace
+SELECT REPLACE('SONCHAN', 'ON', 'KR'),		SKRCHAN
+ 	   TRANSLATE('SONCHAN', 'ON', 'KR')		SKRCHAR
+  FROM DUAL;
+
+
+
+
+
+
+- 숫자 함수 : round(반올림), trunc(반올림하지 않고 버림), 
+			ceil(입력된 수보다 크거나 같으면서 가장 작은 정수), 
+			floor(입력된 수보다 작거나 같으면서 가장 큰 정수)
+			sign(음수, 양수, 0인지 판단)
+			
+--ceil, floor
+SELECT CEIL(1.1), FLOOR(1.1)
+  FROM DUAL;
+2, 1
+
+--sign
+SELECT SIGN(-30), SIGN(30), SIGN(0)
+  FROM DUAL;
+-1, 1, 0
+
+--round
+SELECT ROUND(73,127), ROUND(73.127, 1), ROUND(73.127, 2),
+	   ROUND(73.127, -1), ROUND(73.127, -2)
+  FROM DUAL;
+  73, 73.1, 73.13, 70, 100
+
+--trunc
+SELECT TRUNC(73.127), TRUNC(73.127, 1), TRUNC(73.127, 2),
+	   TRUNC(73.127, -1), TRUNC(73.127, -2)
+  FROM DUAL;
+  73, 73.1, 73.12, 70, 0
+
+
+
+
+
+- 날짜 함수 : sysdate, add_months, months_between(두 날짜간의 개월 차)
+			last_day(입력된 날짜의 마지막 날을 반환)
+			
+--last_day, add_months
+SELECT LAST_DAY(SYSDATE), ADD_MONTHS(SYSDATE, 6)
+  FROM DUAL;
+
+--months_between
+SELECT HIRE_DATE, MONTHS_BETWEEN(SYSDATE, HIRE_DATE)
+  FROM EMPLOYEES;
+
+--날짜에서 숫자를 빼면(날짜 - 숫자) : 날짜
+  날짜에서 숫자를 빼면(날짜 + 숫자) : 날짜
+SELECT SYSDATE - 7
+  FROM DUAL;
+  
+--현재 시간에서 5시간 뒤의 시간
+SELECT SYSDATE + 5 / 24 
+  FROM DUAL;
+  
+  
+  
+  
+  
+  
+  
+  
+변환형 : to_char		: 문자로 바꾸는 함수
+		--숫자를 문자로 변환
+			- 9 : 자리수 표기, 만약, 자리수가 크다면 공백을 채운다.
+			- 0 : 자리수 표기, 만약, 자리수가 크다면 0으로 채운다.
+			- , : 지정된 자리에 ","를 표기
+			- 주의 : 자리수가 모자를 경우 #으로 출력됨(데이터가 깨짐)
+		--날짜를 문자로 변환
+			- 자바의 SimpleDateFormat 클래스와 역활 비슷
+			- yyyy-mm-dd hh24:mi:ss 년월일 시분초
+			- y : 년, ...		
+	
+	   to_number	: 문자를 숫자로 변환
+	
+	   to_date
+	   
+	   
+--to char
+--숫자를 문자로 변환
+SELECT TO_CHAR(12345, '999,999'), TO_CHAR(12345, '000,000'),
+  	   TO_CHAR(12345)
+  FROM DUAL;
+  12,345	012,345
+  
+SELECT TO_CHAR(SALARY, '999,999,999')
+  FROM EMPLOYEES;
+  
+--날짜를 문자로 변환
+SELECT TO_CHAR(SYSDATE, 'yyyy-mm-dd hh24:mi:ss')
+  FROM DUAL;
+  
+  -사원중에 1991년에 입사한 사원의 정보를 출력하시오
+SELECT *
+  FROM EMPLOYEES
+ WHERE TO_CHAR(HIRE_DATE, 'YYYY') = 1991;
+ 
+ -사원중에서 1990년에 입사한 사원의 정보를 다음과 같은 형식으로 출력하시오
+ --출력형식 >
+   1990년에 입사한 홍길동 사원의 급여는 90,000원 입니다.
+SELECT HIRE_DATE ||'에 입사한'|| LAST_NAME ||'사원의 급여는'|| SALARY ||'입니다.'
+  FROM EMPLOYEES
+ WHERE TO_CHAR(HIRE_DATE, 'YYYY') = '1990';
+ 
+
+ --to_number : 문자를 숫자로 변환
+SELECT TO_NUMBER('72,000', '99,999')
+  FROM DUAL;
+  
+SELECT TO_NUMBER('72000', '99999')
+  FROM DUAL;
+  
+
+--to_date : 문자를 날짜로 변환
+--to_date(문자, '문자에 해당하는 날짜 포멧을 설정')
+SELECT TO_DATE('2015-11-12 20:10:10', 'YYYY-MM-DD HH24:MMI:SS')
+  FROM DUAL;
+
+SELECT TO_CHAR(TO_DATE('2015-11-12', 'YYYY-MM-DD'), 'YYYY')
+  FROM DUAL;
+  
+  
+  
+  
+  
+  
+  
+--기타형 함수
+--decode, case : 조건 처리
+
+--컬럼의 데이터와 비교할 값이 같을 경우 표시할 값을 출력
+--decode(컬럼명, 비교할 값, 표시할 값,
+			   비교할 값, 표시할 값,
+			   비교할 값, 표시할 값,
+			   디폴트 값 설정)
+	
+	type이 'A'라면 '관리자' 가 반환
+	type이 'U'라면 '일반 사용자' 가 반환
+	DECODE(TYPE, 'A', '관리자',
+				 'U', '일반 사용자',
+				 'S', '수퍼 관리자'
+				 '아무도 아님')
+
+--사원 정보를 출력한다. (EMPLOYEE_ID, LAST_NAME, JOB_ID)
+  사원 정보 중에서 job_id를 다음과 같이 출력합니다.
+  job_id 가 'AD_VP' 라면 '광고'를 출력하고
+  			'IT_PROG' 라면 '프로그래머'를 출력
+  그 이외의 값일 경우에는 '기타'를 출력한다.
+  
+SELECT EMPLOYEE_ID, LAST_NAME, DECODE(JOB_ID, 'AD_VP', '광고',
+												'IT_PROG', '프로그래머',
+												'기타')
+  FROM EMPLOYEES
+  
+  
+ 
+--case 문
+--형식1 ( 같은 값을 따질때 사용함, decode 대체)
+case 컬럼 when 비교값 then 선택값
+		 when 비교값 then 선택값
+	 	 else 디폴트값
+ end
+
+SELECT EMPLOYEE_ID, LAST_NAME, case JOB_ID when 'AD_VP' then '광고'
+		 									when 'IT_PROG' then '프로그래머'
+	 	 									else '기타'
+ 								end
+  FROM EMPLOYEES
+
+--형식2 
+case when 조건 then 선택값
+     when 조건 then 선택값
+	 else 디폴트값
+ end
+ 
+ SELECT EMPLOYEE_ID, LAST_NAME, case when JOB_ID = 'AD_VP' then '광고'
+		 							 when JOB_ID = 'IT_PROG' then '프로그래머'
+	 	 							 else '기타'
+ 								end
+  FROM EMPLOYEES
+  
+--사원의 급여에 따라서 다음과 같이 출력하는 쿼리 작성
+--급여가 10000 이상일 경우 고급기술자
+--급여가 5000 이상일 경우 중급기술자
+--그외에는 초급기술자
+
+SELECT EMPLOYEE_ID, LAST_NAME, CASE WHEN SALARY >= 10000 THEN '고급기술자'
+							        WHEN SALARY >= 5000 THEN '중급기술자'
+							    	ELSE '초급기술자'
+							   END
+  FROM EMPLOYEES;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+조인
+Equie		=
+Non-equie	!=
+Outer
+Self
+
+--JOIN(조인)
+  -논리적 또는 물리적 테이블 개수가 2개 이상 필요한 경우
+  -증거조건은 테이블 개수 - 1개 만큼은 최소한 존재한다
+
+--CatesianProduct(카테시안프로덕트) :
+  증거조건을 잘못주거나 일부러 생략했을 경우 발생
+  M * N 의 결과수를 반환
+
+--EQUIE 조인 : 테이블간의 증거조건의 연산자가 "="을 사용할 때
+ 사원아이디, 사원의 이름, 부서번호, 부서이름을 출력
+ EMPLOYEES - 사원아이디(EMPLOYEE_ID), 사원의 이름(LAST_NAME),
+ 		   - 부서번호(DEPARTMENT_ID)
+ 		   
+ DEPARTMENTS - 부서번호(DEPARTMENT_ID), 부서이름(DEPARTMENT_NAME)
+
+SELECT EMPLOYEES.EMPLOYEE_ID, EMPLOYEES.LAST_NAME,
+	   EMPLOYEES.DEPARTMENT_ID, DEPARTMENTS.DEPARTMENT_NAME
+  FROM EMPLOYEES, DEPARTMENTS
+ WHERE EMPLOYEES.DEPARTMENT_ID = DEPARTMENTS.DEPARTMENT_ID
+
+SELECT * FROM DEPARTMENTS;	// 부서테이블
+SELECT * FROM LOCATIONS;	// 지역테이블
+--각 부서의 부서번호, 부서명, 도시명을 출력
+SELECT DEPARTMENTS.DEPARTMENT_ID, DEPARTMENTS.DEPARTMENT_NAME, LOCATIONS.CITY
+  FROM DEPARTMENTS, LOCATIONS
+ WHERE DEPARTMENTS.LOCATION_ID = LOCATIONS.LOCATION_ID
+
+--컬럼이 생략가능한 경우 : 한테이블에만 컬럼이 있는 경우
+--컬럼명 앞에 테이블 참조를 필수로 적는 경우 : 양쪽 테이블에 컬럼이 존재하는 경우
+SELECT DEPARTMENTS.DEPARTMENT_ID, DEPARTMENTS.DEPARTMENT_NAME, LOCATIONS.CITY
+	   LOCATIONS.LOCATION_ID,
+  FROM DEPARTMENTS, LOCATIONS
+ WHERE DEPARTMENTS.LOCATION_ID = LOCATIONS.LOCATION_ID
+ 
+--테이블 ALIAS(FROM 절의 테이블 명 뒤에 공백을 주고 사용한다.)
+SELECT D.DEPARTMENT_ID, D.DEPARTMENT_NAME, L.CITY
+	   L.LOCATION_ID,
+  FROM DEPARTMENTS D, LOCATIONS L
+ WHERE D.LOCATION_ID = L.LOCATION_ID
+ 
+--사원의 정보를 출력한다.
+ 사원번호, 사원명, 부서번호, 부서명, 부서위치(도시명)
+SELECT E.EMPLOYEE_ID, E.LAST_NAME, D.DEPARTMENT_ID, L.CITY
+  FROM EMPLOYEES E, DEPARTMENTS D, LOCATIONS L
+ WHERE E.DEPARTMENT_ID = D.DEPARTMENT_ID AND D.LOCATION_ID = L.LOCATION_ID
+ 
+--도시의 위치가 1400, 1500 번 위치의 도시 이름과
+--그곳에 있는 부서의 이름을 출력
+SELECT L.CITY, D.DEPARTMENT_NAME
+  FROM LOCATION L, DEPARTMENTS D
+ WHERE L.LOCATION_ID IN (1400, 1500) AND D.LOCATION_ID IN (1400, 1500);
+ 
+
+
+NON - EQUIE JOIN
+--사원의 정보를 출력한다.
+--사원명(LAST_NAME)과 사원의 급여 등급, 급여를 출력
+SELECT E.LAST_NAME, S.GRADE, E.SALARY
+  FROM SALGRADE S, EMPLOYEES E
+ WHERE E.SALARY BETWEEN S.MIN_SAL AND S.MAX_SAL
+ 
+ 
+ 
+SELF JOIN : 논리적으로 여러개의 테이블을 사용, 자기 자신 테이블을 조인
+SELECT E.LAST_NAME AS 사원명, M.LAST_NAME AS 관리자명
+  FROM EMPLOYEES E, EMPLOYEES M
+ WHERE E.MANAGER_ID = M.EMPLOYEE_ID
+ 
+--LAST_NAME 이 'KING'이 관리하는 사원들의 정보를 출력
+SELECT M.LAST_NAME, E.LAST_NAME
+  FROM EMPLOYEES E, EMPLOYEES M
+ WHERE E.MANAGER_ID = M.EMPLOYEE_ID AND M.LAST_NAME = 'King';
+ 
+ 
+ 
+ 
+--OUTER JOIN : 조인조건을 만족하지 않은 데이터도 화면에 출력
+  - 연산자 : (+) 데이터가 모자른 증거조건 컬럼에 붙여서 사용
+ 
+ - 'King' 사원은 있지만 관리자가 없으므로...
+SELECT E.LAST_NAME AS 사원명, M.LAST_NAME AS 관리자명
+  FROM EMPLOYEES E, EMPLOYEES M
+ WHERE E.MANAGER_ID = M.EMPLOYEE_ID(+);
+ 
+--관리자가 없는 사원은 관리자명에 '관리자 없음'으로 출력
+SELECT E.LAST_NAME AS 사원명, NVL(M.LAST_NAME || '', '관리자없음') AS 관리자명
+  FROM EMPLOYEES E, EMPLOYEES M
+ WHERE E.MANAGER_ID = M.EMPLOYEE_ID(+);
+ 
+
+
+
+
+SET연산자
+ - UNION : ABC
+ - UNION ALL : ACCB
+ - INTERSECT : C
+ - MINUS : A
+
+SELECT * FROM TC_SETA
+UNION
+SELECT * FROM TC_SETB;
+
+SELECT * FROM TC_SETA
+UNION ALL
+SELECT * FROM TC_SETB;
+
+SELECT * FROM TC_SETA
+INTERSECT
+SELECT * FROM TC_SETB;
+
+SELECT * FROM TC_SETA
+MINUS
+SELECT * FROM TC_SETB;
+
+--참고사항
+1. 컬럼의 위치별로 데이터 타입이 동일해야 한다.
+SELECT NO, DATA FROM TC_SETA
+INTERSECT
+SELECT DATA, NO FROM TC_SETB;
+
+2. SELECT 컬럼의 수는 동일해야한다.
+SELECT NO, DATA FROM TC_SETA
+INTERSECT
+SELECT NO FROM TC_SETB;
+
+3. 컬럼의 헤딩은 첫번째 SELECT절의 컬럼명을 사용
+SELECT NO AS 번호, DATA AS 데이터 FROM TC_SETA
+INTERSECT
+SELECT NO AS 넘버, DATA AS DA FROM TC_SETB;

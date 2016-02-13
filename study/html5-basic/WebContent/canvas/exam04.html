@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>캔버스</h1>
+	<canvas id="myCanvas" width="600" height="400">
+		브라우져에서 지원되지 않습니다.
+	</canvas>
+	
+	<script type="text/javascript">
+		var convas = document.getElementById("myCanvas");
+		var ctx = convas.getContext("2d");
+		
+		ctx.beginPath();
+		//arc(x, y, radius, st, en, dir)
+		ctx.arc(100, 200, 100, 0, 1 * Math.PI, true);
+		ctx.fillStyle = "#003300";
+		ctx.fill();
+	</script>
+</body>
+</html>

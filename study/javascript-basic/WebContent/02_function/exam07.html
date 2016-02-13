@@ -1,0 +1,43 @@
+<!-- 
+	글로벌 변수, 함수
+	-선언시  var를 사용하지 않은 ㄴ것
+	-함수 안에서 선언하지 않은 것
+	-스크립ㅌ트 안에서 어디서든지 사용 가능
+	
+	지역번수
+	
+	
+	*글ㄹ로벌 변수, 함수는 자바스크립트 내장객체중에서 window에
+	자동포함됨
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	var msg = "글로벌 변수";
+	
+	function func() {
+		var i = 100;	//지역번수
+		j = 200;		//글로벌 변수
+		console.log(msg);
+		console.log(j);
+	}
+	
+	func();
+	window.func();	//글로벌 함수는 윈도우 객체에 자동 포함되므로 호출이 가능
+	
+	console.log(msg);
+	console.log(j);
+	
+	console.log("window.msg : " + window.msg);
+	
+	
+	//console.log(i); //지역변수 임으로 오류 발생
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

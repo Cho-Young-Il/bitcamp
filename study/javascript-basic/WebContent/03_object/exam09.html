@@ -1,0 +1,56 @@
+<!-- 
+	동적으로 객체에 속성 추가하기
+	delete 객체명.프로퍼티명(key)
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	var member = {
+			id:"hong",
+			name: "홍길동",
+			age:22,
+			info: function() {
+				console.log(this.id, this.name, this.age);
+			}
+	};
+	
+	function regMember(id1, name1, age1) {
+		var member = {
+				id : id1,
+				name : name1,
+				age : age1,
+				info : function() {
+					console.log(this.id, this.name, this.age);
+				} 
+		}
+		return member;
+	}
+	
+	var m1 = regMember("hong", "홍", 22);
+	var m2 = regMember("park", "박", 33);
+	var m3 = regMember("kim", "김", 44);
+	
+	m1.info();
+	m2.info();
+	m3.info();
+	//회원 정보 3명 생성
+	//hong 홍 22
+	//park 박 33
+	//kim  김 44
+	
+	//생성된 회원의 정보를 출력
+	//회원 정보
+	//------------------------
+	//hong 홍 22
+	//park 박 33
+	//kim  김 44
+	//------------------------
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

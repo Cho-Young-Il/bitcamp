@@ -1,0 +1,49 @@
+<!-- 
+	-----------------------
+	프로토타입(prototype)
+	-----------------------
+	- 모든 객체는 프로토타입이라는 또다른 객체를 내부적으로 참조함
+	- 프로토타입에 추가한 프로퍼티들은 생성자를 사용하여 생성된
+	   모든 객체의 프로퍼티로 접근이 가능함
+	- 모든함수는 prototype이라는 프로퍼티가 있는데 함수가 정의되는
+	  순간부터 자동으로 생성되고 초기화 된다.
+	- 쓸데없이 사용되는 메모리를 보호한다.
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+function Member(id, name, age) {
+	this.id = id;
+	this.name = name;
+	this.age = age;
+}
+
+Member.prototype.info = function() {
+	console.log(this.id, this.name, this.age);
+}
+
+var mem = new Member("hong", "홍", 22);
+var mem2 = new Member("park", "박", 33);
+
+//setId, getId 함수 추가(프로토타입)
+Member.prototype.setId = function(id) {
+	this.id = id;
+}
+Member.prototype.getId = function() {
+	return this.id;
+}
+
+console.log(Member.prototype.constructor);
+
+mem.info();
+mem2.info();
+
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

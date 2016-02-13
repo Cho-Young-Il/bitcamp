@@ -1,0 +1,71 @@
+<!-- z-index 클수록 앞으로 나옴 -->
+<html>
+<head>
+<title> z-index 변경 </title>
+<meta charset="utf-8" />
+<style type="text/css">
+	#layer1 {
+		position: absolute;
+		left: 100px; top: 100px;
+		z-index: 2;
+	}
+	#layer2 {
+		position: absolute;
+		left: 102px; top: 102px;
+		z-index: 1;
+	}
+	#layer3, #layer4, #layer5 {
+		position: absolute;
+		width: 200px; height: 200px;
+		font-size: 20px;
+		font-weight: bold;
+	}
+	#layer3 {
+		top: 100px;
+		left: 300px;
+		background: orange;
+		z-index: 3;
+	}
+	#layer4 {
+		top: 100px;
+		left: 350px;
+		background: purple;
+		z-index: 2;
+	}
+	#layer5 {
+		top: 200px;
+		left: 300px;
+		background: skyblue;
+		z-index: 1;
+	}
+</style>
+<body>
+	<div align="center">
+	   <h3> [ z-index 활용 ] </h3>
+	   <hr />
+	</div>
+	<div id="layer1">
+		<font size="7" color="purple">
+		  <b>Java73</b>
+		</font> 
+	</div>
+	
+	<div id="layer2">
+		<font size="7" color="skyblue">
+		  <b>Java73</b>
+		</font> 
+	</div>
+	
+	<div id="layer3">
+	   layer-3
+	</div>
+	
+	<div id="layer4">
+	   layer-4
+	</div>
+	
+	<div id="layer5">
+	   layer-5
+	</div>
+</body>
+</html>

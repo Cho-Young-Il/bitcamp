@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="framework.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1 id="title">자바스크립트 라이브러리 만들기</h1>
+	<div>태그 테스트</div>
+	<div id="content">아이디 테스트</div>
+	<div class="myCls">클래스 테스트</div>
+	
+	<p id="pObj">속성 연습</p>
+	
+	<div id="cDiv">자식 엘리먼트 추가</div>
+<script>
+	alert("선택자 테스트");
+
+	var cDiv = document.querySelector("#cDiv");
+	var h1Obj = document.createElement("h1");
+	h1Obj.innnerHTML = "h1 동작 추가";
+	
+	cDiv = appendChild(h1Obj);
+	
+	var h2Obj = document.createElements("h2");
+	cDiv.appnedChild(h2Obj);
+	
+	
+	var obj = document.querySelector("[name=msg]");
+	
+	//속성 설정
+	var pObj = document.querySelector("#pObj");
+	pObj.setAttribute("my-msg", "연습중입니다.");
+	
+	//속성 추출
+	console.log(pObj.getAttribute("my-msg"));
+	
+	
+	/* $("#title").css("background", "tomato")
+			   .css("color", "white")
+			   .css("font-size", "50px")
+			   .css("border", "5px solid black")
+			   .html("변경 되었나요?");
+	
+	console.log($("#title").css("background"));
+	console.log($("#title").css("color"));
+	console.log($("#title").css("font-size"));
+	console.log($("#title").css("border"));
+	
+	var obj = document.querySelector("#title");
+	obj.style.background = "tomato";
+	obj.style.color = "white";
+	obj.style.fontSize = "50px";
+	obj.style.border = "5px solid black";
+	
+	console.log(obj.style.background);
+	console.log(obj.style.color);
+	console.log(obj.style.fontSize);
+	console.log(obj.style.border);
+	 */
+	 
+	 
+	 
+	/* var obj = document.querySelector(".myCls");
+	obj.textContent = "<h2>클래스 접근 변경</h2>";
+	
+	$("div").text("<h2>태그 접근 번경</h2>");
+	$("#content").text("<h2>아이디 접근 변경</h2>");
+	$(".myCls").text("<h2>클래스 접근 변경</h2>");
+	
+	//text 값 추출
+	console.log($("div").text());
+	console.log($("#content").text());
+	console.log($(".myCls").text()); */
+	
+	/* 
+	//html  값 설정
+	$("div").html("<h2>태그 접근 번경</h2>");
+	$("#content").html("<h2>아이디 접근 변경</h2>");
+	$(".myCls").html("<h2>클래스 접근 변경</h2>");
+	
+	//html 값 추출
+	console.log($("div").html());
+	console.log($("#content").html());
+	console.log($(".myCls").html());
+	 */
+	 
+	 
+	 
+	 
+	 
+	//class 속성의 값이 myCls인 태그를 찾아서 태그의 innerHTML을
+	//<p> 연습중.. </p> 로 변경하라..
+	/* var obj = document.querySelector(".myCls");
+	obj.innerHTML = "<p>연습중..</p>";
+	alert(obj.innerHTML);
+	
+	$(myCls).html("<p>연습중..</p>");
+	alert($(".myCls").html());
+	 */
+	
+	
+	
+	/* var hObj = document.getElementById("title"); */
+	/* alert("기존 타이틀의 html : " + hObj.innerHTML);
+	
+	hObj.innerHTML = "라이브러리 접근한 객체 이용 변경"; */
+/* 	var hObj = $("#title");
+	//추출 : innerHTML
+	alert(hObj.html());
+	hObj.html("라이브러리 html 호출됨..");
+	
+	alert("잠깐.. 두번째 변경..");
+	$("#title").html("두번째 변경");
+ */	
+</script>
+</body>
+</html>

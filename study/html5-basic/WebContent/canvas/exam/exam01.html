@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<canvas id="myCanvas" width="1000" height="1000"></canvas>
+	<script type="text/javascript">
+		var canvas = document.getElementById("myCanvas");
+		var ctx = canvas.getContext("2d");
+		
+		ctx.fillStyle = "blue";
+		ctx.strokeRect(0, 0, 1000, 1000);
+		
+		ctx.beginPath();
+		ctx.arc(500, 500, 500, 0, 2 * Math.PI, true);
+		ctx.fillStyle = "black";
+		ctx.stroke();
+		ctx.closePath();
+		
+		ctx.beginPath();
+		ctx.arc(300, 400, 135, 0, 2 * Math.PI, true);
+		ctx.stroke();
+		ctx.closePath();
+		
+		ctx.beginPath();
+		ctx.arc(300, 400, 70, 0, 2 * Math.PI, true);
+		ctx.fill();
+		ctx.closePath();
+		
+		ctx.beginPath();
+		ctx.arc(300, 300, 135, 0, 1 * Math.PI, true);
+		ctx.stroke();
+		ctx.closePath();
+		
+		ctx.beginPath();
+		ctx.arc(700, 400, 135, 0, 2 * Math.PI, true);
+		ctx.stroke();
+		ctx.closePath();
+		
+		ctx.beginPath();
+		ctx.arc(700, 400, 70, 0, 2 * Math.PI, true);
+		ctx.fill();
+		ctx.closePath();
+		
+		ctx.beginPath();
+		ctx.arc(700, 300, 135, 0, 1 * Math.PI, true);
+		ctx.stroke();
+		ctx.closePath();
+		
+		ctx.beginPath();
+		ctx.moveTo(500, 400);
+		//좌표 이동
+		ctx.lineTo(400, 600);
+		ctx.lineTo(500, 600);
+		ctx.stroke();
+		
+		
+		
+		ctx.beginPath();
+		ctx.arc(500, 750, 135, 0, 1 * Math.PI, false);
+		ctx.stroke();
+		ctx.closePath();
+		
+	</script>
+</body>
+</html>

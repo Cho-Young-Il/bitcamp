@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	function MyMap() {
+		this.data = {};
+		this.count = 0;
+	};
+	
+	MyMap.prototype = {
+		put: function(key, value) {
+			this.data[key] = value;
+			this.count++;
+		},
+		size: function() {
+			return this.count;
+		},
+		del: function(key) {
+			delete this.data[key];
+			this.count--;
+		},
+		get: function(key) {
+			return this.data[key];			
+		},
+		clear: function() {
+			this.data = {};
+			this.count = 0;
+		}
+	};
+</script>
+<script type="text/javascript">
+	var data = new MyMap();
+	data.put("id", "sbc");
+	data.put("name", "son");
+	
+	console.log(data.size());	// 2
+	console.log(data.get("id"));	//sbc
+	
+	data.del("id");
+	console.log(data.get("id"));	//undefined
+	data.clear();
+	console.log(data.size());		//0
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

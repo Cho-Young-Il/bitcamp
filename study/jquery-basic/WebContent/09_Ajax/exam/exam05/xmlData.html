@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="/Ajax-basic/framework.js"></script>
+<script type="text/javascript">
+	window.onload = function() {
+		$("#clearBtn").click(function() {
+			$("#debug").val("");
+		});
+		
+		$("#sendBtn").click(function() {
+			$.ajax({
+				url : "/Ajax-basic/xmlData",
+				callback : function() {
+					$("#debug").val(httpRequest.responseText);		
+					//응답결과가 xml형태일 경우
+					var result = httpRequest.responseXML;
+					var mList = result.getElementsByTagName("member");
+					
+					var val = "회원" + mList.length + "명\n";
+					for(var i = 0; i < mList.length; i++) {
+						var mem = mList[i];
+						var id = mem.getElementsByTagName("id")[0].firstChild.nodeValue;
+						var name = mem.getElementsByTagName("name")[0].firstChild.nodeValue;
+						var pass = mem.getElementsByTagName("pass")[0].firstChild.nodeValue;
+						val += id + "-" + name + "-" + pass + "\n";
+					}
+					
+					val += "---------------------------";
+					$("#debug").val(val);
+				}
+			});
+		});
+	};
+</script>
+</head>
+<body>
+	<h2>서버에서 전송된 데이터 확인</h2>
+	<hr />
+	<textarea rows="10" cols="80" id="debug"></textarea>
+	<br />
+	
+	<button id="clearBtn">초기화</button>
+	<button id="sendBtn">전송</button>
+</body>
+</html>

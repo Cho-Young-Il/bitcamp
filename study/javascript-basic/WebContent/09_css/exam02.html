@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>엘리먼트 적용 스타일 정보 가져오기</title>
+<style type="text/css">
+	#div1 {
+		background-color: #ffff00;
+	}
+</style>
+</head>
+<body>
+	<div id="div1" style="width : 200px; height: 200px;">
+		<p>
+			DIV 스타일 기본 속성 파악하기<br />
+		</p>
+	</div>
+	<script>
+		//div, p 엘리먼트 참조 얻기
+		var divObj = document.getElementById("div1");
+		var pObj = document.querySelector("p");
+		
+		var dWidth = divObj.style.width;
+		var dHeight = divObj.style.height;
+		//style 속성에 직접 적용한 값들만 조회가 가능함
+		//값의 대한 조회가 불가능하다.
+		var dBack = divObj.style.backgroundColor;
+		
+		pObj.innerHTML += "넓이 : " + dWidth + "<br/>";
+		pObj.innerHTML += "높이 : " + dHeight + "<br/>";
+		pObj.innerHTML += "배경색 : " + dBack + "<br/>";
+		
+		//엘리먼트에 적용된 기본 CSS 속성의 값을 조회하기
+		var defaultBack = document.defaultView.getComputedStyle(divObj, null).getPropertyValue("background-color");
+		pObj.innerHTML += "배경색(기본) : " + defaultBack + "<br/>";
+	</script>
+</body>
+</html>

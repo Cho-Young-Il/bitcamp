@@ -1,0 +1,77 @@
+<!-- 
+	:first
+	:last
+	:first-child
+	:last-child
+	:nth-child(n)
+	:nth-child(even|odd)
+	:eq(n)
+	:gt(n)
+	:lt(n)
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>css selectors</title>
+<style type="text/css">
+	.choice {
+		margin : 5px;
+		padding: 5px;
+		border : solid #000000 thick;
+		background: orange;
+	}
+</style>
+<script type="text/javascript" src="../jquery-2.2.0.js"></script>
+<script>
+	$(document).ready(function() {
+		//전체 엘리먼트 중에 첫번째 태그에 적용 : html
+		//$(":first").addClass("choice");
+	
+		//전체 중에서 첫번째 div를 선택 : 아이디가 p인 태그 선택
+		//$("div:first").addClass("choice");
+	
+		//전체 중에서 마지막 div를 선택 : 아이디가 c인 태그 선택
+		//$("div:last").addClass("choice");
+	
+		//$("div:first-child").addClass("choice");
+		//$("div:last-child").addClass("choice");
+		
+		//id가 a1과 c인 태그를 선택
+		//$("#p div:last-child").addClass("choice");
+		
+		//id가 c인 태그 선택
+		//$("#p > div:last-child").addClass("choice");
+		
+		
+		//nth-child 는 위치가 1부터 시작함
+		//$("#p div:nth-child(1)").addClass("choice");
+		//$("#p > div:nth-child(3)").addClass("choice");
+		//$("#p > div:nth-child(2n + 1)").addClass("choice");
+		//$("div:nth-child(odd)").addClass("choice");
+		//$("div:nth-child(even)").addClass("choice");
+		
+		
+		//eq(n) : 0부터 시작
+		//아이디가 p인 div아래의 모든 div중에서 1번째 위치 선택
+		//$("#p div:eq(1)").addClass("choice");
+		//$("#p > div:eq(1)").addClass("choice");
+		//$("#p > div:eq(0)").addClass("choice");
+		
+		//$("#p div:gt(1)").addClass("choice");
+		//$("#p div:lt(1)").addClass("choice");
+	});
+</script>
+</head>
+<body>
+	<div id="p">id가 p인 DIV
+		<div id="a">id가 a인 DIV 
+			<div id="a1">id가 a인 div의 자식 DIV</div>
+		</div>
+		<div id="b" class="divClass">id가 b인 DIV<span id="b1">아이디가 b1인 span</span></div>
+		<div id="c">id가 c 인 DIV
+			<a href="http://www.naver.com">id가 c인 DIV의 자식 a 태그</a>
+		</div>
+	</div>
+</body>
+</html>

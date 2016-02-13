@@ -1,0 +1,60 @@
+<!-- 
+	:first
+	:last
+	:first-child
+	:last-child
+	:nth-child(n)
+	:nth-child(even|odd)
+	:eq(n)
+	:gt(n)
+	:lt(n)
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>css selectors</title>
+<style type="text/css">
+	.choice {
+		margin : 5px;
+		padding: 5px;
+		border : solid #000000 thick;
+		background: orange;
+	}
+</style>
+<script type="text/javascript" src="../jquery-2.2.0.js"></script>
+<script>
+	$(function() {
+		//$(":first").addClass("choice");
+		//$("div:first").addClass("choice");
+		//$("div:last").addClass("choice");
+		//$("div:first-child").addClass("choice");
+		//$("div:last").addClass("choice");
+		//$("div:last-child").addClass("choice");
+		//$("div:last-child").addClass("choice");
+		//$("#p div:last-child").addClass("choice");
+		//$("#p > div:last").addClass("choice");
+		//$("#p div:nth-child(1)").addClass("choice");
+		//$("#p > div:nth-child(3)").addClass("choice");
+		//$("div:nth-child(odd)").addClass("choice");
+		//$("#p div:eq(1)").addClass("choice");
+		//$("#p > div:eq(1)").addClass("choice");
+		//$("#p > div:eq(0)").addClass("choice");
+		//$("#p div:gt(1)").addClass("choice");
+		//$("#p div:lt(1)").addClass("choice");
+		
+	});
+</script>
+</head>
+<body>
+	<div id="p">id가 p인 DIV
+		<div id="a">id가 a인 DIV 
+			<div id="a1">id가 a인 div의 자식 DIV</div>
+		</div>
+		<div id="b" class="divClass">id가 b인 DIV<span id="b1">아이디가 b1인 span</span></div>
+		<div id="c">id가 c 인 DIV
+			<a href="http://www.naver.com">id가 c인 DIV의 자식 a 태그</a>
+		</div>
+	</div>
+</body>
+</html>

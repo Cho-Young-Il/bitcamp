@@ -1,0 +1,37 @@
+<!-- 
+	동적으로 객체에 속성 추가하기
+	delete 객체명.프로퍼티명(key)
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	var member = {
+			id:"hong",
+			name: "홍길동",
+			age:22,
+			info: function() {
+				console.log(this.id, this.name, this.age);
+			}
+	};
+	console.log("----------------");
+	member.info();
+	console.log("----------------");
+	console.log("id 삭제후");
+	delete member.id;
+	member.info();
+	console.log("----------------");
+	member.info();
+	console.log("----------------");
+	console.log("name 삭제후");
+	delete member.name;
+	member.info();
+	
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

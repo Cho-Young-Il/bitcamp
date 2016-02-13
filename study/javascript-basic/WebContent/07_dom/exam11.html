@@ -1,0 +1,44 @@
+<!-- 
+	엘리먼트 삭제
+	removeChild
+	
+	lastChild
+	firstChild
+	
+	부모.removeChild(자식);
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	function add() {
+		var cDiv = document.getElementById("c");
+		var html = "<h1>H1" + cDiv.childElementCount + "</h1>";
+		cDiv.innerHTML += html;
+	}
+	
+	function del() {
+		//cDiv를 삭제처리함
+		var cDiv = document.getElementById("c");
+		//삭제할 cDiv의 부모 노드 가져오기
+		var pNode = cDiv.parentNode;
+		pNode.removeChild(cDiv);
+	}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<p>
+		<button onclick="add();">추가</button>
+		<button onclick="del();">삭제</button>
+	</p>
+	<div id="a">
+		A div
+	</div>
+	<div id="b">
+		B div
+		<div id="c"></div>
+	</div>
+</body>
+</html>

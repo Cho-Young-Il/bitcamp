@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	function ckForm() {
+		var name = document.mform.name;
+		var pass = document.mform.pass;
+		var pass2 = document.mform.pass2;
+		
+		if(name.value == "") {
+			alert("이름을 입력하세요");
+			return false;
+		}
+		if(pass.value == "") {
+			alert("패스워드를 입력하세요");
+			return false;
+		}
+		if(pass2.value == "") {
+			alert("패스워드 확인을 입력하세요");
+			return false;
+		}
+		if(pass.value != pass2.value) {
+			alert("패스워드가 잘못되었습니다.");
+		}
+		return false;
+	}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 
+	onsubmit 속성은 submit이 동작하기 전에 호출됨
+	형태 : return false; action에 지정된 페이지로 이동하지않음
+		false이외의 경우는 action에 지정된 페이지로 이동함	
+		
+		return 뒤에는 일반적으로 함수를 호출해서 값의 유효성 체크를 진행한 뒤 유효한 값일 경우
+		true를 리턴하고 유효하지 않은 경우에는 false를 리턴
+ -->
+	<form name="mForm" onsubmit="return ckForm();" action="list">
+		이름 : <input type="text" name="name"/> <br>
+		비밀번호 : <input type="password" name="pass"/><br>
+		비밀번호 확인 : <input type="password" name="pass2"/><br>
+		<input type="submit" value="등록">
+	</form>
+</body>
+</html>

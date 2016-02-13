@@ -1,0 +1,26 @@
+<!-- 
+	함수의 매개변수는 지역변수임
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	var val = 100;
+	
+	function func(val) {
+		val = val + 100;
+		console.log(val);
+	}
+	//기본형을 매개변수로 넘겨준 경우 원래의 변수에
+	//영향을 미치지 않는다.
+	func(val);			//200
+	console.log(val);	//100
+	
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

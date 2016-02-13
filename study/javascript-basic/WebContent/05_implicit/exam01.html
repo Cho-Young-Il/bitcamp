@@ -1,0 +1,53 @@
+<!-- 
+	내장 객체 - 객체!! new 생성자를 이용해서 생성함
+			- 따라서 typeof 는 object
+	- Object
+	- String
+	- Number
+	- Array
+	- Date
+	
+	//정규표현식
+	- RegExp
+	
+	- Boolean
+	- Function
+	
+	// 에러처리
+	- Error ( try catch 와 같이 쓰임 )
+	
+	//자바스크립트의 내장객체의 형태는 클래스 모양이지만 실제로는 내장함수이다.
+	
+	function Member(id, name, age) {
+		this.id = id;
+		this.name = name;
+		this.age = age;
+	}
+	
+	var mem = new Member('hong', "홍", 22);
+	
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	var num1 = 77;
+	var num2 = new Number(77);
+	
+	console.log(typeof (num1));
+	console.log(typeof (num2));
+	
+	//자바스크립트는 기본형타입에 "."을 붙이면 객체처럼
+	// 프로퍼티들을 사용할 수 있다.
+	console.log("num1.toFixed() : " + num1.toFixed());
+	console.log("num2.toFixed() : " + num2.toFixed());
+	
+	
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

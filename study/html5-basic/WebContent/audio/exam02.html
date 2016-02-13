@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	div{
+		background: tomato ;
+		color:white;
+		font-size: 30px;
+	}
+</style>
+</head>
+<body>
+		<!-- 오디오 사용 -->
+	<audio id="myAudio" controls="controls"></audio>
+	<p>
+		<select id="audioFile" >
+			<option value="">--선택--</option>
+			<option value="exid.mp3">--exid--</option>
+			<option value="MyType.mp3">--MyType--</option>
+		</select>
+	</p>
+	<p>
+		<span id="cTime">0:0</span>
+		<button id="play">시작</button>
+		<button id="forward">앞으로</button>
+		<button id="backward">뒤로</button>
+		<button id="restart">다시시작</button>
+	</p>
+	
+	
+	<div></div>
+	
+	<script>
+		var audio = document.querySelector("#myAudio");	
+	
+		audio.addEventListener("timeupdate", function(event){
+			var time = document.querySelector("#cTime");
+			// 현재 오디오 진행 시간 출력
+			var curTime = audio.currentTime;
+			// 오디오의 전체시간
+			var totalTime = audio.duration;
+
+			var text = parseInt(curTime / 60) + ":" + parseInt(curTime%60);
+			time.innerHTML = text;
+			
+		})
+		
+		//현재 재생중인 음악파일
+		var currentFile="";
+		
+		document.querySelector("#play").onclick = function(){
+			//선택한 음악 파일을 얻기
+			var audioFile = document.querySelector("#audioFile");
+			
+			if(audioFile.value==""){
+				alert("재생할 파일을 선택해주세요");
+				return false;
+			}
+			// 현재 재생중인 파일일 경우는 무시한다.
+			if(currentFile != audioFile.value){
+				audio.src = audioFile.value;
+				currentFile = audioFile.value;
+			}			
+			// 현재 오디오가 중지된 상태인 경우
+			// 오디오를 플레이 시키고 버튼의 텍스트를 일시중지로 변경
+			if(audio.paused){
+				//오디오 플레이 시키기
+				audio.play();
+				document.querySelector("#play").innerText = "일시중지";
+			}else{
+				audio.pause();
+				document.querySelector("#play").innerText = "시작";
+				
+			}
+			
+			
+		};
+		
+		document.querySelector("#forward").onclick = function(){
+			audio.currentTime +=10;
+		}
+		document.querySelector("#backward").onclick = function(){
+			audio.currentTime -=10;
+		}
+		document.querySelector("#restart").onclick = function(){
+			audio.currentTime = 0;
+		}
+		
+	</script>
+
+</body>
+</html>

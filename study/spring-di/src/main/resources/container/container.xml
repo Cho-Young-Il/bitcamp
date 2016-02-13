@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+                           
+      <!--
+       
+      	HamSand ham = new HamSand();
+      	
+      	HamSand temp = new HamSand();
+      	HashMap<String, ISand> map = new HashMap<>();
+      	map.put("ham2",temp);
+      	map.put("ham3",temp);
+      	map.put("ham4",temp);
+      	map.put("#ham5",temp);
+      		
+       -->
+     <bean id="ham" class="container.HamSand"></bean>
+	
+	 <bean name="ham2,ham3;ham4 #ham5" class="container.HamSand"></bean>
+	
+</beans>	

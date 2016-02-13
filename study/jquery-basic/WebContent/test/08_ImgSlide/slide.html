@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <style>
+        * { margin:0px; padding:0px; }
+        
+        button {
+			margin: 5px;
+			font-size: 20px;
+			height: 50px;
+		}
+		
+        .animation_canvas  {
+            overflow:hidden;
+            position:relative;           
+            width:600px; height:400px;
+        }
+    
+        .slider_panel { width:3000px; position:relative; }
+        .slider_image { float:left; width:600px; height:400px; }
+		
+    </style>
+</head>
+<body>
+    <h1>이미지 슬라이더</h1>
+    <div class="animation_canvas">
+        <div class="slider_panel">
+            <img src="Desert.jpg" class="slider_image"/>
+            <img src="Hydrangeas.jpg" class="slider_image"/>
+            <img src="Jellyfish.jpg" class="slider_image"/>
+            <img src="Koala.jpg" class="slider_image"/>
+            <img src="Lighthouse.jpg" class="slider_image"/>
+        </div>
+    </div>
+    <div>
+	    <button>이전</button>
+	    <button>다음</button>
+    </div>
+</body>
+</html>

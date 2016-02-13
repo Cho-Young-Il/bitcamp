@@ -1,0 +1,40 @@
+<!-- 
+	getElementById : 아이디 속성의 값으로 검색된 태그 반환
+	getElementsByTagName : 태그이름으로 검색된 태그들을 반환
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	function changeDiv() {
+		var list = document.getElementsByTagName("div");
+		console.log(list.length);
+		
+		for(var i = 0; i < list.length; i++) {
+			console.log(list[i]);
+			console.log(list[i].id);
+			if(list[i].id == 'c') {
+				list[i].innerHTML = "변경";
+			}
+		}
+		alert("다시 변경함");
+		var cDiv = document.getElementById("c");
+		cDiv.innerHTML = "다시 변경됨";
+	}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<input type="button" value="변경" onclick="changeDiv()"/>
+	<div id="a">
+		A div
+	</div>
+	<div id="b">
+		B div
+		<div id="c">
+			C div
+		</div>
+	</div>
+</body>
+</html>

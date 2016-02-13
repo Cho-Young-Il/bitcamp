@@ -1,0 +1,75 @@
+<!-- 
+	$.get( ... );
+	
+	->
+	
+	$.ajax({
+		type: "GET",
+		url : "...",
+		data: "..."
+	});
+	
+	ajax 의 get방식을 단축하여 사용한다.
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../jquery-2.2.0.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("button").click(function() {
+			/* 
+			$.ajax({
+				type: "GET",
+				url : "data/test.html"
+			})
+			.done(function(data) {
+				$("#resultDiv").html(data);
+			});
+			 */
+			/*  
+			$.get("data/test.html")
+			.done(function(data) {
+				$("#resultDiv").html(data);
+			})
+			 */
+			 
+			/* $.ajax({
+				url : "data/resJson.jsp",
+				type: "GET",
+				dataType:"json"
+			})							
+			.done(function(data,status,jqXHR){
+				console.log(data);
+				$("#resultDiv").html(
+						"name : " + data.name + "<br />"+
+						"age : " + data.age + "<br />"+
+						"addr : " + data.addr + "<br />");
+				//json형태가 되면서 자동 객체가 만들어지고 data.name 으로 key값에 대한 value값을 가져올수있다.
+			}) */
+			
+			/* $.get("data/resJson.jsp", "json")
+			.done(function(data,status,jqXHR) {
+				$("#resultDiv").html(
+						"name : " + data.name + "<br />"+
+						"age : " + data.age + "<br />"+
+						"addr : " + data.addr + "<br />");
+			}); */
+			
+			$.get("data/param.jsp", 
+				  {id: "tester", name: "테스터"}, 
+				  function(data) {
+					  $("#resultDiv").html(data);
+				  }
+			);
+		});
+	});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<button>ajax 호출</button>
+	<div id="resultDiv"></div>
+</body>
+</html>

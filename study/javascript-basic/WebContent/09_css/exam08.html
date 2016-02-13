@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+	h3, div {
+		margin: 0px;
+		padding: 5px;
+		width: 500px;
+		border: 5px solid #445566;
+		box-sizing: border-box;
+	}
+	h3 { background: #89a; }
+	div {
+		height: 100px;
+		/* 클립 속성 사용하기 : position 절대좌표(absolute) 기준으로 해야함*/
+		position: absolute;
+		
+		clip: rect(0px, 500px, 100px, 0px);
+	}
+</style>
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>어코디언 기능 구현하기</h2>
+	<h3 onclick="changeView()">오늘은 자바스크립트 css 적용하는 날...</h3>
+	<div class="hidden">
+		오늘은 자바스크립트 css적용하는 날..<br/>
+		어코디언 기능 구현 해보자~<br/>
+		자바스크립트는 오늘까지?<br/>
+	</div>
+</body>
+</html>

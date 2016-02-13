@@ -1,0 +1,53 @@
+<!-- 
+	$form.serialize()
+	- 폼안의 데이터
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../jquery-2.2.0.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("form").submit(function() {
+			//alert("폼 서브밋 실행함..");
+			
+			//ajax 방식으로 폼의 전송
+			/* var param = "id=" + $("[name=id]").val() 
+						+ "$name=" + encodeURIComponent($("[name=name]").val()) 
+						+ "$pass=" + $("[name=pass]").val() 
+						+ "&email=" + $("[name=email]").val(); */
+			/* var param = $(this).serialize(); */
+			alert("생성된 파람\n" + param);
+			$.get(
+				"data/param.jsp",
+				/* {
+					id: "..."
+					name: "...",
+					pass: "...",
+					email: "..."
+				} */
+				/* "id=...&name=...$pass=...&email=..." */
+				param,
+				function(data) {
+					alert(data);
+				}
+			);
+			
+			
+			return false;
+		});		
+	})
+</script>
+</head>
+<body>
+	<form>
+		이름 : <input type="text" name="name"/> <br/>
+		아이디 : <input type="text" name="id"/> <br/>
+		암호 : <input type="text" name="pass"/> <br/>
+		email : <input type="text" name="email"/> <br/>
+		<input type="submit" value="가입"/>
+	</form>
+</body>
+</html>

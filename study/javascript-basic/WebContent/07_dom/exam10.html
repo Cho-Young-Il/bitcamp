@@ -1,0 +1,42 @@
+<!-- 
+	엘리먼트 삭제
+	removeChild
+	
+	lastChild
+	firstChild
+	
+	부모.removeChild(자식);
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	function add() {
+		var cDiv = document.getElementById("c");
+		var html = "<h1>H1" + cDiv.childElementCount + "</h1>";
+		cDiv.innerHTML += html;
+	}
+	
+	function del() {
+		var cDiv = document.getElementById("c");
+		//cDiv 자식 엘리먼트 중에서 마지막 자식 엘리먼트 삭제
+		cDiv.removeChild(cDiv.firstChild);
+	}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<p>
+		<button onclick="add();">추가</button>
+		<button onclick="del();">삭제</button>
+	</p>
+	<div id="a">
+		A div
+	</div>
+	<div id="b">
+		B div
+		<div id="c"></div>
+	</div>
+</body>
+</html>

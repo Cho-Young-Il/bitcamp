@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function() {
+		var canvas = document.getElementById("myCanvas");
+		var ctx = canvas.getContext("2d");
+		//선그리기 사작함.
+		ctx.beginPath();
+		//시작좌표로 이동
+		ctx.moveTo(100, 100);
+		//좌표 이동
+		ctx.lineTo(200, 200);
+		ctx.lineTo(100, 200);
+		ctx.closePath();
+		//좌표 점들을 연결해서 화면에 출력
+		ctx.stroke();
+		ctx.fill(); //안쪽에 색을 칠한다.
+	};
+</script>
+</head>
+<body>
+	<h1>캔버스</h1>
+	<canvas id="myCanvas" width="600" height="400">
+		브라우져에서 지원되지 않습니다.
+	</canvas>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!-- 
+	객체의 프로퍼티로 함수 설정이 가능하다.
+	객체 안의 this = 허
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	var member = {
+			id:"hong";
+			name: "홍길동";
+			age:22,
+			setId: function(id) {
+				this.id = id;
+			},
+			getId: function() {
+				return this.id;
+			},
+			info: function() {
+				console.log(this.id, this.name, this.age);
+			}
+	};
+	
+	//정보를 출력하는 함수(메서드) 호출
+	member.info();
+	member.setId("park");
+	console.log(member.getId());
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	//member객체의 정보를 출력하라.
+	consol.log("id", member.id);
+</body>
+</html>

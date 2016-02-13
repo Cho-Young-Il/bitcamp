@@ -1,0 +1,45 @@
+<!--
+	table : 표 형식의 데이터 표현시 사용
+	속성
+	1. border : 선긋기
+	2. width : 넓이
+	3. height : 높이
+	tr : 행을 표시
+	th : 제목등을 표시, 내용이 자동으로 가운데, 내용이 진하게 표시
+	td : 열을 표시
+	속성
+	1. align : 정렬(left, center, right)
+	
+	colspan : 열을 확장
+	rowspan : 행을 확장
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border="1" width="400px" height="300px">
+		<tr align="center">
+			<th colspan="1" width="25%">타이틀</th>
+			<th colspan="3" width="75%">번호</th>
+		</tr>
+		<tr align="center">
+			<td rowspan="4">계산기</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+		</tr>
+		<tr align="right">
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+		</tr>
+		<tr align="left">
+			<td>0</td>
+			<td colspan="2" align="center">=</td>
+		</tr>
+	</table>
+</body>
+</html>

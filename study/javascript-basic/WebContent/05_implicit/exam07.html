@@ -1,0 +1,33 @@
+<!-- 
+	Date
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	var d = new Date();
+	console.log(d);
+	console.log(d.getFullYear());
+	console.log(d.getMonth() + 1);
+	console.log(d.getDate());
+	console.log(d.getDay()); // 일요일(0) - 토(7);
+	console.log(d.getTime()); // 밀리세컨드 단위 반환
+	
+	//시간 설정 2016년 3월! 1일로 설정
+	var d2 = new Date(2016, 2, 1);
+	
+	var interval = d2.getTime() - d.getTime();
+	console.log("밀리세컨드 : " + interval);
+	console.log("초 : " + interval / 1000);
+	console.log("분 : " + interval / (1000 * 60));
+	console.log("시 : " + interval / (1000 * 60 * 60));
+	console.log("일 : " + interval / (1000 * 60 * 60 * 24));
+	console.log("일 : " + Math.floor(interval / (1000 * 60 * 60 * 24)));
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

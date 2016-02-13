@@ -1,0 +1,41 @@
+<!-- 
+after   : 선택자 뒤에 추가
+before  : 선택자 앞에 추가
+append  : 선택자 엘리먼트 내용의 뒤에 추가
+prepend : 선택자 엘리먼트 내용의 앞에 추가
+replaceWith : 해당 선택자를 완전히 변경
+ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>css selectors</title>
+<style type="text/css">
+	p {
+		font-weight:bold;
+		font-size:30px;
+		color:blue;
+		margin:10 10;
+		padding:2px;
+		border: 2px solid orange;+
+	}
+	b {
+		font-size:30px;
+	}
+</style>
+<script>
+
+</script>
+</head>
+<body>
+	<p>p태그-1</p>
+	<p id="p2">p태그-2</p>
+	<p>p태그-3</p>
+	
+	<button onclick="after()">after()</button>
+	<button onclick="before()">before()</button>
+	<button onclick="append()">append()</button>
+	<button onclick="prepend()">prepend()</button>
+	<button onclick="replaceWith()">replaceWith()</button>
+</body>
+</html>

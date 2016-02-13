@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	div {
+		width: 100%;
+		height: 120px;
+		border: 5px solid tomato;
+	}
+</style>
+</head>
+<body>
+	<h1>이미지를 드래그 하세요</h1>
+	
+	<img id="img1" src="pic1.jpg" width="200" height="120" 
+		draggable="true" ondragstart="startImg(event)"/>
+	<img id="img2" src="pic2.jpg" width="200" height="120" 
+		draggable="true" ondragstart="startImg(event)"/>	
+	<img id="img3" src="pic3.jpg" width="200" height="120" 
+		draggable="true" ondragstart="startImg(event)"/>
+	
+	<div id="dropZone" 
+		ondragover="return false;"
+		ondrop="moveImg(event);"></div>	
+	
+	<div id="dropZone1" 
+		ondragover="return false;"
+		ondrop="moveImg1(event);"></div>
+	
+	<script type="text/javascript">
+		function startImg(event) {
+			//어떤 이미지가 드래그를 했는지 파악
+			var targetId = event.target.id;
+			console.log("드래그를 시작한 엘리먼트 아이디 : " + targetId);
+			event.dataTransfer.setData("imgId", targetId);
+		}
+		
+		function moveImg(event) {
+			var imgId = event.dataTransfer.getData("imgId");
+			console.log("드랍된 이미지 아이디 : ", imgId)
+			
+			var dropZone = document.querySelector("#dropZone");
+			var imgObj = document.querySelector("#" + imgId);
+			dropZone.appendChild(imgObj);
+		}
+		
+		function moveImg1(event) {
+			var imgId = event.dataTransfer.getData("imgId");
+			console.log("드랍된 이미지 아이디 : ", imgId)
+			
+			var dropZone = document.querySelector("#dropZone1");
+			var imgObj = document.querySelector("#" + imgId);
+			dropZone.appendChild(imgObj);
+		}
+	</script>
+</body>
+</html>

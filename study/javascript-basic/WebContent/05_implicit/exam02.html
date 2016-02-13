@@ -1,0 +1,26 @@
+<!-- 
+	자바스크립트 패키지 만들기
+	- 객체를 활용해서
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	var mlec = {};
+	mlec.java77 = {};
+	mlec.java77.member = {};
+	mlec.java77.member.Member = function(id, name) {
+		this.id = id;
+		this.name = name;
+	};
+	
+	var mem = new mlec.java77.member.Member("hong", "홍");
+	console.log(mem.id + "--" + mem.name);
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

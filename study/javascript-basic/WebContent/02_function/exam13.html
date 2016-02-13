@@ -1,0 +1,23 @@
+<!-- 
+	함수의 매개변수로 object 넘겨줄 경우
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	var arr = [1, 2, 3, 4, 5];
+	function func(arr) {
+		arr.pop();		//마지막 요소 삭제
+		console.log(arr);
+	}
+	func(arr);			//출력결과 : [1, 2, 3, 4];
+	console.log(arr);	//출력결과 : [1, 2, 3, 4];
+	
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

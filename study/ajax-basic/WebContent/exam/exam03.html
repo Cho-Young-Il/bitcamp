@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	a {
+		text-decoration: none;
+		color: #334455;
+		font-size: 20px;
+	}
+
+	#leftInfo {
+		float: left;
+		border: 5px solid black;
+		width: 20%;
+		min-height: 500px;
+	}
+
+	#centerInfo {
+		border: 5px solid black;
+		width: 76%;
+		margin-left: 23%;
+		min-height: 500px;
+	}
+	
+	h3 { 
+		background: tomato; 
+		padding: 10px;
+		color: white;
+		text-align: center;
+	}
+	ul { list-style: none; padding: 0px; }
+	li { padding: 10px; }
+	li:hover { background: black; }
+	li:hover a { color: white; }
+	a { display: block; }
+	
+	#mInfo > p { 
+		border-bottom: 5px double blue; font-size: 20px;
+		margin: 10px;
+		padding: 10px;
+	}
+	
+</style>
+<script src="/Ajax-basic/framework.js"></script>
+<script>
+	// id가 search 인 버튼에 이벤트 설정
+	/*
+	var search = document.querySelector("#search");
+	search.addEventListener("click", function() {});
+	*/
+	window.onload = function () {
+		$("#search").click(function () {
+			// Ajax 를 이용해서 서버의 회원 목록을 가져와 
+			// leftInfo 영역에 출력함
+			$.ajax({
+				url: "/Ajax-basic/exam/MemberList3", 
+				callback: function () {
+					if (httpRequest.readyState == 4) {
+						if (httpRequest.status == 200) {
+							var mList = JSON.parse(httpRequest.responseText);
+							var html = "<ul>";							
+							for(var i = 0; i < mList.length; i++) { 
+								html+= "<li><a href='#1' onclick='memberDetailInfo(\"" + mList[i].id + "\")'>" 
+							     + mList[i].name + "</a></li>";
+							}
+							html += "</ul>";
+							$("#mList").html(html);
+						}
+					}
+					
+				}
+			});
+		});
+	}
+	
+	// 회원 목록에서 회원이름을 클릭할 때 호출됨
+	// 호출된 회원의 상세 정보를  AJAX를 이용해서 조회함
+	// 조회된 상세 정보를 회원상세 DIV에 출력함
+	function memberDetailInfo(id) {
+		$.ajax({
+			url : "/Ajax-basic/exam/MemberDetail3",
+			data : {id: id},
+			callback: function () {
+				if (httpRequest.readyState == 4) {
+					if (httpRequest.status == 200) {
+						// 서버에서 응답해온 데이터
+						// id:name:pass
+// 						alert(httpRequest.responseText);
+						var mem = JSON.parse(httpRequest.responseText);
+						
+						var html = "<p>아이디 : " + mem.id + "</p>"
+						         + "<p>이름 : " + mem.name + "</p>"
+						         + "<p>패스워드 : " + mem.pass + "</p>";
+						$("#mInfo").html( html );         
+					}
+				}
+			}
+		});
+		
+		// Ajax 를 이용해서 회원정보 조회
+		// url : /Ajax-basic/exam/MemberDetail
+		// data : {id: id}
+		// method : get
+		// callback : function () {
+		//	
+		//    서버에서 조회된 회원의 정보를 아이디가 mInfo인 
+		//    DIV 에 출력한다.
+		//    서버에서 조회되는 회원 정보는 최소 3개이상..
+		// }
+		
+	}
+</script>
+</head>
+<body>
+	<p>
+		<button id="search">회원정보 조회</button>
+	</p>
+	<div id="leftInfo">
+		<h3>회원 목록</h3>
+		<div id="mList"></div>
+	</div>
+	<div id="centerInfo">
+		<h3>회원 상세</h3>
+		<div id="mInfo"></div>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

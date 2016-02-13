@@ -1,0 +1,28 @@
+<!-- 
+	innerHTML : 엘리먼트 안쪽의 내용을 나타냄
+	innerText : 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="result"></div>
+	<script type="text/javascript">
+		var divObj = document.getElementById("result");
+		alert("적용전..");
+		//innerHTML 은 내용에 태그가 있으면 해석함
+		/* divObj.innerHTML = "<h1>동적으로 내용추가</h1>"; */
+		
+		//innerText는 내용에 태그가 있어도 일반 텍스트로 해석
+		//innerText는 표준이 아니다.
+		//대체 속성으로 textContent 제공함
+		//두개 속성은 동일한 기능임
+		/* divObj.innerText = "<h1>동적으로 내용추가</h1>"; */
+		
+		divObj.textContent = "<h1>동적으로 내용추가</h1>";
+	</script>
+</body>
+</html>

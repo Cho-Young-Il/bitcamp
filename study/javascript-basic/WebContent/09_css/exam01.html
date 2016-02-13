@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<script>
+		window.onload = function() {
+			
+		};	
+	</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1 id="title" style="border: 1px solid black;">CSS 적용하기(스크립트 활용)</h1>
+	<script type="text/javascript">
+		//var hObj = document.querySelector("#title");
+		var hObj = document.getElementById("title");
+		
+		//.으로 속성 변경시 규칙
+		//border_width -> borderWidth
+		//background_color -> backgroundColor
+		alert("테두리선 변경");
+		hObj.style.border = "3px solid black";
+		
+		alert("글자 색상 변경");
+		hObj.style.color = "tomato";
+		
+		alert("글꼴 변경");
+		hObj.style.fontFamily = "굴림";
+		
+		alert("배경색 변경");
+		hObj.style.background = "#334455";
+		
+		alert("안쪽 여백 변경");
+		hObj.style.padding = "20px 30px";
+		
+		alert("바깥쪽 여백 변경");
+		hObj.style.margin = "40px";
+		
+		alert("높이 변경");
+		hObj.style.height = "100px";
+		
+		alert("테두리 둥글게");
+		hObj.style.borderRadius = "40px";
+		
+		alert("가운데 정렬 변경");
+		hObj.style.textAlign = "center";
+		
+		alert("세로 정렬 변경");
+		hObj.style.lineHeight = "100px";
+		
+		
+	</script>
+</body>
+</html>

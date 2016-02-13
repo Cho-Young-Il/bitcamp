@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	function doClose() {
+		var n1 = document.getElementById("num1");
+		var num1 = n1.value;
+		console.log(num1);
+		var n2 = document.getElementById("num2");
+		var num2 = n2.value;
+		console.log(num2);
+		var o = document.getElementById("op");
+		var op = o.value;
+		console.log(op);
+		var result;
+		switch(op) {
+		case '+' :
+			result = num1 + num2;
+			break;
+		case '-' :
+			result = num1 - num2;
+			break;
+		case '/' :
+			result = num1 / num2;
+			break;
+		case '*' :
+			result = num1 * num2;
+			break;
+		}
+		console.log(result);
+		opener.childCall(result);
+	//	self.close();
+	}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		숫자1
+		<input type="text" id="num1"/>
+	</div>
+	<div>
+		<select id="op">
+			<option value="+">+</option>
+			<option value="-">-</option>
+			<option value="/">/</option>
+			<option value="*">*</option>
+		</select>
+	</div>
+	<div>
+		숫자2
+		<input type="text" id="num2"/>
+	</div>
+	<div>
+		<button onclick="doClose();">계산</button>
+	</div>
+</body>
+</html>

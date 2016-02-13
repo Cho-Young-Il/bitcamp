@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	function rFunc() {
+		/*  //내부함수 - 자신이 선언된 함수 내에서만 사용 가능
+		function hi() {
+			console.log("hi");
+		}
+		return hi;
+		 */
+		 //익명함수 방식의 리턴
+		return function() {
+			console.log("hi");
+		};
+	}
+	
+	var hi = rFunc(); //결과값이 함수를 받는다.
+	hi();
+	//--------------------------------
+	rFunc()();	//넘겨받은 함수 실행
+	
+	
+	
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

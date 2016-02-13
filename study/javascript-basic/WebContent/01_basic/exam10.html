@@ -1,0 +1,41 @@
+<!-- 
+	산술 연산자
+	-----------------
+	문자열과 숫자 타입의 + 연산은 결과가 문자열이 됨
+	문자열과 숫자 타입의 + 연산이외는 결과가 숫자 우선
+	문자열이 숫자 타입의 값이 아닌경우에는 결과는 NaN(Not a Number)
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	console.log("1" + 20);	//120
+	console.log("2" * 20);	//40
+	console.log('20' - 10);	//10
+	
+	console.log('abc' - 10);	//NaN
+	
+	//문자를 숫자로 변경하기
+	//parseInt 또는 Number 활용
+	//차이점
+	//parseInt는 숫자로 변경할 수 있는 부분까지 변경처리
+	//Number는 숫자일 경우만 가능함
+	var n = parseInt("100");
+	var n2 = Number("100");
+	console.log(n + "----" + n2);
+	
+	var nStr = " 200";
+	var n = parseInt(nStr);
+	console.log(typeof n, n);
+	var test = 10 * n;
+	console.log(typeof test, test);
+	
+	
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

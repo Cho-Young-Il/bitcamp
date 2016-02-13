@@ -1,0 +1,40 @@
+<html>
+<head>
+<title> scale (확대) </title>
+<meta charset="utf-8" />
+<style>
+    div {
+        background-color: yellow;
+        width: 300px;
+        height: 250px;
+        border: 2px solid blue;
+        float: left;
+        margin: 50px;
+
+    }
+    
+    img {
+        width: 300px; height: 250px;
+    }
+    
+    /*
+    scale (확대 / 축소)
+    1. scale(tx, ty)
+    2. scaleX(tx)
+    3. scaleY(ty)
+    */
+    
+    #x:hover	> img { transform: scaleX(0.5);}
+    #y:hover	> img { transform: scaleY(1.5);}
+    #all:hover	> img { transform: scale(1.5, 2.5);}
+    
+</style>
+</head>
+<body>
+    <h1>scale(이동)</h1>
+    <div id="x"><img src="pic1.jpg" /></div>
+    <div id="y"><img src="pic1.jpg" /></div>
+    <div id="all"><img src="pic1.jpg" /></div>
+</body>
+</html>
+

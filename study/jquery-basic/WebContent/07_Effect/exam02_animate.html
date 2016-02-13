@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	div {
+		width: 50px; height: 50px;
+		background-color: orange;
+		position: relative;
+	}
+</style>
+<script type="text/javascript" src="../jquery-2.2.0.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("div").hover(
+			function () {
+				//특정 css 속성에 애니메이션 효과를 설정
+				$(this).animate({
+					left: 500,
+					margin: 30,
+					opacity: 0.1
+				}, "slow");
+			},
+			function () {
+				$(this).animate({
+					left: 0,
+					margin: 0,
+					opacity: 1
+				}, "slow");
+			}
+		);
+		/* $("div").hover(
+			function () {
+				//특정 css 속성에 애니메이션 효과를 설정
+				$(this).animate({
+					width: 100
+				}, "fast");
+			},
+			function () {
+				$(this).animate({
+					width: 50
+				}, "fast");
+			}
+		); */
+		/* $("div").hover(
+			function () {
+				//특정 css 속성에 애니메이션 효과를 설정
+				$(this).animate({
+					margin: 30
+				}, "fast");
+			},
+			function () {
+				$(this).animate({
+					margin: 0
+				}, "fast");
+			}
+		); */
+		/* $("div").hover(
+			function () {
+				//특정 css 속성에 애니메이션 효과를 설정
+				$(this).animate({
+					opacity: 0.1
+				}, "fast");
+			},
+			function () {
+				$(this).animate({
+					opacity: 1
+				}, "fast");
+			}
+		); */
+		/* $("div").hover(
+			function () {
+				//특정 css 속성에 애니메이션 효과를 설정
+				$(this).animate({
+					left: 500
+				}, "slow");
+			},
+			function () {
+				$(this).animate({
+					left: 0
+				}, "slow");
+			}
+		); */
+	});
+</script>
+</head>
+<body>
+    <div></div><div></div>
+    <div></div><div></div>
+    <div></div><div></div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>기본 이벤트 중지</title>
+<script type="text/javascript">
+	function ckForm() {
+		//기본 이벤트 중지
+		//return false;
+	}
+	
+	window.onload = function() {
+		var f2 = document.getElementById("f2");
+		f2.onsubmit = function() {
+			alert("f2폼 이벤트 중지하기");
+			//두번째 기본 이벤트 중지 방법
+			event.preventDefault();
+		}
+	}
+</script>
+</head>
+<body>
+	<form id="f1" onsubmit="">
+		<label>이름</label>
+		<input type="text" name="name" size="20" /><br />
+		<input type="submit" value="등록" />
+	</form>
+	<form id="f2">
+		<label>이름</label>
+		<input type="text" name="name" size="20" /><br />
+		<input type="submit" value="등록" />
+	</form>
+</body>
+</html>

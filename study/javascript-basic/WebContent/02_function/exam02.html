@@ -1,0 +1,32 @@
+<!-- 
+	익명함수
+	var func = function ([매개변수]) {
+		[return [값]];
+	}
+	
+	- 변수에 담아서 사용한다.
+	func();
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	var sum = function(num1, num2) {
+		console.log(num1, num2);
+	}
+	sum(100, 200);
+	
+	var sum2 = function(num1, num2) {
+		console.log(num1, num2);
+		return num1 + num2;
+	}
+	var result = sum2(100, 200);
+	console.log(result);
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!--
+	window
+	- open("창에 보여질 url", "창의 이름", "옵션") : 새 팝업창을 띄움
+	- resize(width, height) : 창의 사이즈 조절
+	- resizeBy(number, number) : 현재창의 크기에서 상대적으로 창의 사이즈 조절
+	
+	screen
+	-width
+	-height
+		
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	function childCall(val) {
+		alert("자식창에서 넘어온 값 : " + val);
+	}
+	function pop(type) {	
+		switch(type) {
+		case 1:
+			window.open("", "pop1", "width=500, height=400");
+			break;
+		case 2:
+			window.open("http://www.naver.com", "pop2", "width=500, height=400");
+			break;
+		case 3:
+			window.open("http://www.naver.com", "pop3", "top=0, left=0, width=500, height=400");
+			break;
+		case 4:
+			window.open("http://www.naver.com", "pop4", "top=0, left=0, width=500, height=400, resizable=no, scrollbars=no");
+			break;
+		case 5:
+			window.open("exam02_child.html", "pop5", "top=0, left=0, width=500, height=400, resizable=no, scrollbars=no");
+			break;
+		case 6:
+			var win = window.open("exam02_child.html", "pop6", "top=0, left=0, width=500, height=400, resizable=no, scrollbars=no");
+			alert(screen.width + "-" + screen.height);
+			win.resizeTo(screen.width, screen.height);
+			
+			setInterval(function () {}, 100);
+			break;
+		}
+	}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<button onclick="pop(1);">팝업 띄우기 - 1</button>
+	<button onclick="pop(2);">팝업 띄우기 - 2</button>
+	<button onclick="pop(3);">팝업 띄우기 - 3</button>
+	<button onclick="pop(4);">팝업 띄우기 - 4</button>
+	<button onclick="pop(5);">팝업 띄우기 - 5</button>
+	<button onclick="pop(6);">팝업 띄우기 - 6</button>
+</body>
+</html>

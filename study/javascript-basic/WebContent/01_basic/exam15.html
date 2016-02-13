@@ -1,0 +1,40 @@
+<!-- 
+	배열의 인덱스는 숫자로 구성되어 있다.
+	배열은 객체의 한 종류이기 때문에 키/프로퍼티 가질수 있다.
+	객체는 키 값으로 문자열을 사용할 수 있다.
+	따라서, 배열도 키값으로 문자열을 설정 할 수 있다.
+	배열의 길이로는 잡히지 않는다.
+	
+	배열은 객체이지만 특수한 목적을 위해서 만든 것이니
+	직접 키값을 설정해서 사용하는 것은 추천하지 않는다.
+	배열의 원소 인덱스는 숫자를 사용해라..
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	var arr = [];
+	arr[0] = 1;
+	arr["id"] = "hong";
+	console.log("arr.length = " + arr.length);
+	console.log("arr['id'] : " + arr["id"]);
+	console.log("arr.id : " + arr.id);
+	
+	//.으로 접근하는 방식은 식별자 규칙에 맞는 것만 가능함
+	//숫자로 시작 못함, _#이외의 특수문자는 사용 불가능, 공백 포함 불가능
+	//console.log("arr.0 : " + arr.0); // 식별자 규칙에 어긋나서 오류
+	
+	//문자열로 키를 설정할 경우 발생될 수 있는 버그
+	//키가 문자열 이지만 숫자 형태의 문자열일 경우
+	//마치 문자열 키가 아닌 숫자 사용한 것 같은 결과를 반환
+	var arr2 = [];
+	arr2["5"] = 5;
+	console.log("arr2.length = " + arr2.length);
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

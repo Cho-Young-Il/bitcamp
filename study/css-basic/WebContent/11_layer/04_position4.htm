@@ -1,0 +1,163 @@
+<html>
+<head>
+<title> position </title>
+<meta charset="utf-8" />
+<style type="text/css">
+	/* 
+		순서대로 차례차례 위치시킨다. 
+		left, top, right, bottom 등의 속성이 무시된다.
+	*/
+	#static_layer {
+		position: static;
+		left: 300px; top: 200px;
+		width: 200px; height: 100px;
+		background-color: orange;
+	}
+	#relative_layer {
+		position:relative;
+		left:300px; top:0;
+		width:200px; height:100px;
+		background-color:pink;
+	}
+	#absolute_layer {
+		position:absolute;
+		left:100; top:100;
+		width:200; height:100;
+		background-color:yellow;
+	}
+	#parent {
+		position:absolute;
+		left:100; top:300;
+		width:800; height:300;
+		border: 1px solid tomato;
+	}
+	
+	/* 
+		부모태그 기준이 아니라 body태그 기준으로 위치를 잡는다.
+		화면에 위치가 고정되어 있다. (스크롤 움직여도 고정됨)
+	*/
+	#fixed_layer {
+		position:fixed;
+		left:400; top:100;
+		width:200; height:100;
+		background-color:navy;
+	}
+	#fixed_layer2 {
+		position: fixed;
+		right:0; bottom:0;
+		width:200; height:100;
+		background-color:orange;
+	}
+	#fixed_layer3 {
+		position: fixed;
+		right: 20; top: 100; 
+		width:200; height:100;
+		background-color:orange;
+	}
+		
+</style>
+<body>
+	<h1> 스타일 시트 적용하기 </h1>
+	<hr />
+    <div id="static_layer">
+        position: static;<br />
+        left:300; top:200;<br /> 
+        width:200; height:100;<br />
+        background-color:orange;
+    </div>
+    <div id="relative_layer">
+        position:relative;<br />
+        left:300; top:0;<br />
+        width:200; height:100;<br />
+        background-color:pink;
+    </div>
+    <div id="absolute_layer">
+        position:absolute;<br />
+        left:100; top:100;<br />
+        width:200; height:100;<br />
+        background-color:yellow; 
+    </div>
+    	
+	<div id="parent">
+		<div id="static_layer">
+		    position: static;<br />
+	        left:300; top:200;<br /> 
+	        width:200; height:100;<br />
+	        background-color:orange;
+		</div>
+		<div id="relative_layer">
+	        position:relative;<br />
+	        left:300; top:0;<br />
+	        width:200; height:100;<br />
+	        background-color:pink;
+		</div>
+		<div id="absolute_layer">
+	        position:absolute;<br />
+	        left:100; top:100;<br />
+	        width:200; height:100;<br />
+	        background-color:yellow; 
+		</div>
+		<div id="fixed_layer">
+	        position:fixed;<br />
+	        left:400; top:100;<br />
+	        width:200; height:100;<br />
+	        background-color:navy; 
+		</div>
+	</div>
+
+
+    <div id="fixed_layer2">
+        position: fixed;<br />
+        right:0; bottom:0;<br /> 
+        width:200; height:100;<br />
+        background-color:orange;
+    </div>
+    <div id="fixed_layer3">
+        position: fixed;<br />
+        right: 20; top: 100; <br /> 
+        width:200; height:100;<br />
+        background-color:orange;
+    </div>
+    
+
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+	<h1>test</h1>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!-- 
+	인접형제 선택자 
+	태그  + 태그
+	h1 + ul : h1바로뒤에 나오는 첫번째  ul태그 선택 
+	
+	태그~태그 
+	h1~u1 : h1뒤에 나오는 ul태그 선택  
+ -->
+<html>
+<head>
+<meta charset="utf-8" />
+<title> 선택 범주 스타일 </title>
+<style type="text/css">
+	
+	/*	h1 바로뒤에 ul에 있어야지만 적용이됨 <h1과ul사이 중간에 다른 엘리먼트가 있으면 안된다>
+	h1 + ul {
+		border: 2px solid orange;
+	}
+	*/
+	
+	h1 ~ ul {
+		border: 2px solid orange;
+	}
+	
+</style>                        
+</head>
+<body>
+   <h1>목차</h1>
+   
+   <ul>
+      <li>자바의 특징 및 역사</li>
+      <li>연산자</li>
+      <li>제어문 : 조건, 반복, 이동</li>
+   </ul>
+
+   <h2>SQL</h2>
+   <ul>
+      <li>DQL</li>
+      <li>DML</li>
+      <li>TCL</li>
+   </ul>
+</body>
+</html>

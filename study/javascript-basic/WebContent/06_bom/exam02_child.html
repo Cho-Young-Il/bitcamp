@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	function doClose() {
+		var obj = document.getElementById("msg");
+		//alert(obj.value);
+		
+		//부모창에 접근 : opener
+		opener.childCall(obj.value);
+		alert("창을 닫습니다.");
+		self.close();
+	}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>자식 창</h1>
+	<input type="text" id="msg"/>
+	<button onclick="doClose();">닫기</button>
+</body>
+</html>

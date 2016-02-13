@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이벤트 전파</title>
+<style>
+	div, h1 {
+		border: 3px solid tomato;
+		margin: 50px;
+	}
+</style>
+<script type="text/javascript">
+window.onload = function() {
+	var outerDiv = document.getElementById("outerDiv");
+	var innerDiv = document.getElementById("innerDiv");
+	var hObj = document.querySelector("h1");
+	
+	outerDiv.addEventListener("click", function(event) {
+		alert("outerDiv");
+		event.stopPropagation();
+	}, false);
+	innerDiv.addEventListener("click", function(event) {
+		alert("innerDiv");
+		event.stopPropagation();
+	}, false);
+	hObj.addEventListener("click", function(event) {
+		alert("hObjDiv");
+		event.stopPropagation();
+	}, false);
+}
+</script>
+</head>
+<body>
+	<div id="outerDiv">
+		바깥쪽 DIV
+		<div id="innerDiv">
+			안쪽 DIV
+			<h1>
+				이벤트 전파
+			</h1>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	function input(val) {
+		var resultView = document.getElementById("resultView");
+		resultView.value += val;
+	}
+	
+	function exe() {
+		var resultView = document.getElementById("resultView");
+		resultView.value = eval(resultView.value);
+	}
+	
+	function cls() {
+		document.getElementById("resultView").value = "";
+	}
+	
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<table border="1">
+		<tr>
+			<td colspan="4">
+				<input type="text" style="width: 250px;" id="resultView" readonly/>
+			</td>
+		<tr>
+		<tr>
+			<td><input type="button" style="width: 70px;" value="7" onclick="input(7)"/></td>
+			<td><input type="button" style="width: 70px;" value="8" onclick="input(8)"/></td>
+			<td><input type="button" style="width: 70px;" value="9" onclick="input(9)"/></td>
+			<td><input type="button" style="width: 70px;" value="/" onclick="input('/')"/></td>
+		</tr>
+		<tr>
+			<td><input type="button" style="width: 70px;" value="4" onclick="input(4)"/></td>
+			<td><input type="button" style="width: 70px;" value="5" onclick="input(5)"/></td>
+			<td><input type="button" style="width: 70px;" value="6" onclick="input(6)"/></td>
+			<td><input type="button" style="width: 70px;" value="*" onclick="input('*')"/></td>
+		</tr>
+		<tr>
+			<td><input type="button" style="width: 70px;" value="1" onclick="input(1)"/></td>
+			<td><input type="button" style="width: 70px;" value="2" onclick="input(2)"/></td>
+			<td><input type="button" style="width: 70px;" value="3" onclick="input(3)"/></td>
+			<td><input type="button" style="width: 70px;" value="-" onclick="input('-')"/></td>
+		</tr>
+		<tr>
+			<td><input type="button" style="width: 70px;" value="0" onclick="input(0)"/></td>
+			<td><input type="button" style="width: 70px;" value="." onclick="input('.')"/></td>
+			<td><input type="button" style="width: 70px;" value="+" onclick="input('+')"/></td>
+			<td><input type="button" style="width: 70px;" value="%" onclick="input('%')"/></td>
+		</tr>
+		<tr>
+			<td colspan="4"><input type="button" style="width: 125px;" value="=" onclick="exe()"/>
+			<input type="button" style="width: 125px;" value="clear" onclick="cls()"/></td>
+		<tr>
+	</table>
+	</div>
+</body>
+</html>

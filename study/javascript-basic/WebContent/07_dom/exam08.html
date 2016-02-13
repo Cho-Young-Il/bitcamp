@@ -1,0 +1,55 @@
+<!-- 
+	childElementCount : 자식엘리먼트 수
+	children : 자식 배열
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	function add() {
+		/* var cDiv = document.getElementById("c");
+		var hEle = document.createElement("h1");
+		var msg = "H1 " + cDiv.childElementCount;
+		var tNode = document.createTextNode(msg);
+		hEle.appendChild(tNode);
+		
+		cDiv.appendChild(hEle); */
+		var cDiv = document.getElementById("c");
+		var html = "<h1>H1" + cDiv.childElementCount + "</h1>";
+		cDiv.innerHTML += html;
+	}
+	
+	/* 아이디가 c인 div 엘리먼트의 내용을 보여준다. */
+	function view() {
+		var cDiv = document.getElementById("c");
+		//자식 엘리먼트 수
+		var count = cDiv.childElementCount;
+		var msg = "";
+		
+		for(var i = 0; i < count; i++) {
+			// cDiv -> <div id="c"><div>
+			// cDiv.children -> 모든 자식 엘리먼트
+			// cDiv.children[i] -> i번째 자식 엘리먼트
+			// i번째 자식 엘리먼트의 텍스트 가져오기
+			msg += cDiv.children[i].innerHTML + "\n";
+		}
+		alert(msg);
+	}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<p>
+		<button onclick="add();">추가</button>
+		<button onclick="view();">정보보기</button>
+	</p>
+	<div id="a">
+		A div
+	</div>
+	<div id="b">
+		B div
+		<div id="c"></div>
+	</div>
+</body>
+</html>

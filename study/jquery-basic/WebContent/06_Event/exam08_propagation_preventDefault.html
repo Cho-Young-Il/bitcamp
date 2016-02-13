@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+	div {
+	    margin: 10px; padding: 5px;
+	    border: 3px solid black;
+	    height: 200px;
+	}
+	
+	a {
+	    margin: 10px; padding: 5px;
+	    border: 3px solid black;
+	    display: inline-block;
+	    width: 500px;
+	    height: 100px;
+	}
+</style>
+<script type="text/javascript" src="../jquery-2.2.0.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("div").click(function(event) {
+			alert("div");
+		});
+		$("a").click(function(event) {
+			alert("a");
+			//div 이벤트 전파 중지
+			//event.stopPropagation();
+			//기본 이벤트 중지하기
+			//event.preventDefault();
+			
+			//이벤트 전파 + 기본이벤트 중지
+			return false;
+		});
+	})
+</script>
+</head>
+<body>
+    <div>
+        <a href="http://www.mlec.co.kr">mLec 이동하기</a>
+    </div>
+</body>
+</html>

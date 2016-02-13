@@ -1,0 +1,45 @@
+<!-- 
+	$.getJSON( ... );
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../jquery-2.2.0.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("button").click(function() {
+			$.getJSON(
+				"data/resJson.jsp",
+				function(data) {
+					$("#resultDiv").html(
+						"name : " + data.name + "<br />"+
+						"age : " + data.age + "<br />"+
+						"addr : " + data.addr + "<br />"
+					);
+				}
+			);
+			
+			/* $.ajax({
+				url : "data/resJson.jsp",
+				type: "GET",
+				dataType:"json"
+			})							
+			.done(function(data,status,jqXHR){
+				console.log(data);
+				$("#resultDiv").html(
+						"name : " + data.name + "<br />"+
+						"age : " + data.age + "<br />"+
+						"addr : " + data.addr + "<br />");
+				//json형태가 되면서 자동 객체가 만들어지고 data.name 으로 key값에 대한 value값을 가져올수있다.
+			}) */  
+		});
+	});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<button>ajax 호출</button>
+	<div id="resultDiv"></div>
+</body>
+</html>

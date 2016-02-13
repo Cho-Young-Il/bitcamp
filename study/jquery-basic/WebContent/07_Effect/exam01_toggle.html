@@ -1,0 +1,59 @@
+<!-- 
+	toggle
+	fadeToggle
+	slideToggle
+	
+	fadeOut
+	fadeIn
+	slideUp
+	slideDown
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+button {
+	margin: 5px;
+	font-size: 20px;
+	height: 50px;
+	background: tomato;
+	color: white;
+	border: 5px solid black;
+}
+
+</style>
+<script type="text/javascript" src="../jquery-2.2.0.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("button").click(function() {
+			//$("#effDiv1").toggle();
+			//$("#effDiv1").toggle(1000);
+			  
+			$("#effDiv1").slideToggle("slow", function() {
+				alert("콜백함수 호출");
+			});
+			 
+			//$("#effDiv1").fadeToggle("slow");
+			/* 
+			$("#effDiv2").fadeIn("slow");
+			$("#effDiv1").fadeOut("slow");
+			 */
+			/* $("#effDiv1").slideUp("slow");
+			$("#effDiv2").slideDown("slow"); */
+		});
+	})
+</script>
+</head>
+<body>
+    <button>이벤트 효과</button>
+    <div id="effDiv1">
+        <h1>애니메이션 효과</h1>
+        <p>jQuery는 애니메이션 효과를 쉽게 적용할 수 있다.</p>
+    </div>
+    <div id="effDiv2" style="display: none;">
+        <h1>숨겨져 있는 영역</h1>
+        <p>jQuery는 애니메이션 효과를 쉽게 적용할 수 있다.</p>
+    </div>
+</body>
+</html>

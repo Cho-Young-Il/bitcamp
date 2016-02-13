@@ -1,0 +1,50 @@
+.container {
+	width: 90%; margin: 0 auto; 
+	background: #ff8040;	
+}
+
+a{ text-decoration: none; }
+
+.mainLnb {
+	width: 960px; margin: 0 auto; list-style: none;
+}
+
+.mainLnb > li {
+	width: 120px; height: 30px; margin: 2px; background: #d9c9d9;
+	float: left; line-height: 30px;
+}
+
+.mainLnb > li > a {
+	display: block; font-size: 13px; font-weight: bold;
+	text-align: center;
+	transition: 0.5S;
+}
+
+.mainLnb > li > a:hover {
+	background: #489df2; color: #fff; 
+}
+
+.mainLnb > li > ul {
+	list-style: none;
+	visibility: hidden;
+}
+
+.mainLnb > li:hover > ul {
+	visibility: visible; margin-left: -40px;
+}
+.mainLnb > li > ul > li {
+	width: 120px; height: 30px; background: #d9c9d9;
+	line-height: 30px;
+	font-size: 12px; font-size: bole;
+	list-style: none;
+	text-indent: 20px;
+}
+
+.mainLnb > li > ul > li > a {
+	display: block;
+}
+
+.mainLnb > li > ul > li > a:hover {
+	background: #444;
+	color: white;
+}

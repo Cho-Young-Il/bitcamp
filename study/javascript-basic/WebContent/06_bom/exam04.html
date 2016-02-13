@@ -1,0 +1,31 @@
+<!-- 
+	Navigator
+	
+	userAgent : 브라우져의 전체적인 정보
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	var agent = navigator.userAgent;
+	console.log(agent);
+	
+	var msg = "";
+	if(agent.indexOf("iPhone") != -1) {
+		msg = "iPhone";
+	} else if(agent.indexOf("iPad") != -1) {
+		msg = "iPad";
+	} else if(agent.indexOf("Android") != -1) {
+		msg = "Android";
+	} else if(agent.indexOf("Chrome") != -1) {
+		msg = "Chrome";
+	}
+	alert("당신은 " + msg + "통해서 접근했습니다.");
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	div { 
+		width: 400px; height: 300px; 
+		font-size: 26px; border: 5px solid tomato;
+		margin-top: 40px;
+	}
+	
+</style>
+<script type="text/javascript">
+	function show(kind) {
+		var movieDiv = document.getElementById("movie");
+		var musicDiv = document.getElementById("music");
+		
+		movieDiv.style.display = "none";
+		musicDiv.style.display = "none";
+		/* if(kind == 'movie') {
+			movieDiv.style.display = "block";
+		} else {
+			musicDiv.style.display = "block";
+		} */
+		eval(kind + "Div.style.display = 'block'");
+	}
+</script>
+</head>
+<body>
+	<a href="#" onclick="show('movie')">영화</a>
+	<a href="#" onclick="show('music')">음악</a>
+	
+	<div id="movie">
+		<h1>대호</h1>
+		<p>
+			민족의 마지막...
+		</p>
+	</div>
+	<div id="music" style="display: none;">
+		<h1>수지</h1>
+		<p>음악 제목 : ...</p>
+	</div>
+</body>
+</html>

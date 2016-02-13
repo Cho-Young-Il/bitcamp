@@ -1,0 +1,38 @@
+<!--  z 관련(3d) 속성 적용이 안됨... ?? -->
+<html>
+<head>
+<title> rotate (회전) </title>
+<meta charset="utf-8" />
+<style>
+    div {
+        background-color: yellow;
+        width: 300px;
+        height: 250px;
+        border: 2px solid blue;
+        float: left;
+        margin: 50px;
+    }
+    
+    img {
+        width: 300px; height: 250px;
+    }
+    /*
+    skew(비틀기)
+    1. skew(x각도, y각도) : y각도를 주지 않으면 0으로 설정됨
+    2. skew(x각도))
+    3. skew(y각도))
+    */
+    
+    #x > img { transform: skewX(30deg);}
+    #y > img { transform: skewY(30deg);}
+    #all > img { transform: skew(30deg, 30deg);}
+</style>
+</head>
+<body>
+    <p>skew (비틀기)</p>
+    <div id="x"><img src="pic1.jpg" /></div>
+    <div id="y"><img src="pic1.jpg" /></div>
+    <div id="all"><img src="pic1.jpg" /></div>
+</body>
+</html>
+

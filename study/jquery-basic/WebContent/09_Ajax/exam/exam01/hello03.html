@@ -1,0 +1,26 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../../../jquery-2.2.0.js"></script>
+<script>
+	$(function() {
+		$("[type=button]").click(function() {
+			$("#result").load("/jquery-basic/idCheck?id=" + $"[name=id"].val());
+			return false;
+		});
+	});
+</script>
+</head>
+<body>
+	<h1>아이디 중복 체크</h1>
+	
+	<input type="text" name="id" size="15" />
+	<input type="button" value="중복체크" />
+
+	<span id="result"></span>
+</body>
+</html>

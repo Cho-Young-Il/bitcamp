@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript" src="../jquery-2.2.0.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#f").submit(function() {
+			alert($("#name").val());
+			
+			/* 
+			$.ajax({
+				url: "/test.do",
+				data : ...
+			})
+			 */
+			return false;
+		});
+	});
+</script>
+</head>
+<body>
+    <form id="f">
+        ID : <input type="text" id="name" /><br />
+        PASS : <input type="password" id="pass" /><br />
+        <button>로그인</button>
+    </form>
+</body>
+</html>

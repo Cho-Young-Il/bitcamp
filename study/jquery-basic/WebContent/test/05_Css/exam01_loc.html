@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+<style>
+	* { margin: 0px; padding: 0px; }
+	p {
+		width: 100px;
+		height: 100px;
+		margin: 10px;
+		color: white;
+		font-size: 20px;
+		font-weight: bold;
+		background: tomato;
+	}
+	input[type=button] {
+		font-size: 20px;
+		font-weight: bold;
+		width: 150px;
+		height: 40px;
+	}	
+	div {
+		margin: 20px 10px;
+		font-size: 20px;
+		font-weight: bold;
+	}
+</style>
+<script type="text/javascript" src="../jquery-2.2.0.js"></script>
+<script>
+	function offset() {
+		var loc = $("p").offset();
+		$("#result").append(" : ")
+	}
+</script>
+</head>
+<body>
+	<p>Hello</p>
+	<div>결과 출력</div>
+	<div>
+		<input type="button" value="offset()" onclick="offset()" />
+		<input type="button" value="sizeCk()" onclick="sizeCk()" />
+	</div>
+</body>
+</html>

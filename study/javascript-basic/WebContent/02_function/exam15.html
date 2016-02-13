@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	function func(val) {
+		var cnt = val;
+		return function() {
+			return cnt++;
+		};
+	}
+	var f = func(100);
+	console.log(f());
+	console.log(f());
+	
+	var f2 = func(100);
+	console.log(f2());
+	console.log(f2());
+	
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

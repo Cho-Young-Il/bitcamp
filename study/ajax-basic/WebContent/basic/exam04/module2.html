@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="/Ajax-basic/framework.js"></script>
+<script>
+	var httpRequest = null;
+	
+	window.onload = function () {
+		$("#clearBtn").on("click", function () {
+			$("#debug").val("");
+		});	
+		
+		$("#sendBtn1").click(function () {
+			$.ajax({
+				url: "/Ajax-basic/basic/exam04/module",
+				callback: callbackFn,
+				data: {id   : $("#input1").val(), 
+					   name : $("#input2").val(),
+					   email: $("#input3").val()}
+			});
+		});	
+		$("#sendBtn2").click(function () {
+			$.ajax({
+				url: "/Ajax-basic/basic/exam04/module",
+				method: "POST", 
+				callback: callbackFn,
+				data: {id   : $("#input1").val(), 
+					   name : $("#input2").val(),
+					   email: $("#input3").val()}
+			});
+		});	
+	};
+	
+	// readyState 값이 변경될 때 마다 호출됨..
+	function callbackFn() {
+		switch (httpRequest.readyState) {
+		case 1:
+			$("#debug").val( $("#debug").val() + " Loading\n" );
+			break;
+		case 2:
+			$("#debug").val( $("#debug").val() + " Loaded\n" );
+			break;
+		case 3:
+			$("#debug").val( $("#debug").val() + " Interactive\n" );
+			break;
+		case 4:
+			$("#debug").val( $("#debug").val() + " Complete\n" );
+			
+			// 정상적으로 처리됨
+			if (httpRequest.status == 200) {
+				$("#debug").val( $("#debug").val() + " 정상적으로 처리됨\n" );
+				// 서버의 실행된 결과 꺼내기
+				$("#debug").val( $("#debug").val() + " 결과 : " + httpRequest.responseText + "\n" );
+				
+			}
+			// 비정상적으로 처리됨 : 오류발생
+			else {
+				$("#debug").val( $("#debug").val() + " 비정상적으로 처리됨\n" );
+				$("#debug").val( $("#debug").val() + " 오류코드 : " + httpRequest.status + "\n");
+				$("#debug").val( $("#debug").val() + " 오류메세지 : " + httpRequest.statusText+ "\n");
+			}
+			break;
+		}
+	}
+</script>
+</head>
+<body>
+	<h2>readyState 상태값 확인</h2>
+	<hr />
+	<textarea rows="10" cols="80" id="debug"></textarea>
+	<br />
+	<p>
+		id : <input type="text" id="input1" size="20" />
+		name : <input type="text" id="input2" size="20" />
+		email : <input type="text" id="input3" size="20" />
+	</p>
+	
+	<button id="clearBtn">초기화</button>
+	<button id="sendBtn1">GET</button>
+	<button id="sendBtn2">POST</button>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

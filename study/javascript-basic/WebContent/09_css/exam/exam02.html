@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	div {
+		background: #000;
+		color:#fff;
+		padding:20px;
+		font-size: 40px;
+		position: absolute;
+		width: 600px;
+		height: 400px;
+		top: -450px;
+		left: 200px;
+	}
+</style>
+<script type="text/javascript">
+	var curDiv = 1;
+	var x = -450;
+	function nextSlide() {
+		x += 20;
+		var obj = document.getElementById("div" + curDiv);
+		obj.style.top = x + "px";
+		if(x < 100) {
+			setTimeout(nextSlide, 100);
+		} else {
+			curDiv++;
+			x = -450;
+		}
+	}
+</script>
+</head>
+<body>
+	<p>
+		<a href="#1" onclick="nextSlide()">다음 슬라이드</a>
+	</p>
+	<div id="div1">슬라이드 1번</div>
+	<div id="div2">슬라이드 2번</div>
+</body>
+</html>

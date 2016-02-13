@@ -1,0 +1,52 @@
+<!-- 
+	위치 선택자 3
+	형식
+	위치는 맨앞이 1번 부터 시작
+	:nth-child(n) - n번째 위치 해당하는 자식을 선택
+	:nth-child(2n + 0) - n에 0부터 값을 넣어준다 
+					   - 0일경우 nth-child(0)
+					   - 1일경우 nth-child(2)
+					   - 2일경우 nth-child(4)
+	:nth-child(2n + 1) - n에 0부터 값을 넣어준다 
+					   - 0일경우 nth-child(1)
+					   - 1일경우 nth-child(3)
+					   - 2일경우 nth-child(5)
+					   
+	:nth-child(3n + 0) - n에 0부터 값을 넣어준다 
+					   - 0일경우 nth-child(0)
+					   - 1일경우 nth-child(3)
+					   - 2일경우 nth-child(6)
+	:nth-child(3n + 1) - n에 0부터 값을 넣어준다 
+					   - 0일경우 nth-child(1)
+					   - 1일경우 nth-child(4)
+					   - 2일경우 nth-child(7)
+
+
+ -->
+<html>
+<head>
+<meta charset="utf-8" />
+<title> 속성 선택 스타일 </title>
+<style type="text/css">
+/*
+ 	h1:nth-child(2n + 1){background: gray;}
+	h1:nth-child(2n + 0){background: blue;}
+	*/
+	
+ 	h1:nth-child(3n + 0){background: gray;}
+	h1:nth-child(3n + 1){background: blue;}
+	h1:nth-child(3n + 2){background: skyblue;}
+	
+	h1:nth-child(4){background: olive;}
+	
+</style>                        
+</head>
+<body>
+    <h1>h1</h1>
+    <h1>h2</h1>
+    <h1>h3</h1>
+    <h1>h4</h1>
+    <h1>h5</h1>
+    <h1>h6</h1>
+</body>
+</html>

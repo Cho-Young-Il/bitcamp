@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script type="text/javascript">
+	function test() {
+		$("div").append($("[name=co]").val() + "<br/>");
+		$("div").append($("[name=da]").val() + "<br/>");
+		$("div").append($("[name=email]").val() + "<br/>");
+		return false;
+	}
+</script>
+</head>
+<body>
+	<div>결과출력</div>
+	<form onsubmit="return test();">
+		<!-- 파라미터 : co=#00ff00 -->
+		color : <input type="color" name="co" value="#00ff00"/>
+		<br/>
+		<br/>
+		<!-- 
+			min, max를 활용해서 날짜 선택하는 폭을 결정
+		 -->
+		date : <input type="date" name="da" value="2016-02-05"
+					min="2016-02-05" max="2016-12-31"/>
+		<br/>
+		<!-- 
+			email 유형의 값인지 자동 체크함(submit시)
+			required : 필수 항목 지정
+			title : 에러 메세지 지정
+		 -->
+		<br/>
+		email : <input type="email" name="email" required="required" 
+					title="이메일은 필수 항목입니다."/>
+		<br/>
+		<br/>
+		month : <input type="month" name="month"/>
+		<br/>
+		<br/>
+		week : <input type="week" name="week"/>
+		<br/>
+		<br/>
+		number : <input type="number" name="number"
+					min="0" max="100" step="10" />
+		<br/>
+		<br/>
+		range : <input type="range" name="range"
+					min="0" max="100" step="10" value="0" />
+		<br/>
+		<br/>
+		pattern : <input type="password" name="pass"
+					pattern=".{6,}" title="6자이상 가능합니다."/>
+		<input type="submit" value="검사"/>
+	</form>
+</body>
+</html>

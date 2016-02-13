@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mlec.member.dao.MemberMapper">
+    <!-- 
+    	select 절 : 결과가 하나인 것 연습
+    	#{id} : 자바에서 xml 호출시 넘겨주는 값
+    	id : xml에서 각각의 statement를 구분하는 구분자
+    	parameterType : java에서 xml로 넘겨주는 값의 타입
+    	resultType : sql의 실행결과를 어떤 클래스 형태로 넘길지 설정
+     -->
+     <!-- <select id="getMemberInfo1" parameterType="string" resultType="member">
+         select id, name, addr, email
+           from mybatis_member
+          where id = #{id}
+     </select> -->
+     
+     <!-- 
+     	VO를 파라미터 타입을 넘기는 경우는
+     	파라미터가 여러개인 경우 사용함
+     	
+     	"spring", "busan", "abc@yahoo.co.kr"
+     	MemberVO param = new MemberVO();
+     	param.setName("spring");
+     	param.setEmail("abc@yahoo.co.kr");
+     	
+     	MemberVO member = sqlMapper.selectOne(
+     		"kr.co.mlec.member.dao.MemberMapper.getMemberInfo2",
+     		param
+     	);
+      -->
+     <!-- <select id="getMemberInfo2" parameterType="member" resultType="member">
+         select id, name, addr, email
+           from mybatis_member
+          where name = #{name} and email = #{email}
+     </select> -->
+     
+     <!-- <select id="getMemberInfo2" parameterType="member" resultType="string">
+         select id
+           from mybatis_member
+          where name = #{name} and email = #{email}
+     </select> -->
+     
+     <!-- <select id="getMemberInfo4" resultType="int">
+         select count(*)
+           from mybatis_member
+     </select> -->
+     
+     <!-- 
+     	여러개의 결과가 반환되는 경우
+     	자바에서 어떤 메서드를 호출했냐에 따라 달라진다.
+      -->
+     <!-- <select id="getMemberList1" resultType="member">
+         select id, name, email, addr, join_date as joinDate
+           from mybatis_member
+     </select> -->
+     
+     <!-- 
+     	resultMap="memberMap"
+     	resultMap 태그의 아이디가 memberMap 인것을 참조한다.
+     	
+     	resultMap의 type 속성에는 기존 select절의 resultType의 값을 설정한다.
+     	
+     	column은 맵을 호출한 select절의 컬럼명을 의미한다.
+     	(대소문자 무관)
+     	
+     	propertysms 맵의 타입ㅇ 있는 속성이름을 명시한다.
+      -->
+      
+      <!-- <resultMap type="member" id="memberMap">
+          <result column="id" property="id"/>
+          <result column="name" property="name"/>
+          <result column="email" property="email"/>
+          <result column="addr" property="addr"/>
+          <result column="join_date" property="joinDate"/>
+      </resultMap>
+      
+     <select id="getMemberList2" resultMap="memberMap">
+         select id, name, email, addr, join_date
+           from mybatis_member
+     </select> -->
+     
+     <insert id="insertMember" parameterType="member">
+         insert into mybatis_member(id, name, addr, email)
+         values(#{id}, #{name}, #{addr}, #{email})
+     </insert>
+     
+     <update id="updateMember" parameterType="member">
+         update mybatis_member
+            set addr = #{addr}
+          where id = #{id}
+     </update>
+     
+     
+     <delete id="deleteMember" parameterType="string">
+         delete mybatis_member
+          where id = #{id}
+     </delete>
+     
+     <select id="selectForEach" resultType="member">
+         select id, name, addr, email
+           from mybatis_member
+           <!-- 
+           		collection : 반복을 돌릴 대상 객체명
+           		item : 반복을 돌때마다 값을 임시로 저장하는 변수
+           		open : 반복을 시작할 때 할 작업을 추가하는 부분
+           		close : 반복이 종료될 때 할 작업을 추가하는 부분
+           		separator : 반복 중간에 추가하는 부분
+           		
+           		where addr in('seoul', 'busan')
+            -->
+          where addr in <foreach item="addr" open="(" 
+          						close=")" separator="," 
+          						collection="addrs">
+          					#{addr}
+          				</foreach>
+     </select>
+     
+     <select id="selectDynamic1" parameterType="member" resultType="member">
+         select id, name, email, addr
+           from mybatis_member
+          <if test="id != null">
+          where id = #{id}
+          </if>
+     </select>
+     
+     <select id="selectDynamic2" parameterType="search" resultType="member">
+         select id, name, email, addr
+           from mybatis_member
+          <choose>
+	          <when test="searchType  == 'id'">
+	          where id = #{searchWord}
+	          </when>
+	          <when test="searchType == 'addr'">
+	          where addr = #{searchWord}
+	          </when>
+          </choose>
+     </select>
+     
+     <select id="selectLike" parameterType="string" resultType="member">
+         select id, name, email, addr
+           from mybatis_member
+          where addr like '%' || #{addr} || '%'
+     </select>
+     
+     <!-- 중복되는 쿼리가 있을 경우 -->
+     <sql id="selectIncludeCommon">
+         from mybatis_member
+          where id = #{id} and name = #{name} and addr like '%' || #{addr} || '%'
+     </sql>
+     
+     <select id="selectInclude" parameterType="member" resultType="member">
+         select id, name, email, addr
+         <include refid="selectIncludeCommon"/>
+     </select>
+     
+     <select id="selectIncludeCount" parameterType="member" resultType="int">
+         select count(*)
+         <include refid="selectIncludeCommon"/>
+     </select>
+     
+</mapper>

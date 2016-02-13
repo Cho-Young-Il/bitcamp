@@ -1,0 +1,52 @@
+<!-- 
+	:disabled
+	:checked   -> checkbox, select, radio
+	:selected  -> select
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../jquery-2.2.0.js"></script>
+<script>
+	$(document).ready(function() {
+		$("button").click(function() {
+			/* alert(":disabled 항목 : " + $(":disabled").attr("name")); */
+			
+			//배열로 넘어오기 때문에...
+			/* $(":checked").each(function() {
+				alert($(this).val());
+			}); */
+			
+			//selectbox는 나오지 않게 하기
+			/* $("input:checked").each(function() {
+				alert($(this).val());
+			}); */
+			
+			alert($(":selected").val());
+		});
+	});
+</script>
+</head>
+<body>
+	<input type="text" name="name" value="name" /><br />
+	<input type="text" name="id" disabled="disabled" value="id" /><br />
+	
+	<input type="checkbox" name="gender" value="male" />남
+	<input type="checkbox" name="gender" value="female" checked="checked" />여
+	
+	<input type="checkbox" name="hobby" value="movie" />영화
+	<input type="checkbox" name="hobby" value="book" />책
+	<input type="checkbox" name="hobby" value="music" checked="checked" />음악
+	
+	<select name="selBox">
+		<option value="1번">1번</option>
+		<option value="2번" selected="selected">2번</option>
+		<option value="3번">3번</option>
+	</select>
+	
+	<button>확인</button>	
+</body>
+</html>

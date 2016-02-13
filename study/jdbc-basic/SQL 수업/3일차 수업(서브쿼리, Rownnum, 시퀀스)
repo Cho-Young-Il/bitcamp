@@ -1,0 +1,218 @@
+--서브쿼리
+--쿼리내에 들어갈 값을 모를때 값을 구하기 위해서 쿼리안에 쿼리를 실행하는 것
+
+-- king 사원과 같은 부서에 근무하는 사원들의 정보를 출력하시오
+
+조건 : king 사원과 같은 부서
+
+SELECT *
+  FROM EMPLOYEES
+ WHERE DEPARTMENT_ID = 킹의 부서번호;
+ 
+--킹워 부서번호를 출력
+SELECT DEPARTMENT_ID
+  FROM EMPLOYEES
+ WHERE LAST_NAME = 'King';
+ 
+--합침
+SELECT *
+  FROM EMPLOYEES
+ WHERE DEPARTMENT_ID = (SELECT DEPARTMENT_ID
+                          FROM EMPLOYEES
+                         WHERE LAST_NAME = 'King' AND FIRST_NAME = 'Steven');
+                         
+-- 'Chen'과 같은 job_id를 가지는 사원의 정보를 출력
+SELECT *
+  FROM EMPLOYEES      
+ WHERE JOB_ID = (SELECT JOB_ID
+ 				   FROM EMPLOYEES
+ 				  WHERE LAST_NAME = 'Chen'); 
+ 				  
+--30번 부서의 최소 급여와 같은 급여를 받는 사원의 정보를 출력
+-조건 : 30번 부서의 최소 급여와 같은 급여
+SELECT *
+  FROM EMPLOYEES
+ WHERE SALARY = 30;
+ 
+SELECT *
+  FROM EMPLOYEES
+ WHERE SALARY = (SELECT MIN(SALARY)
+                   FROM EMPLOYEES
+                  WHERE DEPARTMENT_ID = 30);
+                  
+-사원 이름, 부서번호, 부서명
+SELECT E.LAST_NAME, E.DEPARTMENT_ID, D.DEPARTMENT_NAME
+  FROM EMPLOYYES E, DEPARTMENTS D
+ WHERE E.DEPARTMENT_ID = D.DEPARTMENT_ID
+ 
+--SELECT 절에 쓰는 서브쿼리
+SELECT LAST_NAME, DEPARTMENT_ID,
+	   (SELECT DEPARTMENT_NAME
+	      FROM DEPARTMENTS
+	     WHERE DEPARTMENT_ID = E.DEPARTMENT_ID) AS DEPT_NAME
+  FROM EMPLOYEES E
+  
+-MULTY ROW SUBQUERY : 서브쿼리 실행 결과가 여러개 넘어오는 것
+
+--2개의 실행결과가 반환
+SELECT DEPARTMENT_ID
+  FROM EMPLOYEES
+ WHERE LAST_NAME = 'KING';
+ 
+SELECT *
+  FROM EMPLOYEES
+ WHERE DEPARTMENT_ID IN (10, 20);
+ 
+--IN연산자 사용
+SELECT *
+  FROM EMPLOYEES
+ WHERE DEPARTMENT_ID IN (SELECT DEPARTMENT_ID
+ 						   FROM EMPLOYEES
+ 						  WHERE LAST_NAME = 'KING');
+ 
+-- ANY 연산자
+--11000, 3100, 2900, 2800, 2600, 2500
+
+SELECT LAST_NAME, SALARY
+  FROM EMPLOYEES
+ WHERE SALARY > ANY (11000, 3100, 2900, 2800, 2600, 2500);
+ 					  
+SELECT LAST_NAME, SALARY
+  FROM EMPLOYEES
+ WHERE SALARY > ANY (SELECT SALARY
+ 					   FROM EMPLOYEES
+ 					  WHERE DEPARTMENT_ID = 30);
+ 					  
+->변경가능
+SELECT LAST_NAME, SALARY
+  FROM EMPLOYEES
+ WHERE SALARY > (SELECT MIN(SALARY)
+ 				   FROM EMPLOYEES
+ 				  WHERE DEPARTMENT_ID = 30);
+
+--ALL 연산자
+SELECT LAST_NAME, SALARY
+  FROM EMPLOYEES
+ WHERE SALARY > ALL (SELECT SALARY
+	 				   FROM EMPLOYEES
+	 				  WHERE DEPARTMENT_ID = 30);
+ 				  
+->변경
+SELECT LAST_NAME, SALARY
+  FROM EMPLOYEES
+ WHERE SALARY >  (SELECT MAX(SALARY)
+ 				   FROM EMPLOYEES
+ 				  WHERE DEPARTMENT_ID = 30);
+ 				  
+-- MULTI COLUMN SUBQUERY : 결과 컬럼이 여러개 반환
+
+-- 각 부서에서 최소급여를 받는 사원의 정보를 출력
+
+SELECT MIN(SALARY)
+  FROM EMPLOYEES
+ GROUP BY DEPARTMENT_ID
+
+--직원의 급여가 자신이 속한 부서의 최소급여가 아닌 경우도 출력되는 버그 발생
+--이유 : 급여가 다른 부서의 최소 급여와 같다면 출력됨
+SELECT LAST_NAME, SALARY, DEPARTMENT_ID
+  FROM EMPLOYEES
+ WHERE SALARY = (SELECT MIN(SALARY)
+   				   FROM EMPLOYEES
+   				  GROUP BY DEPARTMENT_ID);
+--해결책 : 최소급여와 부서번호를 같이 비교한다.
+SELECT LAST_NAME, SALARY, DEPARTMENT_ID
+  FROM EMPLOYEES 
+ WHERE (DEPARTMENT_ID, SALARY) IN (SELECT DEPARTMENT_ID, MIN(SALARY)
+				   				     FROM EMPLOYEES
+				   				    GROUP BY DEPARTMENT_ID);
+
+
+
+
+
+
+--ROWNUM
+--사원 정보를 10개만 출력하시오
+SELECT ROWNUM, LAST_NAME, SALARY
+  FROM EMPLOYYES;
+
+SELECT ROWNUM, LAST_NAME, SALARY
+  FROM EMPLOYYES
+ WHERE ROWNUM < 11;
+ 
+ 
+--TOP SUBQUERY
+--급여를 가장 많이 받는 상위 5명을 출력하시오
+--잘못된 아래쿼리(정렬이 먼저 되어야함) 
+--쿼리의 실행순서상 조건을 먼저 실행하고 정렬을 마지막에 하기때문에
+--앞에서 5개의 데이터를 추출한 다음 추출된 데이터를 정렬한 결과를 보여준다.
+SELECT LAST_NAME, SALARY
+  FROM EMPLOYEES
+ WHERE ROWNUM < 6
+ ORDER BY SALARY DESC
+--해결책
+--5명을 가져오기 전에 급여순으로 테이블을 정렬시켜야한다.
+1.급여순으로 정렬
+SELECT LAST_NAME, SALARY
+  FROM EMPLOYEES
+ ORDER BY SALARY DESC;
+ 
+2.위의 정렬된 데이터에서 5개만 화면에 출력
+-- FROM 절에 사용하는 서브쿼리 : inline view
+SELECT LAST_NAME, SALARY
+  FROM (SELECT LAST_NAME, SALARY
+		  FROM EMPLOYEES
+		 ORDER BY SALARY DESC);
+ WHERE ROWNUM < 6;
+ 
+ ------------------------------------------------------------------------------------------
+--페이징 쿼리 이해
+--ROWNUM의 특성상 부분 범위 데이터 추출이 안됨
+SELECT LAST_NAME, SALARY
+  FROM (SELECT LAST_NAME, SALARY
+		  FROM EMPLOYEES
+		 ORDER BY SALARY DESC);
+ WHERE ROWNUM BETWEEN 6 AND 10;
+--해결하기 : ROWNUM을 할당한 인라인뷰를 활용
+SELECT ROWNUM RNUM, LAST_NAME, SALARY
+  FROM (SELECT LAST_NAME, SALARY
+		  FROM EMPLOYEES
+		 ORDER BY SALARY DESC);
+		 
+--부분 범위 적용
+SELECT RNUM, LAST_NAME, SALARY
+  FROM (SELECT ROWNUM RNUM, LAST_NAME, SALARY
+		  FROM (SELECT LAST_NAME, SALARY
+				  FROM EMPLOYEES
+				 ORDER BY SALARY DESC)
+		);
+ WHERE RNUM BETWEEN 6 AND 10;
+ ------------------------------------------------------------------------------------------
+
+ 
+ 
+
+ 
+ 
+ 
+
+--시퀀스 : 자동 번호 발번기(고유한 숫자)
+생성 방법
+create table 테이블명
+create sequence 시퀀스명
+
+이름 규칙 : 테이블(t77), 시퀀스명( seq_테이블명(t77제외)_컬럼명 )
+
+CREATE SEQUENCE SEQ_BOARD_NO;
+
+--시퀀스 삭제
+drop sequence seq_test_no;
+
+--번호 발번 (버튼 누르기)
+--시퀀스명.nextVal from dual;
+
+INSERT INTO T77_BOARD(
+	NO, WRITER, TITLE, CONTENT
+) VALUES (
+	SEQ_TEST_NO.NEXTVAL, 'TESTER', '시퀀스', '시퀀스입력
+);

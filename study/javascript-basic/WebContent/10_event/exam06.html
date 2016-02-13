@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	window.onload = function() {
+		var btn = document.getElementById("btn");
+		btn.addEventListener("click", function() {
+			var view = document.getElementById("view");
+			view.innerHTML = parseInt(view.innerHTML) + 1;
+		});
+		
+		//btn의 클릭이벤트를 자동으로 발생시킴
+		function autoClick() {
+			//1초마다 클릭하도록 함..
+			setInterval(function() {
+				btn.click();				
+			}, 1000);
+		}
+		
+		autoClick();
+	}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<button id="btn">클릭</button>
+	<h1 id="view">0</h1>
+</body>
+</html>

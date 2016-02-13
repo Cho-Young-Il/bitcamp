@@ -1,0 +1,52 @@
+<!-- 
+    넘치는 텍스트 표기하기
+      -  text-overflow : 속성
+        : ellipsis(말줄임표 ... 표시)
+        
+   말줄임표와 함께 사용되는 속성
+      - white-space: nowrap; // 줄넘김 하지 않고 한줄로 출력   
+      - overflow:hidden;     // width 이상되는 데이터는 숨기기      
+ -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>한줄텍스트</title>
+<style>
+p {
+    font-size: 150%;
+    border:1px solid black;
+    width:400px;
+    padding:10px;           /* width 이상 되는 내용은 숨기기 */
+    white-space: nowrap;	/* 줄넘김하지마세요 */
+    overflow:hidden;		/* 넓이 이상 넘어가는것은 숨기세요 */
+    text-overflow : ellipsis; /* 말줄임표표시 */
+}
+
+table {
+    width: 400px;
+    table-layout: fixed;    /* 테이블의 사이즈를 고정 */
+}
+
+table, td {
+    padding: 10px;
+    border: 1px solid black;    
+    border-collapse: collapse;
+    white-space: nowrap;	/* 줄넘김하지마세요 */
+    overflow:auto;		/* 넓이 이상 넘어가는것은 숨기세요 */
+    text-overflow : ellipsis; /* 말줄임표표시 */
+}
+</style>
+</head>
+
+<body>
+    <h2>최근 시장성 및 전망</h2>    
+    <p class="over">아들이 돌아왔다. 그것도 웬 여자애를 하나 데리고서.</p>
+
+    <table>
+        <tr>
+            <td>아들이 돌아왔다. 그것도 웬 여자애를 하나 데리고서. 에밀은 지난 몇 달 동안 아들이 무사히 돌아오길 간절히 기도했다.</td>
+        </tr>
+    </table>
+</body>
+</html>

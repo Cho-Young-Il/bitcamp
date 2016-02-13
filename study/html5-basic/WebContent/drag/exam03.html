@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	div {
+		width: 100%;
+		height: 300px;
+		border: 5px solid tomato;
+	}
+</style>
+</head>
+<body>
+	<h1>이미지를 드래그 하세요</h1>
+	<img src="pic1.jpg" width="300" height="180" 
+		draggable="true" 
+		ondragstart="console.log('드레그 시작됨')"
+		ondrag="console.log('드래그중..')"
+		ondragend="console.log('드래그끝,,')"/><br/>
+		
+	<div id="dropZone" 
+		ondragenter="console.log('드랍존에 들어옴')"
+		ondragover="console.log('드랍존에 있는 상태')"
+		ondragleave="console.log('드랍존에서 벗어남')"></div>
+</body>
+</html>

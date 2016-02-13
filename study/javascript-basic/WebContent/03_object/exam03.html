@@ -1,0 +1,39 @@
+<!-- 
+	객체에 프로퍼티를 설정하고 추출하는 방법
+	
+	객체.키 = 값;
+	객체["키"] = 값;
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	var obj1 = new Object();
+	
+	obj1.id = "hong";
+	obj1.name = "홍길동";
+	obj1.age = 33;
+	
+	console.log("id", obj1.id);
+	console.log("name", obj1.name);
+	console.log("age", obj1.age);
+	
+	var obj2 = {
+			"id" : "hong",
+			name: "홍길동",
+			age : 33,
+			addr: {
+				postNo : "123-123";
+				baseaddr : "서울특별시";
+				detailaddr : "동아아파트";
+			}
+	}
+	console.log(obj2.addr.postNo);
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

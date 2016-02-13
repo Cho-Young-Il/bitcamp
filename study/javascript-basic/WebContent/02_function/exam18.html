@@ -1,0 +1,33 @@
+<!-- 
+	eval(문자열로된 자바스크립트 코드)
+	
+	java
+	--------------------------
+	String s = "int i = 100";
+	System.out.println(s);
+	
+	System.out.println(i);
+	--------------------------
+	
+	
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	var code = "var i = 100;";
+		code += "var j = 200;";
+		code += "alert(i+j);";
+		code += "var sum = (i+j);";
+	//코드 안의 문자열의 내용을 실행
+	eval(code);
+	
+	alert(sum);
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

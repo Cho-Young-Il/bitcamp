@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="videoDiv">
+		<video id="myVideo" width="720" height="480">
+			<source src="Naruto.mp4">
+		</video>
+	</div>
+	<p>
+		<button id="play" onclick="playVideo()">시작</button>
+		<button onclick="backVideo()">뒤로</button>
+		<button onclick="forVideo()">앞으로</button>
+		<button onclick="restartVideo()">다시시작</button>
+		<input id="mute" type="checkbox"/>음소거
+		<input type="range" id="range" min="0" max="100" step="10" value="50"/>
+	</p>
+	<script type="text/javascript">
+		var video = document.querySelector("#myVideo");
+		function playVideo() {
+			if(video.paused){
+				//오디오 플레이 시키기
+				video.play();
+				document.querySelector("#play").innerText = "일시중지";
+			}else{
+				video.pause();
+				document.querySelector("#play").innerText = "시작";
+				
+			}
+		};
+		function backVideo() {
+			video.currentTime -= 10;
+		};
+		function forVideo() {
+			video.currentTime += 10;
+		};
+		function restartVideo() {
+			video.currentTime = 0;
+		};
+		
+		var mute = 1;
+		document.getElementById("mute").onchange = function() {
+			if(mute == 1) {
+				video.muted = true;			
+				mute = 0;
+			} else {
+				video.muted = false;
+				mute = 1;
+			}
+		}
+		
+		document.getElementById("range").onchange = function() {
+			var vol = document.getElementById("range").value;
+			video.volume = vol/100;
+		}
+		
+	</script>
+</body>
+</html>

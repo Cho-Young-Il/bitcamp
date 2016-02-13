@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+	* { margin:0px auto; padding:0px; }
+      
+	button {
+		margin: 5px;
+		font-size: 20px;
+		height: 50px;
+	}
+
+	.animation_canvas  {
+		overflow:hidden;
+		position:relative;           
+		width:600px; height:400px;
+	}
+	
+	.show_img {
+		width: 600px;
+		height: 100px;
+	}
+	
+	.show_img > img {
+		width: 120px; height: 80px;
+		margin-top: 3px;
+	}
+	
+	.selec_img {
+		width: 120px; height: 80px;
+		margin-top: 3px;
+	}
+	
+	#top {
+		margin:10px auto; padding:10px;
+		padding: 20px;
+		width: 650px;
+	}
+	
+	span {
+		margin: 10px; padding: 10px;
+	}
+	
+	a {
+		text-decoration: none;
+		color: black;
+	}
+	
+	font {
+		font-size: 20px;
+		color: gray;
+	}
+	
+	.slider_panel { width:3000px; position:relative; }
+	.slider_image { float:left; width:600px; height:400px; }
+</style>
+<title>Insert title here</title>
+<script type="text/javascript" src="../jquery-2.2.0.js"></script>
+<script type="text/javascript">
+	var index = 0;
+	var timer = null;
+	var time = 0;
+	
+	$(function() {
+		$("#prev").click(function() {
+			if(index == 0) index = 3;
+			else index--;
+			move(index);
+		});
+		$("#next").click(function() {
+			if(index == 3) index = 0;
+			else index++;
+			move(index);
+		});
+		
+		$("#prev2").click(function() {
+			if(index == 0) index = 3;
+			else index--;
+			move(index);
+		});
+		$("#next2").click(function() {
+			if(index == 3) index = 0;
+			else index++;
+			move(index);
+		});
+		
+		$("#nextLast").click(function() {
+			index = 3;
+			move(index);
+		})
+		
+		$("#prevLast").click(function() {
+			index = 0;
+			move(index);
+		})
+
+		$("#startSlide").click(function () {
+			test(1);
+			return false;
+		})
+		
+		$("#stopSlide").click(function() {
+			test(2);
+			return false;
+		})
+		
+		$(".show_img img").on({
+			mousedown : function() {
+				$(".selec_img").css({
+					border : ""
+				})
+			},
+			mouseup : function() {
+				index = $(this).attr("name");
+				index = parseInt(index);
+				move(index);
+				$(this).css({
+					border : "3px solid red"
+				});
+			}
+		})
+		
+		$("#smallSize").click(function() {
+			$(".slider_panel > img:eq(" + index + ")").animate({
+				width : '-=20',
+				height : '-=20',
+			}, "slow");
+			$(".slider_panel > img:eq(" + index + ")").css({
+				margin: "+=20"
+			});
+			return false;
+		});
+		
+		function test(type) {
+			if(type == 1) {
+				if(timer == null) {			
+					timer = setInterval(function() {
+						if(index == 3) index = 0;
+						else index++;
+						move(index);
+					}, $(":selected").val() * 1000)
+				}
+			} else {
+				if(timer != null) {
+					clearInterval(timer);
+					timer = null;
+				}
+			}
+		}
+		function move(loc) {
+			$(".slider_panel").animate({
+				left: -(loc * 600)
+			}, "slow");
+			$("#pageIdx").text(index + 1 + " / 4");
+			$(".show_img > img").css({
+				border : ""
+			});
+			$(".show_img > img[name="+ loc + "]").css({
+				border : "3px solid red"
+			});
+		}
+	});
+	
+</script>
+</head>
+<body>
+    <div id="top">
+    	<span>
+	    	<font>슬라이드 쇼 :</font> 
+	    	<select id="time">
+	    		<option value="1">1초</option>
+	    		<option value="2">2초</option>
+	    		<option value="3">3초</option>
+	    	</select>
+    		<a id="startSlide" href="#1">시작</a>
+    		<a id="stopSlide" href="#1">중지</a>
+    	</span>
+    	<span>
+    		<font>크기 :</font> 
+    		<a id="smallSize" href="#1">축소</a>
+    		<a id="originSize" href="#1">원본크기</a>
+    		<a id="bigSize" href="#1">확대</a>
+    	</span>
+    	<span>
+    		<a id="prevLast" href="#1"> << </a>
+    		<a id="prev" href="#1"> < </a>
+    		<a id="pageIdx" href="#1"> 1 / 4 </a>
+    		<a id="next" href="#1"> > </a>
+    		<a id="nextLast" href="#1"> >> </a>
+    	</span>
+    	<br/>
+    	<br/>
+    	<hr/>
+    </div>
+    <div class="animation_canvas">
+        <div class="slider_panel">
+            <img src="pic1.jpg" class="slider_image"/>
+            <img src="pic2.jpg" class="slider_image"/>
+            <img src="pic3.jpg" class="slider_image"/>
+            <img src="pic4.jpg" class="slider_image"/>
+        </div>
+    </div>
+	<div class="show_img">
+	    <button id="prev2"> < </button>
+	    <img name="0" src="pic1.jpg" style="border : 3px solid red;" class="selec_img"/>
+	    <img name="1" src="pic2.jpg" class="selec_img"/>
+	    <img name="2" src="pic3.jpg" class="selec_img"/>
+	    <img name="3" src="pic4.jpg" class="selec_img"/>
+	    <button id="next2"> > </button>
+	</div>
+</body>
+</html>

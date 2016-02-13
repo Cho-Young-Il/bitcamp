@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	div {
+		background: #000;
+		color:#fff;
+		padding:20px;
+		font-size: 40px;
+		position: absolute;
+		width: 600px;
+		height: 400px;
+		top: -450px;
+		left: 200px;
+	}
+</style>
+<script type="text/javascript">
+	var x = -450;
+	function showSlide() {
+		x += 20;
+		var obj = document.getElementById("div1");
+		obj.style.top = x + "px";
+		if(x < 100) {
+			setTimeout(showSlide, 100);
+		}
+	}
+</script>
+</head>
+<body>
+	<p>
+		<a href="#1" onclick="showSlide()">슬라이드 보기</a>
+	</p>
+	<div id="div1">
+		슬라이드 1번
+	</div>
+</body>
+</html>

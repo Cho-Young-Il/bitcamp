@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	function childCall(num) {
+		var obj = document.getElementById("fromChild");
+		obj.innerHTML = num;
+	}
+	function cal() {
+		window.open("exam02_child.html", "pap1", "width=500, height=500");
+	}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1 id="fromChild"></h1>
+	<button onclick="cal();">
+		계산
+	</button>
+</body>
+</html>

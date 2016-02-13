@@ -1,0 +1,33 @@
+<html>
+<head>
+<title> transition  </title>
+<meta charset="utf-8" />
+<style>
+#outer > div {
+    width: 200px;
+    height: 200px;
+    background-color:red;
+    border-radius:0px;
+    
+    animation-name: myani;
+    animation-duration: 10S;
+}
+
+@keyframes myani {
+	0% {background-color: red; border-radius: 0px;}
+	25% {background-color: orange; border-radius: 100px;}
+	50% {background-color: tomato; border-radius: 0px;}
+	75% {background-color: green; border-radius: 100px;}
+	100% {background-color: blue; border-radius: 0px;}
+}
+
+</style>
+</head>
+
+<body>
+<p> animation 속성 연습</p>
+<div id="outer">
+    <div></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	function chForm() {
+		var name = document.msform.name.value;
+		var id = document.msform.id.value;
+		var pass = document.msform.pass.value;
+		var cpass = document.msform.cpass.value;
+		var chArr = document.msform.exp;
+		var chEmail = document.msform.chEmail;
+		var email = document.msform.email.value;
+		
+		if(name == "") {
+			alert("이름을 입력하세요");
+			document.msform.name.focus();
+			return;
+		}
+		if(id == "") {
+			alert("ID를 입력하세요");
+			document.msform.id.focus();
+			return;
+		}
+		if(id.length < 4 || id.length > 8) {
+			alert("ID는 4자이상 8자 이하이어야 합니다.");
+			document.msform.id.focus();
+			return;
+		}
+		
+		if(pass == "") {
+			alert("바밀번호를 입력하세요");
+			document.msform.pass.focus();
+			return;
+		}
+		
+		if(cpass == "") {
+			alert("바밀번호확인 입력하세요");
+			document.msform.cpass.focus();
+			return;
+		}
+		
+		if(pass != cpass) {
+			alert("비밀번호가 일치하지 않습니다.");
+			document.msform.cpass.focus();
+			return;
+		}
+		if(chArr[1].checked && chArr[2].checked) {
+			alert("경력여부는 하나만 체크하세요")
+			chArr[1].checked = false;
+			chArr[2].checked = false;
+			return;
+		}
+		if(chArr[2].checked) {
+			changeDisabled(false);
+		} else {
+			changeDisabled(true);
+		}
+		if(chEmail.check && email == "") {
+			alert("메일 수신 체크 시 이메일을 입력하세요.");
+			document.msform.email.focus();
+			return;
+		}
+		
+		
+		return alert("정상처리 되었습니다.");
+	}
+	function changeDisabled(status) {
+		//select 박스 사용 여부 변경하기
+		document.msform.select.disabled = status;
+		//select의 option 항목 선택 변경하기
+		document.msform.select.selectedIndex = 0;
+	}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+<form name="msform" style="width: 600px; margin: 0 auto;">
+	<div>
+		<span style="width: 200px; text-align: right">
+			이름
+		</span>
+		<span>
+			<input type="text" name="name"/>
+		</span>
+	</div>
+	<div>
+		<span style="width: 100px; text-align: right">
+			아이디
+		</span>
+		<span>
+			<input type="text" name="id"/>
+		</span>
+	</div>
+	<div>
+		<span style="width: 100px; text-align: right">
+			비밀번호
+		</span>
+		<span>
+			<input type="text" name="pass"/>
+		</span>
+		<span>
+			비밀번호 확인
+		</span>
+		<span>
+			<input type="text" name="cpass"/>
+		</span>
+	</div>
+	<div>
+		<span style="width: 100px; text-align: right">
+			경력여부
+		</span>
+		<span>
+			<input type="checkbox" name="exp" value="no"/>신입
+		</span>
+		<span>
+			<input type="checkbox" name="exp" value="yes"/>경력
+		</span>
+		<span>
+			<select name="select">
+				<option value="">선택</option>
+				<option value="lower3m">3개월미만</option>
+				<option value="upper3m">3개월이상</option>
+				<option value="upper6m">6개월이상</option>
+				<option value="upper1y">1년이상</option>
+				<option value="upper2y">2년이상</option>
+			</select>
+		</span>
+	</div>
+	<div>
+		<span style="width: 100px; text-align: right">
+			이메일
+		</span>
+		<span>
+			<input type="text" name="email" style="width: 200px;"/>
+		</span>
+		<span>
+			<input type="checkbox" name="chEmail"/>
+		</span>
+	</div>
+	<div>
+		<span style="float: right">
+			<input type="button" onclick="chForm();" value="확인">
+		</span>
+	</div>
+</form>
+</body>
+</html>

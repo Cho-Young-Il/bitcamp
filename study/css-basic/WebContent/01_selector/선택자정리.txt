@@ -1,0 +1,29 @@
+* 전체 선택자 *{}
+태그   선택자 p{}
+클래스 선택자 .클래스명{}
+아이디 선택자 #id{}
+
+자식 선택자 > 바로 아래 
+		태그 태그
+
+인접형태 선택자		
+태그 + 태그
+태그 ~ 태그
+
+그룹 선택자
+
+속성 선택자 ^ $ *
+
+가상선택자
+hover, active, focus
+
+상태선택자
+checked
+
+위치 선택자
+:fisrt-child
+:last-child
+:nth-child(even)
+:nth-child(odd)
+:nth-child( n * m * z )
+

@@ -1,0 +1,32 @@
+<!-- 
+	위치 선택자 1
+	: first-child - 부모의 첫번째 자식일 경우 선택
+	: last-child - 부모의 마지막 자식일 경우 선택
+ -->
+<html>
+<head>
+<meta charset="utf-8" />
+<title> 속성 선택 스타일 </title>
+<style type="text/css">
+	h1:FIRST-CHILD {
+		background: orange; color: white;
+	}
+	h1:last-CHILD {
+		background: black; color: white;
+	}
+</style>                        
+</head>
+<body>
+	<!-- <p>주의사항</p>-->
+	<div>
+    <h1>h1</h1>
+    <h1>h2</h1>
+    <h1>h3</h1>
+    <h1>h4</h1>
+    <h1>h5</h1>
+    <h1>h6</h1>
+    </div>
+	<!-- <p>주의사항</p>-->
+	
+</body>
+</html>

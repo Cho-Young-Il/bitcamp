@@ -1,0 +1,42 @@
+<!-- 
+	체크박스 처리
+	체크박스의 체크된 상태 확인
+	checkbox.checked : true(체크), false(해제)
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../jquery-2.2.0.js"></script>
+<script type="text/javascript">
+	/* 
+	 * name이 hobby인 모든 체크박스를 체크 상태로 변경시킨다.
+	 */
+	
+	function allCheck(ckStatus) {
+		$("[name=hobby]").prop("checked", ckStatus);
+	}
+	
+	function show() {
+		var cnt = $("[name=hobby]:checked").length;
+		alert(cnt + "개의 체크박스가 선택되었습니다.");
+	}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<form name="inputForm">
+		당신의 취미는?<br />
+		<input type="checkbox" name="all" onclick="allCheck(true)"/>전체
+		<br />
+		<input type="checkbox" name="hobby" value="movie"/>영화감상
+		<input type="checkbox" name="hobby" value="music"/>음악듣기
+		<input type="checkbox" name="hobby" value="game"/>게임하기
+		<input type="checkbox" name="hobby" value="reading"/>독서
+		<br />
+		<button onclick="allCheck(true); return false;">전체선택</button>
+		<button onclick="allCheck(false); return false;">전체해제</button>
+		<button onclick="show(); return false;">선택정보확인</button>
+	</form>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<style>
+div {
+	width: 300px;
+	height: 200px;
+	float: left;
+	margin: 5px;
+	border: 5px solid orange;
+	font-size: 30px;
+}
+input[type=button] {
+	margin-left: 30px;
+	height: 50px;
+	font-weight: bold;
+}
+
+</style>
+<script type="text/javascript" src="../jquery-2.2.0.js"></script>
+<script>
+	//css("속성명", "값") : style 속성에 추가됨
+	function test(type) {
+		if(type == 1) {
+			$("div").css("background", "tomato");
+		} else if(type == 2) {
+			/* $("div").css("background", "black");
+			$("div").css("color", "white"); */
+			$("div").css({
+				"background": "black",
+				"color": "white"
+			});
+		} else {
+			$("div").removeAttr("style");
+		}
+	}
+</script>
+</head>
+<body>
+	<div>CSS Style 적용</div><br />
+	<input type="button" value="배경색 적용" onclick="test(1)" />
+	<input type="button" value="배경색, 글자색 적용" onclick="test(2)" />
+	<input type="button" value="제거" onclick="test(3)" />
+</body>
+</html>

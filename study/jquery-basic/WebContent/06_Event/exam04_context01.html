@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<style>
+	p {
+		font-size: 20px;
+		font-weight: bold;
+		height: 40px;
+		background: tomato;
+		color: white;
+		text-align: center;
+		line-height: 40px;
+	}
+	div {
+		height: 600px;
+		overflow: auto;
+		background: yellow;
+	}
+</style>
+<script type="text/javascript" src="../jquery-2.2.0.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("p").click(function() {
+			//$("div").text( $(this).text() );
+			$("div").append( $(this).find("span").text() );
+		});
+	});
+</script>
+</head>
+<body>
+    <p>이벤트1 <span>연습1</span></p>
+    <p>이벤트2 <span>연습2</span></p>
+    <div></div>
+</body>
+</html>

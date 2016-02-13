@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    
+    <!--
+    	********************************************************
+    	PRIORITY 
+    	********************************************************
+    	FATAL : 아주 심각한 오류 상태
+    	ERROR : 실행시 오류가 발생한 상태
+    	WARN : 실행시 오류는 아니지만 앞으로 문제가 발생할 것 같은 경우 사용
+    	INFO : 개발시 정보성 메시지
+    	DEBUG : 개발시에 사용하는 메시지 
+     -->
+    
+    <!-- 
+    	********************************************************
+    	PATTERN
+    	********************************************************
+    	%p : debug, info, warn, error, fatal 등의 priority 출력
+    	%m : 로그 메시지 출력
+    	%d : 발생 시간 출력
+    	%n : 줄넘김
+    	%c : 패키지를 포함한 클래스 출력
+     	%C : 클래스명 출력
+    	********************************************************
+     -->
+    
+    <!-- Appenders -->
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] %5p [%c] %m%n" />
+        </layout>   
+    </appender>
+     
+    <!-- Application Loggers  -->
+    <logger name="member" additivity="false">
+        <level value="debug" />
+        <appender-ref ref="console"/>
+    </logger>
+     
+    <!-- Query Loggers -->
+    <logger name="jdbc.sqlonly" additivity="false">  
+        <level value="INFO"/>  
+        <appender-ref ref="console"/> 
+    </logger>
+     
+    <logger name="jdbc.resultsettable" additivity="false">  
+        <level value="INFO"/>  
+        <appender-ref ref="console"/>  
+    </logger>  
+ 
+    <!-- Root Logger -->
+    <root>
+		<priority value="off"/> 
+        <appender-ref ref="console" />
+    </root>
+     
+</log4j:configuration>

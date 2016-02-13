@@ -9,33 +9,52 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/exam/member-detail")
+@WebServlet("/exam/MemberDetail")
 public class Exam01Detail extends HttpServlet {
 	@Override
-	protected void doGet(
-		HttpServletRequest request, HttpServletResponse response)
-		throws ServletException {
-
-		String id = request.getParameter("id");
-
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
+		String id = req.getParameter("id");
+		
 		String result = "";
-
 		try {
 			Exam01DAO dao = new Exam01DAO();
-
+			
 			int cnt = 0;
 			MemberVO member = dao.detail(id);
-			result += member.getId() + ":" +
-					  member.getname() + ":" +
+			result += member.getId() + ":" + 
+			          member.getName() + ":" + 
 					  member.getPass();
-
-		} catch(Exception e) {
+			System.out.println("result : " + result);
+		} catch (Exception e) {
 			throw new ServletException(e);
 		}
-
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
+		
+		res.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = res.getWriter();
 		out.println(result);
 		out.close();
 	}
+	
+	public static void main(String[] args) throws Exception {
+		new Exam01Detail().doGet(null, null);
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

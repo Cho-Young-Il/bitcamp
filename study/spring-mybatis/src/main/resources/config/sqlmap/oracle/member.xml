@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member.dao.MemberDAO">
+
+    <select id="getMemberInfo" parameterType="string" resultType="member">
+        select *
+          from mybatis_member 
+         where id = #{value}
+    </select>
+    
+    <select id="getMemberList" resultType="member">
+        select id,
+               name,
+               email,
+               addr
+          from mybatis_member 
+    </select>
+    
+    <insert id="insertMember" parameterType="member">
+        insert into mybatis_member (
+            id, 
+            name, 
+            addr, 
+            email
+        ) values (
+            #{id}, 
+            #{name}, 
+            #{addr}, 
+            #{email}
+        )
+    </insert>
+    
+    <update id="updateMember" parameterType="member">
+        update mybatis_member
+           set addr = #{addr}
+         where id1   = #{id}
+    </update>
+</mapper>

@@ -1,0 +1,29 @@
+<!-- 
+	익명함수는 호이스팅 대상이 아님
+	익명함수는 선언된 다음에 호출이 와야함
+	
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	sum(100, 200);
+	
+	
+	var sum = function(num1, num2) {
+		console.log(num1, num2)
+	}
+	
+	
+	
+	//컴파일시
+	//var sum;
+	//실행시 sum(100, 200);
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	function show(kind) {
+		var list = document.querySelectorAll("div");
+		for(var i = 0; i < list.length; i++) {
+			list[i].style.display = "none";
+		}
+		var show = document.getElementById(kind);
+		show.style.display = "block";
+		
+		/* var movieDiv = document.getElementById("movie");
+		var bookDiv = document.getElementById("book");
+		var travelDiv = document.getElementById("travel");
+		
+		movieDiv.style.display = "none";
+		bookDiv.style.display = "none";
+		travelDiv.style.display = "none";
+		
+		eval(kind + "Div.style.display = 'block'"); */
+	}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<input type="radio" name="info" onclick="show('movie')" checked="checked">영화
+	<input type="radio" name="info" onclick="show('book')">책
+	<input type="radio" name="info" onclick="show('travel')">여행
+	
+	<div id="movie" style="display: block;">
+		영화정보
+	</div>
+	<div id="book" style="display: none;">
+		책정보
+	</div>
+	<div id="travel" style="display: none;">
+		여행정보
+	</div>
+</body>
+</html>

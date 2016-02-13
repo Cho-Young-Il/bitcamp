@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>초간단 테이블 만들기</h1>
+	<table border="1" width="400px" height="400px">
+		<tr align="center">
+			<th>헤더1</th>
+			<th>헤더2</th>
+			<th>헤더3</th>	
+		</tr>
+		<tr align="left">
+			<td>첫번째 칸</td>
+			<td>두번째 칸</td>
+			<td rowspan="2">세번째 칸</td>
+		</tr>
+		<tr>
+			<td>첫번째 칸</td>
+			<td>
+				<table border="1">
+					<tr>
+						<td>1</td>
+						<td>2</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>4</td>
+					</tr>
+				</table>
+			</td>
+			
+		</tr>
+		<tr>
+			<td colspan="2">첫번째 칸</td>
+			<td>두번째 칸</td>
+			
+		</tr>
+	</table>
+</body>
+</html>

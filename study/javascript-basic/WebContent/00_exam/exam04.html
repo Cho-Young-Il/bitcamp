@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	var cnt = 0;
+	function add() {
+		var aDiv = document.getElementById("a");
+		var html = "<h1 id='" + ++cnt + "'>추가된 DIV id : child_" + cnt +" <button onclick='del(" + cnt + ")')>삭제</button></h1>";
+		aDiv.innerHTML += html;
+	}
+	
+	function del(id) {
+		console.log(id);
+		var delDiv = document.getElementById(id);
+		delDiv.parentNode.removeChild(delDiv);
+	}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<p>
+		<button onclick="add();">추가</button>
+	</p>
+	<div id="a">
+	
+	</div>
+</body>
+</html>

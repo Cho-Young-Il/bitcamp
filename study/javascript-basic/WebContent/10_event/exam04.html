@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이벤트 객체</title>
+<style type="text/css">
+	#btn1 {
+		width: 200px;
+		height: 200px;
+		position: absolute;
+		top: 100px;
+		left: 100px;
+		background: tomato;
+		color: white;
+	}
+</style>
+<script type="text/javascript">
+	window.onload = function() {
+		//아이디가 btn2인 버튼을 찾아서 click이벤트를
+		var btn = document.getElementById("btn1");
+		//event : 이벤트 객체
+		btn.onclick = function(event) {
+			console.log(this);
+			//event.target
+			console.log("이벤트 대상 객체 : " + event.target);
+			//좌표 정보 추출하기
+			console.log("대상 객체 기준 : ", event.offsetX, event.offsetY);
+			console.log("브라우져 기준 : ", event.clientX, event.clientY);
+			console.log("스크린 기준 : ", event.screenX, event.screenY);
+			btn.onclick = null;
+		};
+	};
+</script>
+</head>
+<body>
+	<h1 id="btn1">이벤트 객체</h1>
+</body>
+</html>

@@ -1,0 +1,436 @@
+CLOB(character language of object) 
+
+테이블명 : T77_board
+
+컬럼 :
+번호		- NUMBER(9)	-9자리 
+제목		- VARCHAR2(300)	- byte 크기, UTF-8
+글쓴이	- VARCHAR2(4000) -최대크기(4000), char(2000)
+등록일	- DATE	-크기 설정안됨
+
+- DDL : CREATE(생성) - Object(테이블, 함수, 프로시져, 사용자 등등..)
+
+CREATE TABLE 테이블명 (
+	컬럼명 데이터타입,
+	컬럼명 데이터타입	--마지막 컬럼일 경우에는 ,를 쓰지 않는다.
+);
+CREATE TABLE T77_BOARD (
+	NO			NUMBER(4),
+	TITLE		VARCHAR2(300),
+	WRITER		VARCHAR2(30),
+	CONTENT		VARCHAR2(4000),
+	VIEW_CNT	NUMBER(4),
+	REG_DATE	DATE
+);
+
+DDL - DESC : 만들어진 테이블의 구조 살펴보기
+DESC 테이블명;
+DESC T77_BOARD;
+
+DDL - DROP : 객체를 삭제하라 경우 사용
+DROP TABLE 테이블명;
+DROP TABLE T77_BOARD;
+
+--테이블의 제약조건 설정
+--PRIMARY KEY : NOT NULL + UNIQUE
+--NOT NULL	  : NULL 값을 허용하지 않는다.	
+--UNIQUE	  : 입력되는 값이 고유해야 한다.(컬럼)
+
+--DEFAULT	  : 값이 입력되지 않았을 때 기본으로 설정하려는 값
+
+--SYSDATE	  : 현재 시간정보 DATE
+CREATE TABLE T77_BOARD (
+	NO			NUMBER(4) 		PRIMARY KEY,
+	TITLE		VARCHAR2(300) 	NOT NULL, 
+	WRITER		VARCHAR2(30)	NOT NULL,
+	CONTENT		VARCHAR2(4000),
+	VIEW_CNT	NUMBER(4)		DEFAULT 0,
+	REG_DATE	DATE			DEFAULT SYSDATE
+);
+
+
+DML - INSERT : 테이블에 값 입력하기, 컬럼의 지정된 수만큼 값을 설정
+데이터 타입이 문자타입이라면 반드시 값을 입력할때 ''으로 묶어서 처리해야 한다.
+
+INSERT INTO 테이블명(컬럼명, ...)
+VALUES(값, ...);
+
+INSERT INTO T77_BOARD(
+	NO, TITLE, WRITER, CONTENT, VIEW_CNT, REG_DATE
+) VALUES (
+	1, '1번글', 'HONG', '첫번째 테스트글', 0, SYSDATE
+);
+
+//T77_BOARD 에 있는 모든 데이터를 조회
+SELECT * FROM T77_BOARD;
+
+--NOT NULL 테스트
+--TITLE은 NOT NULL로 제약설정되어 있으므로 아래의 쿼리에서 오류발생
+INSERT INTO T77_BOARD(
+	NO, WRITER, CONTENT, VIEW_CNT, REG_DATE
+) VALUES (
+	2, 'HONG', '첫번째 테스트글', 0, SYSDATE
+);
+
+--PRIMARY KEY
+--NOT NULL + UNIQUE
+
+--PK 테스트 아래의 코드는 NO에 기존 입력되었던 1의 값을 입력하려 해서 오류 발생
+--PRIMARY KEY로 설정된 컬럼은 동일한 값을 입력받을 수 없다.
+INSERT INTO T77_BOARD(
+	NO, TITLE, WRITER, CONTENT, VIEW_CNT, REG_DATE
+) VALUES (
+	1, 'PK 테스트', 'HONG', '첫번째 테스트글', 0, SYSDATE
+);
+
+INSERT INTO T77_BOARD(
+	NO, TITLE, WRITER, CONTENT, VIEW_CNT, REG_DATE
+) VALUES (
+	2, 'PK 테스트', 'HONG', '첫번째 테스트글', 0, SYSDATE
+);
+
+--DEFAULT
+INSERT INTO T77_BOARD(
+	NO, TITLE, WRITER, CONTENT
+) VALUES (
+	3, 'DEFAULT 테스트', 'HONG', '세번째 테스트글'
+);
+
+--DDL : RENAME -> 테이블 이름 변경
+RENAME A(기본테이블명) TO B(변경할 테이블명)
+RENAME T77_BOARD TO T77_BOARD_HIS;
+
+--변경확인
+SELECT * FROM T77_BOARD_HIS;
+
+--원래이름으로 변경
+RENAME T77_BOARD_HIS TO T77_BOARD;
+
+-- DML : UPDATE -> 테이블에 입력된 데이터를 수정
+-- UPDATE 테이블명
+	SET 컬럼명 = 변경할 값,
+		컬럼명 = 변경할 값
+	[WHERE 컬럼명 = 찾을 값] -> 조건
+	
+	--조건(WHERE)을 주지 않으면 전체 테이블 데이터에 영향을 미친다.
+	UPDATE T77_BOARD
+	SET WRITER = 'KIM';
+	
+	--2번글의 조회수를 1증가시키는 쿼리
+	UPDATE T77_BOARD
+	SET VIEW_CNT = VIEW_CNT + 1 
+	WHERE NO = 2;
+	
+	--3번글의 조회수를 1증가시키고 제목을 "변경된 제목"으로 수정하는 쿼리
+	UPDATE T77_BOARD
+	SET VIEW_CNT = VIEW_CNT + 1,
+		TITLE	 = '변경된 제목'
+	WHERE NO	 = 3;
+	
+-- DML : DELETE -> 테이블의 데이터를 삭제
+	DELETE FROM 테이블명 WHERE 컬럼명 = 찾을값
+	
+-- 조건을 주지 않으면 전체 데이터가 삭제처리됨
+
+	//3번 게시글을 삭제처리한다.
+	DELETE FROM T77_BOARD WHERE NO = 3;
+	
+	
+	
+	
+	
+	
+-- DQL : SELECT -> 데이터를 조회
+
+	SELECT 조회할 컬럼명, 조회할 컬럼명...
+	FROM 테이블명;
+	
+--게시물의 목록 : 번호, 제목, 글쓴이, 조회수
+	SELECT NO, TITLE, WRITER, VIEW_CNT
+	FROM T77_BOARD;
+	
+--전체 컬럼의 데이터를 조회시에는 *를 사용
+	SELECT * 
+	  FROM T77_BOARD;
+	  
+--ALIAS : 별칭, 컬럼에 설정하는 별명
+--컬럼명 as 별칭, 컬렴명 별칭
+--실행된 SELECT 절에서만 유효함
+
+--SELECT * FROM TAB; -> 기존 생성된 테이블의 목록 확인
+
+SELECT EMPLOYEE_ID, LAST_NAME, SALARY
+  FROM EMPLOYEES;
+  
+-->ALIAS 적용
+SELECT EMPLOYEE_ID 사원번호, LAST_NAME AS 이름, SALARY
+  FROM EMPLOYEES;
+  
+-- 산술 연산자 적용
+SELECT EMPLOYEE_ID, LAST_NAME, SALARY * 15 AS 급여
+  FROM EMPLOYEES;
+
+--합성 연산자 적용 : 자바의 + 연산자와 비슷, 출력되는 결과를 변경
+--||(합성연산자)
+
+EMPLOYEE_ID LAST_NAME SALARY * 15
+		100	King	  360000
+		101	Kochhar	  255000
+		102	De Haan	  255000
+		103	Hunold	  135000
+		104	Ernst	  90000
+		105	Austin	  72000
+		106	Pataballa 72000
+		107	Lorentz	  63000
+		108	Greenberg 180000
+		109	Faviet	  135000
+
+--'사원번호가 '||EMPLOYEE_ID||
+	'번인 '||LAST_NAME||
+	'사원의 연봉은 '||SALARY * 15||
+	'입니다.' AS 사원정보
+--사원번호가 100번인 King사원의 연봉은 360000입니다.
+--사원번호가 101번인 Kochhar사원의 연봉은 255000입니다.
+
+SELECT '사원번호가 '||EMPLOYEE_ID||'번인 '||LAST_NAME||'사원의 연봉은 '||SALARY * 15||'입니다.'
+  AS 사원정보
+  FROM EMPLOYEES;
+  
+
+  
+--WHERE -> 전체 데이터중에 일부의 데이터만 선택해준다.
+--비교연산자(=, !=, <>, <=, >=)와
+--논리연산자(AND, OR, NOT)
+--사원번호가 111번보다 크거나 같으면서 120번보다 작거나 같은 사원정보를 출력
+  SELECT *
+    FROM EMPLOYEES
+   WHERE EMPLOYEE_ID >= 110 AND EMPLOYEE <= 120
+   
+   SELECT *
+     FROM EMPLOYEES
+    WHERE DEPARTMENT_ID = 90 OR DEPARTMENT_ID = 100;
+    
+--부소번호가 100번인 사원 중에서 급여가 10000 이하인 사원의 정보를 출력하시오
+SELECT *
+  FROM EMPLOYEES
+ WHERE DEPARTMENT_ID = 100 AND SALARY <= 10000;
+ 
+--부서번호가 90이 아닌 사원에 대한 정보를 화면에 출력
+SELECT *
+  FROM EMPLOYEES
+ WHERE DEPARTMENT_ID != 90;
+ 
+SELECT *
+  FROM EMPLOYEES
+ WHERE DEPARTMENT_ID <> 90;
+ 
+SELECT *
+  FROM EMPLOYEES
+ WHERE NOT DEPARTMENT_ID = 90;
+ 
+ 
+ 
+--부서번호가 90번 또는 100번인 사원중에서 급여가 10000 이하인 사원의
+--부서번호 (DEPARTMENT_ID), 급여(SALARY), 사원번호(EMPLOYEE_ID),
+--사원의 이름(LAST_NAME)을 출력하시오
+
+--연산자 우선순위(NOT > AND > OR)
+--아래의 쿼리의 결과는 올바르지 않은 결과를 가져온다.
+SELECT DEPARTMENT_ID, SALARY, EMPLOYEE_ID
+  FROM EMPLOYEES
+ WHERE DEPARTMENT_ID = 90 OR DEPARTMENT_ID = 100 AND SALARY <= 10000
+ 
+SELECT DEPARTMENT_ID, SALARY, EMPLOYEE_ID
+  FROM EMPLOYEES
+ WHERE (DEPARTMENT_ID = 90 OR DEPARTMENT_ID = 100) AND SALARY <= 10000
+ 
+
+
+---SQL 연산자 : IN, BETWEEN A AND B, LIKE, IS NULL
+--IN 연산자 : 컬럼명 IN (비교값, ....)
+SELECT *
+  FROM EMPLOYEES
+ WHERE (DEPARTMENT_ID = 30
+    OR DEPARTMENT_ID = 50
+    OR DEPARTMENT_ID = 70
+    OR DEPARTMENT_ID = 100)
+   AND SALARY <= 10000;
+-IN 으로 변경
+SELECT *
+  FROM EMPLOYEES
+ WHERE DEPARTMENT_ID IN (30, 50, 70, 100)
+   AND SALARY <= 10000;
+ 
+   
+--BETWEEN A AND B : A와 B사이의 값을 선택, A 작은값 - B 큰값
+SELECT *
+  FROM EMPLOYEES
+ WHERE EMPLOYEE_ID BETWEEN 110 AND 113;
+ 
+ 
+--LIKE 연산자 : 특정 포멧 형태에 해당하는 데이터 선택, (%, _)
+--% : 0개 이상의 문자가 올 수 있다.
+--_ : 1개 문자가 온다.
+
+-- 'P'로 시작되는 사원 출력
+SELECT *
+  FROM EMPLOYEES
+ WHERE LAST_NAME LIKE 'P___';
+ 
+-- 'P'로 시작되는 사원중에 마지막 글자가 'E'인 사원 출력
+SELECT *
+  FROM EMPLOYEES
+ WHERE LAST_NAME LIKE 'P__E';
+ 
+ -- 사원의 이름(LAST_NAME)이 'P'로 시작되는 사원의 정보를 출력
+SELECT *
+  FROM EMPLOYEES
+ WHERE LAST_NAME LIKE 'P%';
+ 
+ -- 사원의 이름(LAST_NAME)두번째 글자가 'h'인 모든사원의 정보를 출력
+ SELECT *
+  FROM EMPLOYEES
+ WHERE LAST_NAME LIKE '_h%';
+ 
+ -- 사원의 이름(LAST_NAME)에 'h'를 포함하는 모든사원의 정보를 출력
+ SELECT *
+  FROM EMPLOYEES
+ WHERE LAST_NAME LIKE '%h%';
+ 
+ 
+ --IS NULL연산자 : NULL값을 찾을 때 사용
+ --NULL : 아직 미정인 값
+ --NULL 과의 산술연산은 NULL을 반환
+ --NULL과의 비교연산은 거짓(false)를 반환
+ 
+-- 사원중에서 커미션(commission_pct)을 받지 않는 사원의 정보를 출력
+SELECT *
+  FROM EMPLOYEES
+ WHERE COMMISSION_PCT IS NULL; 
+ 
+ -- 사원중에서 커미션(commission_pct)을 받지 않는 사원의 정보를 출력
+SELECT *
+  FROM EMPLOYEES
+ WHERE NOT COMMISSION_PCT IS NULL; 
+ 
+ --사원의 연봉을 화면에 출력합니다.
+ --사원의 연봉은 급여에 * 15한 다음 커미션이 있다면 
+ --SALARY * 커미션을 곱한 값을 더해줍니다.
+SELECT EMPLOYEE_ID, LAST_NAME, SALARY, COMMISSION_PCT,
+	   SALARY * 15 + SALARY * COMMISSION_PCT
+  FROM EMPLOYEES
+  
+  ->NULL 과의 산순연산은 NULL을 반환하기 때문에 위와 같은 문제가 발생한다.
+  오라클에서는 위의 문제를 해결하기 위해서 여러가지 NULL 처리 함수를 제공한다.
+  ->NVL(컬럼명, 널일 경우 대체할 값), 컬럼의 타입과 널일경우 대체할 값의 타입이 동일해야 한다.
+SELECT EMPLOYEE_ID, LAST_NAME, SALARY, NVL(COMMISSION_PCT, 0)
+  FROM EMPLOYEES
+  
+SELECT EMPLOYEE_ID, LAST_NAME, SALARY, COMMISSION_PCT,
+	   SALARY * 15 + SALARY * NVL(COMMISSION_PCT, 0)
+  FROM EMPLOYEES
+  
+-- 관리사원(MANAGER_ID)이 없는 사원인 경우 출력시 '관리자 없음'으로 출력
+SELECT EMPLOYEE_ID, LAST_NAME, NVL(MANAGER_ID || '', '관리자 없음')
+  FROM EMPLOYEES;
+  
+
+
+  
+--ORDER BY : 정렬
+--ASC(오름차순) : 작은 값에서 큰 값으로, 디폴드 정렬 방식
+--DESC(내림차순) : 큰값에서 작은 값으로
+
+--연봉이 높은 사람부터 화면에 출력 : 내림차순
+--사원의 이름 순으로 화면에 출력 : 오름차순
+--최신 등록일 부터 화면에 출력 : 내림차순
+
+--ORDER BY 절은 항상 SELECT 절의 마지막에 선언되어야 한다.
+ (예외. INLINE VIEW에서는 중간 선언이 가능)
+ 
+SELECT
+  FROM
+ WHERE
+ ORDER BY 정렬기준 컬럼 또는 표현식 [ASC OR DESC]
+
+--사원의 정보를 출력한다. 단, 급여가 높은 사원부터 출력하시오
+SELECT *
+  FROM EMPLOYEES
+ ORDER BY SALARY DESC;
+ 
+--사원의 정보를 출력한다. 단, 부서번호 순으로 출력하시오
+SELECT *
+  FROM EMPLOYEES
+ ORDER BY DEPARTMENT_ID ASC;
+ 
+--사원의 정보를 출력한다. 단, 부서번호 순으로 출력하시오
+--만약, 부서번호가 같은 사원이 있다면 급여순으로 정렬한다.
+SELECT *
+  FROM EMPLOYEES
+ ORDER BY DEPARTMENT_ID, SALARY;
+ 
+--사원의 정보를 출력한다. 단 연봉순으로 출력하시오
+--연봉 : SALARY * 15 + SALARY * NVL(COMMISSION_PCT, 0)
+SELECT EMPLOYEE_ID, LAST_NAME,
+	   SALARY * 15 + SALARY * NVL(COMMISSION_PCT, 0) AS SAL
+  FROM EMPLOYEES
+ ORDER BY SALARY * 15 + SALARY * NVL(COMMISSION_PCT, 0);
+
+--ORDER BY 절은 컬럼의 ALIAS를 사용할 수 있다.
+SELECT EMPLOYEE_ID, LAST_NAME,
+	   SALARY * 15 + SALARY * NVL(COMMISSION_PCT, 0) AS SAL
+  FROM EMPLOYEES
+ ORDER BY SAL;
+
+--ORDER BY 절은 SELECT 절의 위치를 기준으로 정렬이 가능함
+--실제 코딩에서는 사용하지 말자!! 
+SELECT EMPLOYEE_ID, LAST_NAME,
+	   SALARY * 15 + SALARY * NVL(COMMISSION_PCT, 0) AS SAL
+  FROM EMPLOYEES
+ ORDER BY 3;
+ 
+ 
+ 
+ --GROUP BY : 데이터를 소그룹으로 묶어서 처리할 때 사용
+ --그룹함수(GROUP FUNCTION) : 여러개의 데이터를 입력받아서 하나의 결과를 반환
+ --그룹함수는 NULL값을 제외한다 (COUNT(*) 함수만 널을 처리)
+   -SUM(컬럽) : 합계, MAX(컬럼) : 최대값, MIN : 최소값, COUNT : 개수
+   -AVG : 평균
+    
+--전체 사원들에 대한 정보를 출력,
+--최대급여, 최소급여, 급여합계, 급여받는 카운트, 급여평균
+SELECT MAX(SALARY), MIN(SALARY), SUM(SALARY), COUNT(SALARY), AVG(SALARY)
+  FROM EMPLOYEES;
+  
+GROUP BY 그룹핑 대상 컬럼
+--각 부서별(Department_ID)로 최대 금여가 얼마인지 화면에 출력하시오
+SELECT DEPARTMENT_ID, MAX(SALARY)
+  FROM EMPLOYEES
+ WHERE SALARY > 3000
+ GROUP BY DEPARTMENT_ID;
+ ORDER BY DEPARTMENT_ID;
+ 
+
+ 
+
+--HAVING : 그룹에 대한 제약을 할 때 사용
+--부서별 평균 급여를 화면에 출력한다.
+--단, 100번 부서보다 큰 부서는 제외하고 평균 급여가 5000 이하인 부서만 출력한다.
+--출력시 부서 아이디 순으로 출력
+SELECT DEPARMENT_ID, AVG(SALARY)
+  FROM EMPLOYEES
+ WHERE NOT DEPARTMENT_ID > 100         --WHERE 절은 그룹에 대한 조건을 사용할 수 없다.
+ GROUP BY DEPARTMENT_ID
+HAVING AVG(SALARY) <= 5000
+ ORDER BY DEPARTMENT_ID
+ 
+--JOB_ID별 최고 급여를 출력하되 급여가 많은 JOB_ID부터 출력하시오.
+--(단, 직원이 2명 이상인 경우만)
+SELECT JOB_ID, MAX(SALARY)
+  FROM EMPLOYEES
+ GROUP BY JOB_ID
+HAVING COUNT(JOB_ID) < 2
+ ORDER BY MAX(SALARY) DESC;
+ 
+ 
+ 

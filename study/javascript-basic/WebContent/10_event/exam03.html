@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>고전 이벤트 방식</title>
+<script type="text/javascript">
+	window.onload = function() {
+		//아이디가 btn2인 버튼을 찾아서 click 이벤트를 등록
+		var btn = document.getElementById("btn2");
+		btn.onclick = function() {
+			alert("2번 버튼 클릭");
+			
+			//이벤트 제거
+			
+			btn.onclick = null;
+		};
+	};
+</script>
+</head>
+<body>
+	<button id="btn1" onclick="alert(1);">이벤트 등록1</button>
+	<button id="btn2">이벤트 등록2</button>
+</body>
+</html>

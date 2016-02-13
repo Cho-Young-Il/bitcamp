@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+<style>
+	* { margin: 0px; padding: 0px; }
+	p {
+		width: 100px;
+		height: 100px;
+		margin: 10px;
+		color: white;
+		font-size: 20px;
+		font-weight: bold;
+		background: tomato;
+	}
+	input[type=button] {
+		font-size: 20px;
+		font-weight: bold;
+		width: 150px;
+		height: 40px;
+	}	
+	div {
+		margin: 20px 10px;
+		font-size: 20px;
+		font-weight: bold;
+	}
+</style>
+<script type="text/javascript" src="../jquery-2.2.0.js"></script>
+<script>
+	function offset() {
+		//offset() : 특정 엘리먼트의 위치를 찾을때 사용(좌표점을 얻는다.)
+		//left, top 
+		var loc = $("p").offset();
+		$("#result").append(" : (" + loc.left + ", " + loc.top + ")");
+	}
+	function sizeCk() {
+		//특정 엘리먼트의 넓이와 높이 구하기
+		//width()
+		//height()
+		$("#result").append(" : (" + $("p").width() + ", " + $("p").height() + ")");
+	}
+</script>
+</head>
+<body>
+	<p>Hello</p>
+	<div id="result">결과 출력</div>
+	<div>
+		<input type="button" value="offset()" onclick="offset()" />
+		<input type="button" value="sizeCk()" onclick="sizeCk()" />
+	</div>
+</body>
+</html>

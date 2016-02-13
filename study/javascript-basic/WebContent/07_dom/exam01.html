@@ -1,0 +1,47 @@
+<!-- 
+	노드 생성 방법
+	- 엘리먼트 노드
+	  document.createElement("생성할 엘리먼트명");
+	  var divObj = document.createElement("div");
+	  
+	- 텍스트 노드
+	  document.createTextNode("엘리먼트에 들어갈 텍스트");
+	   <h1>테스트</h1> ->엘리먼트 : h1 		 텍스트 : 테스트
+	   
+	 - 둘이 합침    (엘리먼트 노드)appendChild(텍스트 노드)
+	 - 지정된 id위치에 추가 	document.getElementId("id").append(합친 객체);
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+	div{ background: orange; }
+</style>
+<script type="text/javascript">
+	function doAdd() {
+		//<h1>동적생성</h1>
+		//h1 엘리먼트 만들기
+		var hObj = document.createElement("h1");
+		//동적생성 텍스트 노드 만들기
+		var tObj = document.createTextNode("동적생성");
+		
+		alert("엘리먼트와 노드 생성 완료했음");
+		
+		//화면추가 작업 진행함..
+		//h1 엘리먼트에 tObj를 자식으로 추가
+		hObj.appendChild(tObj);
+		alert("h1 과 텍스트를 연결했음");
+		
+		var divObj = document.getElementById("result");
+		//div 에 h1객체를 자식으로 추가
+		divObj.appendChild(hObj);
+	}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<button onclick="doAdd();">추가</button>
+	<div id="result"></div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!-- 
+	상태선택자 
+	: checked - 체크된 엘리먼트를 선택 
+	: disabled - 비활성화된 엘리먼트를 선택 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<style>
+	input:disabled{ background:olive;}
+	input:checked~div{ background:black;}
+</style>
+</head>
+<body>
+
+<input type="checkbox" checked />
+<input type="text" disabled="disabled" />
+
+<div>
+    <h1>체크상태일 경우 배경색이 빨강색으로 변경됨</h1>
+</div>
+<div>
+    <h1>두번째 DIV</h1>
+</div>
+</body>
+</html>

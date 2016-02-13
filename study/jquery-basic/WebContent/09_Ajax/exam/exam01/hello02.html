@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../../../jquery-2.2.0.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("[type=button]").click(function() {
+			$("#msgView").load("/jquery-basic/hello");
+		});
+	});
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>서버에서 받은 메세지</h1>
+	<div id="msgView"></div>
+	<br />
+	<input type="button" value="서버에 자료요청" />
+</body>
+</html>

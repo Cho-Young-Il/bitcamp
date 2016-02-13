@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="../jquery-2.2.0.js"></script>
+<script type="text/javascript">
+	$(function (){
+		/*
+			keydown : 키가 눌렸을때
+			keyup : 키가 올라올때
+			keypress : 글자가 써질때
+		*/
+		$("textarea").keyup(function() {
+			var len = $(this).val().length;
+			var rem = 150 - len;
+			$("h1").html(rem);
+			
+			if(rem >= 0) {
+				$("h1").css("color", "black");
+			} else {
+				$("h1").css("color", "red");
+			}
+		});
+		
+	}); 
+	
+</script>
+</head>
+<body>
+	<div>
+	    <p>지금 내 생각을</p>
+	    <h1>150</h1>
+	    <textarea cols="70"rows="5"></textarea>
+	</div>
+</body>
+</html>

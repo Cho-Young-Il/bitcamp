@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="/Ajax-basic/framework.js"></script>
+<script>
+window.onload = function () {
+	var httpRequest;
+	
+	$("[type=button]").on("click", function () {
+		httpRequest = new XMLHttpRequest();	
+		httpRequest.onreadystatechange = responseMsg;
+		
+		// 사용자가 화면에서 입력한 아이디 추출
+		// name="id" 
+		/*
+		var obj = document.querySelector("[name=id]");
+		obj.value
+		httpRequest.open(
+				"GET", "/Ajax-basic/idCheck?id=" + obj.value, true);
+		*/
+		
+		httpRequest.open(
+				"GET", 
+				"/Ajax-basic/idCheck?id=" + $("[name=id]").val(), true);
+		
+		httpRequest.send(null);	
+	});	
+	
+	function responseMsg() {
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+				$("#result").html(httpRequest.responseText);
+			}
+		}	
+	}
+	
+};
+</script>
+</head>
+<body>
+	<h1>아이디 중복 체크</h1>
+	<input type="text" name="id" size="15" />
+	<input type="button" value="중복체크" />
+	<span id="result"></span>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

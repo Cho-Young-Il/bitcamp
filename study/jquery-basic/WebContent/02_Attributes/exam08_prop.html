@@ -1,0 +1,46 @@
+<!-- 
+checkbox 의 checked,  disabled 속성은 prop를 활용
+prop( "속성명" ) : 속성값 얻기
+prop( "속성명", "값" ) : 속성값 설정
+
+attr("checked", "checked");  -> 안됨
+ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>css selectors</title>
+<script type="text/javascript" src="../jquery-2.2.0.js"></script>
+<script>
+	function test(type) {
+		if(type == 1) {
+			$("input:checkbox")
+				.prop("checked", 
+					  !$("input:checkbox").prop("checked"));
+			
+			$("input:checkbox")
+				.prop("disabled",
+					  !$("input:checkbox").prop("disabled"));
+			
+			//기존 체크되어 있다면 해제하고
+			//해제된 상태라면 체크 상태로 변경
+			
+			//비활성화 -> 활성화
+			//활성화 -> 비활성화
+		} else {
+			alert($("input:checkbox").prop("checked"));	
+		}
+	}
+</script>
+</head>
+<body>
+	<p>
+		<input type="checkbox" name="msg" />
+		<span></span>
+	</p>	
+	<div>
+		<button onclick="test(1);">prop 설정</button>
+		<button onclick="test(2);">prop 추출</button>
+	</div>
+</body>
+</html>

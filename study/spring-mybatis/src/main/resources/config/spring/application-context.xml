@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="euc-kr"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"	    
+    xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"	    
+	xmlns:tx="http://www.springframework.org/schema/tx"	        
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+					    http://www.springframework.org/schema/beans/spring-beans.xsd
+					    http://www.springframework.org/schema/aop
+					    http://www.springframework.org/schema/aop/spring-aop.xsd
+					    http://www.springframework.org/schema/context
+					    http://www.springframework.org/schema/context/spring-context.xsd
+					    http://www.springframework.org/schema/tx
+					    http://www.springframework.org/schema/tx/spring-tx.xsd">
+    
+	<context:component-scan base-package="member" />
+	<aop:aspectj-autoproxy />
+	
+	
+	
+	<!-- 데이터베이스 연결 -->
+	<!-- 
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
+	    p:driverClassName="oracle.jdbc.driver.OracleDriver"
+		p:url="jdbc:oracle:thin:@192.168.20.87:1521:XE" 
+		p:username="hr"
+		p:password="hr" />
+	 -->
+	<!-- dbcp 방법 -->
+	<bean id="dataSourceSpy" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" 
+	    p:driverClassName="oracle.jdbc.driver.OracleDriver" 
+	    p:url="jdbc:oracle:thin:@192.168.20.87:1521:XE" 
+	    p:username="hr"
+		p:password="hr" />
+	
+	<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+		<constructor-arg ref="dataSourceSpy" />
+		<property name="logFormatter">
+			<bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+				<property name="loggingType" value="MULTI_LINE" />
+				<property name="sqlPrefix" value="SQL : "/>
+			</bean>
+		</property>
+	</bean> 
+	
+	<!-- spring-mybatis 연동 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"> 
+	    <property name="dataSource" ref="dataSource" /> 
+	    <property name="configLocation" value="classpath:config/mybatis/sqlMapConfig.xml" /> 
+	    <property name="mapperLocations" value="classpath*:config/sqlmap/oracle/*.xml" /> 
+	</bean>
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"/>
+	</bean>
+	
+	
+	
+	<!-- 트랜잭션 처리관련 -->
+	<bean id="transactionManager" 
+	    class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+ 		p:dataSource-ref="dataSource" />
+	<!-- 어노테이션 방식의 설정 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<!-- 
+	<! aop 방식의 설정 >
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+ 		<tx:attributes>
+ 			<tx:method name="*" rollback-for="Exception" />
+ 		</tx:attributes>
+ 	</tx:advice>
+	<aop:config>
+		<aop:pointcut id="tranMethod" expression="execution(public * member..*ServiceImpl.*(..)) "/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="tranMethod" />
+	</aop:config> 
+ 	 -->
+	
+</beans>

@@ -1,0 +1,45 @@
+<!-- 
+	CSS 선택자를 이용한 접근
+	querySelectorAll("CSS 셀렉터") - 모든 요소 반환
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	function doAction(type) {
+		var obj;
+		switch(type) {
+		case 1:
+			obj = document.querySelectorAll("#a");
+			break;
+		case 2:
+			obj = document.querySelectorAll("div");
+			break;
+		case 3:
+			obj = document.querySelectorAll(".c");
+			break;
+		}
+		
+		for(var i = 0; i < obj.length; i++) {
+			alert(obj[i].innerHTML);
+		}
+	}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<p>
+		<button onclick="doAction(1)">아이디 접근</button>
+	</p>
+	<p>
+		<button onclick="doAction(2)">태그 접근</button>
+	</p>
+	<p>
+		<button onclick="doAction(3)">클래스 접근</button>
+	</p>
+	<div id="a">TEST1</div>
+	<div>TEST2</div>
+	<div class="c">TEST3</div>
+</body>
+</html>
